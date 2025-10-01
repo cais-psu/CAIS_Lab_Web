@@ -1,9 +1,9 @@
 ---
 ---
 
-# cais-psu's Website
+# Welcome to the Control and Automation for Intelligent Systems Lab!
 
-An engaging 1-3 sentence description of your lab.
+Research in the Control and Automation for Intelligent Systems Lab focuses on developing, analyzing, and applying control theory and artificial intelligence to improve the safety, flexibility, and performance of complex, dynamic systems, such as manufacturing systems.
 
 {% include section.html %}
 
@@ -11,7 +11,7 @@ An engaging 1-3 sentence description of your lab.
 
 {% capture text %}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+1
 
 {%
   include button.html
@@ -34,7 +34,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 {% capture text %}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+2
 
 {%
   include button.html
@@ -59,8 +59,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 {% capture text %}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
+3
 {%
   include button.html
   link="team"
