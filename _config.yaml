@@ -1,6 +1,6 @@
 # site properties and page defaults
-title: Control and Automation for Intelligent Systems (CAIS) Lab
-subtitle: Welcome to the Control and Automation for Intelligent Systems Lab!
+title: Control and Automation for Intelligent Systems Lab
+subtitle: Welcome to the CAIS Lab!
 description: Research in the Control and Automation for Intelligent Systems Lab focuses on developing, analyzing, and applying control theory and artificial intelligence to improve the safety, flexibility, and performance of complex, dynamic systems, such as manufacturing systems.
 header: images/background.jpg
 footer: images/background.jpg
@@ -11,7 +11,7 @@ links:
   email: iqk5135@psu.edu
   orcid: 0000-0001-8713-9213
   google-scholar: secQmYUAAAAJ&hl
-  github: https://github.com/cais-psu
+  github: cais-psu
   twitter: cais-psu
   youtube: cais-psu
 
