@@ -2,7 +2,7 @@ name: update-citations
 run-name: update citations
 
 on:
-  # run when called from another workflow
+  # 作为可复用工作流被其它工作流调用
   workflow_call:
     inputs:
       open-pr:
@@ -11,14 +11,14 @@ on:
       changed:
         value: ${{ jobs.update-citations.outputs.changed }}
 
-  # run if user manually requests it
+  # 手动触发也能跑
   workflow_dispatch:
 
 permissions:
   contents: write
   pull-requests: write
 
-# ✅ 顶层 env 合法（这里注入会传给所有 jobs/steps，除非被覆盖）
+# 顶层 env：给所有 jobs/steps
 env:
   FORCE_COLOR: true
   GOOGLE_SCHOLAR_API_KEY: ${{ secrets.GOOGLE_SCHOLAR_API_KEY }}
@@ -27,29 +27,37 @@ jobs:
   update-citations:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-
-    # ✅ job 级别的 permissions 合法；不要把 env 放到 permissions 下面
     permissions:
       contents: write
       pull-requests: write
 
     steps:
-      - name: Debug dump
+      - name: Debug dump (optional)
         if: runner.debug == '1'
         uses: crazy-max/ghaction-dump-context@v2
 
-      # ⚠️ 你的原逻辑在 PR 上 checkout PR head；如果不是 PR，此上下文可能为空。
-      # 若遇到 checkout 失败，可改为简单的默认 checkout：
-      # - uses: actions/checkout@v4
-      - name: Checkout branch contents
-        if: github.event.action != 'closed'
+      - name: Checkout repo
+        # 你的原逻辑仅在 PR 场景下 checkout PR head；这里改为通用写法
         uses: actions/checkout@v4
-        with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.head_ref }}
+
+      # ⭐ 早期断言：检查 secret 是否可用（含 fork PR 检测）
+      - name: Assert GOOGLE_SCHOLAR_API_KEY is available
+        run: |
+          echo "event_name=${{ github.event_name }}"
+          echo "is_fork_pr=$([[ '${{ github.event_name }}' == 'pull_request' && '${{ github.event.pull_request.head.repo.fork }}' == 'true' ]] && echo yes || echo no)"
+          if [[ '${{ github.event_name }}' == 'pull_request' && '${{ github.event.pull_request.head.repo.fork }}' == 'true' ]]; then
+            echo "::warning::This run is for a forked PR; repository secrets are not exposed by GitHub for security. Scholar step will be skipped."
+            echo "SKIP_SCHOLAR=1" >> $GITHUB_ENV
+          fi
+          if [[ -z "${GOOGLE_SCHOLAR_API_KEY}" ]]; then
+            echo "::notice::GOOGLE_SCHOLAR_API_KEY is empty at top-level env."
+            # 如果不是 fork PR，却依旧为空，多半是“调用端未传递 secrets”
+          else
+            echo "::add-mask::${GOOGLE_SCHOLAR_API_KEY}"
+            echo "Secret seems present."
+          fi
 
       - name: Set up Python
-        if: github.event.action != 'closed'
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -57,23 +65,30 @@ jobs:
           cache-dependency-path: "**/requirements.txt"
 
       - name: Install Python packages
-        if: github.event.action != 'closed'
         run: |
           python -m pip install --upgrade --requirement ./_cite/requirements.txt
 
-      - name: SSH debug
+      - name: SSH debug (optional)
         if: runner.debug == '1'
         uses: mxschmitt/action-tmate@v3
 
+      # ⭐ Scholar 步骤：若是 fork PR 就跳过；否则显式注入 env（双保险）
       - name: Build updated citations
-        if: github.event.action != 'closed'
-        # ✅ 兜底：在执行 cite.py 的步骤再次显式注入 env，确保可用
+        if: env.SKIP_SCHOLAR != '1'
         env:
           GOOGLE_SCHOLAR_API_KEY: ${{ secrets.GOOGLE_SCHOLAR_API_KEY }}
-        run: python _cite/cite.py
+        run: |
+          python - <<'PY'
+          import os, sys
+          key = os.getenv("GOOGLE_SCHOLAR_API_KEY")
+          if not key:
+              sys.stderr.write("FATAL: GOOGLE_SCHOLAR_API_KEY missing before cite.py\n")
+              sys.exit(2)
+          PY
+          python _cite/cite.py
         timeout-minutes: 15
 
-      - name: Commit cache
+      - name: Commit cache on failure
         if: failure()
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
@@ -81,7 +96,6 @@ jobs:
           commit_message: "Commit cache"
 
       - name: Check if citations changed
-        if: github.event.action != 'closed'
         id: changed
         uses: tj-actions/verify-changed-files@v18
         with:
@@ -90,7 +104,6 @@ jobs:
 
       - name: Commit updated citations to branch
         if: |
-          github.event.action != 'closed' &&
           steps.changed.outputs.files_changed == 'true' &&
           inputs.open-pr != true
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -99,7 +112,6 @@ jobs:
 
       - name: Open pull request with updated citations
         if: |
-          github.event.action != 'closed' &&
           steps.changed.outputs.files_changed == 'true' &&
           inputs.open-pr == true
         uses: peter-evans/create-pull-request@v6
