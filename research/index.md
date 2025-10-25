@@ -13,7 +13,9 @@ nav:
 
 ## Highlighted
 
-{% include citation.html lookup="Open collaborative writing with Manubot" style="rich" %}
+{% include citation.html lookup="The model-based product agent: A control oriented architecture for intelligent products in multi-agent manufacturing systems" style="rich" %}
+
+{% include citation.html lookup="Dynamic resource task negotiation to enable product agent exploration in multi-agent manufacturing systems" style="rich" %}
 
 {% include section.html %}
 
@@ -25,9 +27,24 @@ nav:
 
 {%- assign ilya_citations = "" | split: "" -%}
 {%- for c in site.data.citations -%}
-  {%- assign authors_arr = c.authors | default: c.author | default: empty -%}
-  {%- assign a = authors_arr | join: ' ' | downcase -%}
-  {%- assign a = a
+  {%- assign authors_arr = c.authors -%}
+  {%- if authors_arr == nil -%}{%- assign authors_arr = c.author -%}{%- endif -%}
+  {%- if authors_arr == nil -%}{%- assign authors_arr = "" | split: "" -%}{%- endif -%}
+  {%- assign names = "" -%}
+  {%- for a in authors_arr -%}
+    {%- assign nm = "" -%}
+    {%- if a.name -%}
+      {%- assign nm = a.name -%}
+    {%- elsif a.literal -%}
+      {%- assign nm = a.literal -%}
+    {%- elsif a.family or a.given -%}
+      {%- assign nm = a.given | default: "" | append: " " | append: a.family | strip -%}
+    {%- else -%}
+      {%- assign nm = a -%}
+    {%- endif -%}
+    {%- assign names = names | append: " " | append: nm -%}
+  {%- endfor -%}
+  {%- assign a = names | downcase
       | replace: '.', ''
       | replace: ',', ' '
       | replace: ';', ' '
@@ -41,3 +58,4 @@ nav:
 {%- endfor -%}
 
 {% include list.html collection=ilya_citations component="citation" style="rich" %}
+
