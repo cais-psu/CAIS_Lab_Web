@@ -1,22 +1,27 @@
 name: on-push
-run-name: update citations (on push)
+run-name: on push to main
 
 on:
   push:
-    branches: [ main ]
-    paths:
-      - "_data/google-scholar.yaml"
-      - "_cite/**"
-      - ".github/workflows/on-push.yaml"
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
   contents: write
   pull-requests: write
+  pages: write            # ✅ 给 build/deploy Pages 的权限
+  id-token: write         # ✅ 部署到 Pages 需要
 
 jobs:
-  call-update:
-    uses: cais-psu/CAIS_Lab_Web/.github/workflows/update-citations.yaml@main
-    secrets: inherit        # ← 必须有这一句，才能把仓库 secrets 传给被调用工作流
+  update-citations:
+    # 复用工作流：更新 citations 并提交到 main（不走 PR）
+    uses: ./.github/workflows/update-citations.yaml
+    secrets: inherit                 # ✅ 关键：把仓库 secrets 传递给被调用工作流
     with:
-      open-pr: false        # 直接提交到 main；若想走 PR，改成 true 并确保仓库允许 Actions 开 PR
+      open-pr: false                 # 直接提交到 main
+
+  build-site:
+    needs: update-citations          # 等 citations 更新完再构建
+    uses: ./.github/workflows/build-site.yaml
+    secrets: inherit                 # ✅ 同样需要继承 secrets（若 build 里用到了）
