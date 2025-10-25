@@ -15,8 +15,7 @@ nav:
 
 {% include citation.html lookup="The model-based product agent: A control oriented architecture for intelligent products in multi-agent manufacturing systems" style="rich" %}
 
-{% include citation.html lookup="Dynamic Resource Task Negotiation to Enable Product Agent Exploration in
-    Multi-Agent Manufacturing Systems" style="rich" %}
+{% include citation.html lookup="doi:10.1109/lra.2019.2921947" style="rich" %}
 
 {% include section.html %}
 
