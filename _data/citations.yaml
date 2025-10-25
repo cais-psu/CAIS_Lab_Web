@@ -1,0 +1,574 @@
+# DO NOT EDIT, GENERATED AUTOMATICALLY
+
+- id: doi:10.1109/case59546.2024.10711843
+  title: Enhancing Human-Robot Collaborative Assembly in Manufacturing Systems Using
+    Large Language Models
+  authors:
+  - Jonghan Lim
+  - Sujani Patel
+  - Alex Evans
+  - John Pimley
+  - Yifei Li
+  - Ilya Kovalenko
+  publisher: 2024 IEEE 20th International Conference on Automation Science and Engineering
+    (CASE)
+  date: '2024-08-28'
+  link: https://doi.org/g97zp3
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/case59546.2024.10711432
+  title: Large Language Model-Enabled Multi-Agent Manufacturing Systems
+  authors:
+  - Jonghan Lim
+  - Birgit Vogel-Heuser
+  - Ilya Kovalenko
+  publisher: 2024 IEEE 20th International Conference on Automation Science and Engineering
+    (CASE)
+  date: '2024-08-28'
+  link: https://doi.org/g97zp4
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1115/msec2024-125413
+  title: A Mobile Additive Manufacturing Robot Framework for Smart Manufacturing Systems
+  authors:
+  - Yifei Li
+  - Jeongwon Park
+  - Guha Manogharan
+  - Feng Ju
+  - Ilya Kovalenko
+  publisher: 'Volume 2: Manufacturing Equipment and Automation; Manufacturing Processes;
+    Manufacturing Systems; Nano/Micro/Meso Manufacturing; Quality &amp; Reliability'
+  date: '2024-06-17'
+  link: https://doi.org/g97zp5
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.3389/fbuil.2024.1384235
+  title: Conditional adaptive time series compensation and control design for multi-axial
+    real-time hybrid simulation
+  authors:
+  - Andrew J. Aguila
+  - Hongliang Li
+  - Alejandro Palacio-Betancur
+  - Kamal A. Ahmed
+  - Ilya Kovalenko
+  - Mariantonieta Gutierrez Soto
+  publisher: Frontiers in Built Environment
+  date: '2024-05-13'
+  link: https://doi.org/g97zp6
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1080/00207543.2023.2200567
+  title: Dynamic distributed decision-making for resilient resource reallocation in
+    disrupted manufacturing systems
+  authors:
+  - Mingjie Bi
+  - Ilya Kovalenko
+  - Dawn M. Tilbury
+  - Kira Barton
+  publisher: International Journal of Production Research
+  date: '2023-04-18'
+  link: https://doi.org/g97zp7
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1002/bte2.20230023
+  title: Multifunctional composite designs for structural energy storage
+  authors:
+  - Bo Nie
+  - Jonghan Lim
+  - Tengxiao Liu
+  - Ilya Kovalenko
+  - Kaixuan Guo
+  - Junfei Liang
+  - Jian Zhu
+  - Hongtao Sun
+  publisher: Battery Energy
+  date: '2023-10-13'
+  link: https://doi.org/gtnt8g
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/case56687.2023.10260642
+  title: A System-Level Energy-Efficient Digital Twin Framework for Runtime Control
+    of Batch Manufacturing Processes
+  authors:
+  - Hongliang Li
+  - Herschel C. Pangborn
+  - Ilya Kovalenko
+  publisher: 2023 IEEE 19th International Conference on Automation Science and Engineering
+    (CASE)
+  date: '2023-08-26'
+  link: https://doi.org/g97zp8
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/case56687.2023.10260621
+  title: Ontology-Based Feedback to Improve Runtime Control for Multi-Agent Manufacturing
+    Systems
+  authors:
+  - Jonghan Lim
+  - Leander Pfeiffer
+  - Felix Ocker
+  - Birgit Vogel-Heuser
+  - Ilya Kovalenko
+  publisher: 2023 IEEE 19th International Conference on Automation Science and Engineering
+    (CASE)
+  date: '2023-08-26'
+  link: https://doi.org/g97zp9
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/ccta54093.2023.10253433
+  title: A Model Predictive Control Framework for Improving Risk-Tolerance of Manufacturing
+    Systems
+  authors:
+  - Mostafa Tavakkoli Anbarani
+  - Efe C. Balta
+  - "R\xF4mulo Meira-G\xF3es"
+  - Ilya Kovalenko
+  publisher: 2023 IEEE Conference on Control Technology and Applications (CCTA)
+  date: '2023-08-16'
+  link: https://doi.org/g97zqb
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/mra.2023.3262464
+  title: 'Opportunities and Challenges to Integrate Artificial Intelligence Into Manufacturing
+    Systems: Thoughts From a Panel Discussion [Opinion]'
+  authors:
+  - Ilya Kovalenko
+  - Kira Barton
+  - James Moyne
+  - Dawn M. Tilbury
+  publisher: IEEE Robotics &amp; Automation Magazine
+  date: '2023-06-01'
+  link: https://doi.org/g97zqc
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.23919/acc55779.2023.10156587
+  title: Risk-Averse Model Predictive Control for Priced Timed Automata
+  authors:
+  - Mostafa Tavakkoli Anbarani
+  - Efe C. Balta
+  - "R\xF4mulo Meira-G\xF3es"
+  - Ilya Kovalenko
+  publisher: 2023 American Control Conference (ACC)
+  date: '2023-05-31'
+  link: https://doi.org/g97zqd
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/TCST.2021.3054800
+  title: Model Predictive Control of Priced Timed Automata Encoded With First-Order
+    Logic
+  authors:
+  - Efe C. Balta
+  - Ilya Kovalenko
+  - Isaac A. Spiegel
+  - Dawn M. Tilbury
+  - Kira Barton
+  publisher: IEEE Transactions on Control Systems Technology
+  date: '2022-01-01'
+  link: https://doi.org/gh67pw
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/ACCESS.2022.3165551
+  title: Toward an Automated Learning Control Architecture for Cyber-Physical Manufacturing
+    Systems
+  authors:
+  - Ilya Kovalenko
+  - James Moyne
+  - Mingjie Bi
+  - EFE C. Balta
+  - Wenyuan Ma
+  - Yassine Qamsane
+  - Xiao Zhu
+  - Z. Morley Mao
+  - Dawn M. Tilbury
+  - Kira Barton
+  publisher: IEEE Access
+  date: '2022-01-01'
+  link: https://doi.org/g97zqf
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.36227/techrxiv.17136680
+  title: 'Cooperative Product Agents to Improve Manufacturing System Flexibility:
+    A Model-Based Decision Framework'
+  authors:
+  - Ilya Kovalenko
+  - Efe Balta
+  - Dawn Tilbury
+  - Kira Barton
+  publisher: Institute of Electrical and Electronics Engineers (IEEE)
+  date: '2021-12-12'
+  link: https://doi.org/g97zqg
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.36227/techrxiv.17136680.v1
+  title: 'Cooperative Product Agents to Improve Manufacturing System Flexibility:
+    A Model-Based Decision Framework'
+  authors:
+  - Ilya Kovalenko
+  - Efe Balta
+  - Dawn Tilbury
+  - Kira Barton
+  publisher: Institute of Electrical and Electronics Engineers (IEEE)
+  date: '2021-12-12'
+  link: https://doi.org/g97zqh
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/ACCESS.2021.3065971
+  title: A Methodology to Develop and Implement Digital Twin Solutions for Manufacturing
+    Systems
+  authors:
+  - Yassine Qamsane
+  - James Moyne
+  - Maxwell Toothman
+  - Ilya Kovalenko
+  - Efe C. Balta
+  - John Faris
+  - Dawn M. Tilbury
+  - Kira Barton
+  publisher: IEEE Access
+  date: '2021-01-01'
+  link: https://doi.org/gndb9n
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1520/SSMS20200009
+  title: 'Developing the Workforce for Next-Generation Smart Manufacturing Systems:
+    A Multidisciplinary Research Team Approach'
+  authors:
+  - Ilya Kovalenko
+  - Efe C. Balta
+  - Yassine Qamsane
+  - Patricia D. Koman
+  - Xiao Zhu
+  - Yikai Lin
+  - Dawn M. Tilbury
+  - Z. Morley Mao
+  - Kira Barton
+  publisher: Smart and Sustainable Manufacturing Systems
+  date: '2020-08-21'
+  link: https://doi.org/gmz3zt
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/j.ifacol.2021.11.220
+  title: Dynamic Resource Allocation Using Multi-Agent Control for Manufacturing Systems
+  authors:
+  - Mingjie Bi
+  - Ilya Kovalenko
+  - Dawn M. Tilbury
+  - Kira Barton
+  publisher: IFAC-PapersOnLine
+  date: '2021-01-01'
+  link: https://doi.org/gnshnb
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/CASE49439.2021.9551650
+  title: Manufacturing Line Design Configuration with Optimized Resource Groups
+  authors:
+  - Takahiro Nakano
+  - Kajita Daiki
+  - Heming Chen
+  - Ilya Kovalenko
+  - Efe Balta
+  - Yassine Qamsane
+  - Kira Barton
+  publisher: 2021 IEEE 17th International Conference on Automation Science and Engineering
+    (CASE)
+  date: '2021-08-23'
+  link: https://doi.org/g97zqj
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/ACCESS.2020.3000437
+  title: 'A Requirements Driven Digital Twin Framework: Specification and Opportunities'
+  authors:
+  - James Moyne
+  - Yassine Qamsane
+  - Efe C. Balta
+  - Ilya Kovalenko
+  - John Faris
+  - Kira Barton
+  - Dawn M. Tilbury
+  publisher: IEEE Access
+  date: '2020-01-01'
+  link: https://doi.org/gndckt
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/j.ifacol.2021.04.051
+  title: Priced Timed Automata Models for Control of Intelligent Product Agents in
+    Manufacturing Systems
+  authors:
+  - Ilya Kovalenko
+  - Dawn Tilbury
+  - Kira Barton
+  publisher: IFAC-PapersOnLine
+  date: '2020-01-01'
+  link: https://doi.org/g97zqk
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/LRA.2019.2931825
+  title: A Framework for Automatic Initialization of Multi-Agent Production Systems
+    Using Semantic Web Technologies
+  authors:
+  - Felix Ocker
+  - Ilya Kovalenko
+  - Kira Barton
+  - Dawn Tilbury
+  - Birgit Vogel-Heuser
+  publisher: IEEE Robotics and Automation Letters
+  date: '2019-10-01'
+  link: https://doi.org/g97zqm
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1115/MSEC2019-2966
+  title: A Vision-Based Framework for Enhanced Quality Control in a Smart Manufacturing
+    System
+  authors:
+  - Zixuan Yang
+  - Huaiyuan Teng
+  - Jeremy Goldhawk
+  - Ilya Kovalenko
+  - Efe C. Balta
+  - Felipe Lopez
+  - Dawn Tilbury
+  - Kira Barton
+  publisher: 'Volume 1: Additive Manufacturing; Manufacturing Equipment and Systems;
+    Bio and Sustainable Manufacturing'
+  date: '2019-06-10'
+  link: https://doi.org/g59x43
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/LRA.2019.2921947
+  title: Dynamic Resource Task Negotiation to Enable Product Agent Exploration in
+    Multi-Agent Manufacturing Systems
+  authors:
+  - Ilya Kovalenko
+  - Daria Ryashentseva
+  - Birgit Vogel-Heuser
+  - Dawn Tilbury
+  - Kira Barton
+  publisher: IEEE Robotics and Automation Letters
+  date: '2019-07-01'
+  link: https://doi.org/g97zqn
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/j.conengprac.2019.03.009
+  title: 'The model-based product agent: A control oriented architecture for intelligent
+    products in multi-agent manufacturing systems'
+  authors:
+  - Ilya Kovalenko
+  - Dawn Tilbury
+  - Kira Barton
+  publisher: Control Engineering Practice
+  date: '2019-05-01'
+  link: https://doi.org/g97zqp
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: sources.py
+  file: sources.yaml
+  image: https://ars.els-cdn.com/content/image/1-s2.0-S0967066118305057-gr1.jpg
+- id: doi:10.1016/j.promfg.2018.10.053
+  title: 'Integrating Human Operators into Agent-based Manufacturing Systems: A Table-top
+    Demonstration'
+  authors:
+  - Gary Zheng
+  - Ilya Kovalenko
+  - Kira Barton
+  - Dawn Tilbury
+  publisher: Procedia Manufacturing
+  date: '2018-01-01'
+  link: https://doi.org/g97zqq
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/ETFA.2017.8247652
+  title: Design and implementation of an intelligent product agent architecture in
+    manufacturing systems
+  authors:
+  - Ilya Kovalenko
+  - Kira Barton
+  - Dawn Tilbury
+  publisher: 2017 22nd IEEE International Conference on Emerging Technologies and
+    Factory Automation (ETFA)
+  date: '2017-09-01'
+  link: https://doi.org/g97zqr
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/CCTA.2017.8062543
+  title: Hybrid modeling and identification of jetting dynamics in electrohydrodynamic
+    jet printing
+  authors:
+  - Isaac Spiegel
+  - Ilya Kovalenko
+  - David Hoelzle
+  - Patrick M. Sammons
+  - Kira L. Barton
+  publisher: 2017 IEEE Conference on Control Technology and Applications (CCTA)
+  date: '2017-08-01'
+  link: https://doi.org/g97zqs
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/j.procir.2017.04.014
+  title: 'Manufacturing Choices for Ankle-Foot Orthoses: A Multi-objective Optimization'
+  authors:
+  - Deema Totah
+  - Ilya Kovalenko
+  - Miguel Saez
+  - Kira Barton
+  publisher: Procedia CIRP
+  date: '2017-01-01'
+  link: https://doi.org/g97zqt
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1520/SSMS20170006
+  title: 'SMART: A System-Level Manufacturing and Automation Research Testbed'
+  authors:
+  - Ilya Kovalenko
+  - Miguel Saez
+  - Kira Barton
+  - Dawn Tilbury
+  publisher: Smart and Sustainable Manufacturing Systems
+  date: '2017-10-27'
+  link: https://doi.org/g97zqv
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/LRA.2016.2530866
+  title: Timing Analysis of Robotic Neuromodulatory Rehabilitation System for Paired
+    Associative Stimulation
+  authors:
+  - Euisun Kim
+  - Ilya Kovalenko
+  - Lauren Lacey
+  - Minoru Shinohara
+  - Jun Ueda
+  publisher: IEEE Robotics and Automation Letters
+  date: '2016-07-01'
+  link: https://doi.org/g97zqw
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1115/DSCC2015-9992
+  title: Analysis of a Tele-Operated MRI-Compatible Vane Actuator for Neuromuscular
+    Facilitation in Hemiparetic Limbs
+  authors:
+  - Melih Turkseven
+  - Ilya Kovalenko
+  - Euisun Kim
+  - Jun Ueda
+  publisher: 'Volume 2: Diagnostics and Detection; Drilling; Dynamics and Control
+    of Wind Energy Systems; Energy Harvesting; Estimation and Identification; Flexible
+    and Smart Structure Control; Fuels Cells/Energy Storage; Human Robot Interaction;
+    HVAC Building Energy Management; Industrial Applications; Intelligent Transportation
+    Systems; Manufacturing; Mechatronics; Modelling and Validation; Motion and Vibration
+    Control Applications'
+  date: '2015-10-28'
+  link: https://doi.org/g97zqx
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1115/1.4030548
+  title: Design and Testing of a Pneumatic Hemiparesis Rehabilitation Device for a
+    Neurofacilitation Exercise1
+  authors:
+  - Ilya Kovalenko
+  - Jonathan Lai
+  - Johnathan Williams
+  - Arnold Maliki
+  - Jun Ueda
+  publisher: Journal of Medical Devices
+  date: '2015-09-01'
+  link: https://doi.org/g97zqz
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1115/DETC2015-48085
+  title: Robotic Neuromuscular Facilitation for Regaining Neural Activation in Hemiparetic
+    Limbs
+  authors:
+  - Jun Ueda
+  - Lauren Lacey
+  - Melih Turkseven
+  - Minoru Shinohara
+  - Ilya Kovalenko
+  - Euisun Kim
+  - Fatiesa Sulejmani
+  publisher: 'Volume 5A: 39th Mechanisms and Robotics Conference'
+  date: '2015-08-02'
+  link: https://doi.org/g97zq2
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/ARSO.2014.7020990
+  title: Robotic rehabilitation exercise in hemiparetic limbs based on functional
+    synchronization of voluntary and involuntary nerve impulses
+  authors:
+  - Jun Ueda
+  - Lauren Lacey
+  - Melih Turkseven
+  - Minoru Shinohara
+  - Arnold Maliki
+  - Ilya Kovalenko
+  publisher: 2014 IEEE International Workshop on Advanced Robotics and its Social
+    Impacts
+  date: '2014-09-01'
+  link: https://doi.org/g97zq3
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
