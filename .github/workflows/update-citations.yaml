@@ -2,6 +2,7 @@ name: update-citations
 run-name: update citations
 
 on:
+  # 供其它工作流调用
   workflow_call:
     inputs:
       open-pr:
@@ -9,6 +10,8 @@ on:
     outputs:
       changed:
         value: ${{ jobs.update-citations.outputs.changed }}
+
+  # 手动触发（可选）
   workflow_dispatch:
 
 permissions:
@@ -21,7 +24,6 @@ env:
 
 jobs:
   update-citations:
-    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -31,16 +33,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
-      - name: Assert secrets context visible
-        run: |
-          if [ -n "${{ secrets.GOOGLE_SCHOLAR_API_KEY }}" ]; then
-            echo "secrets.GOOGLE_SCHOLAR_API_KEY present in context."
-          else
-            echo "::error::secrets.GOOGLE_SCHOLAR_API_KEY EMPTY in context."
-            echo "If this was called via 'uses:', the caller MUST set 'secrets: inherit'."
-            exit 2
-          fi
 
       - name: Setup Python
         uses: actions/setup-python@v5
