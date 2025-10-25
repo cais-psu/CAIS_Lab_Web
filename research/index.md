@@ -24,4 +24,8 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 {% include search-info.html %}
 
-{% include list.html data="citations" component="citation" style="rich" %}
+{%- assign ilya_citations = site.data.citations
+  | where_exp: "c", "c.authors | join: ' ' | downcase | contains: 'ilya'"
+-%}
+{% include list.html collection=ilya_citations component="citation" style="rich" %}
+
