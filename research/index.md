@@ -26,9 +26,6 @@ nav:
 
 {% include search-info.html %}
 
-{% include search-box.html %}
-{% include search-info.html %}
-
 {% for c in site.data.citations %}
   {% assign authors_arr = c.authors %}
   {% if authors_arr == nil %}{% assign authors_arr = c.author %}{% endif %}
@@ -52,10 +49,13 @@ nav:
   {% assign a = names | downcase | replace: '.', '' | replace: ',', ' ' | replace: ';', ' ' | strip | replace: '  ', ' ' | replace: '  ', ' ' %}
 
   {% if a contains 'ilya' and a contains 'kovalenko' %}
-    {% include citation.html lookup=c.id | default: c.title style="rich" %}
+    {% assign lookup_key = c.id %}
+    {% if lookup_key == nil or lookup_key == '' %}
+      {% assign lookup_key = c.title %}
+    {% endif %}
+    {% include citation.html lookup=lookup_key style="rich" %}
   {% endif %}
 {% endfor %}
 
-{% endfor %}
 
 
