@@ -13,7 +13,7 @@ nav:
 
 ## Highlighted
 
-{% include citation.html lookup="The model-based product agent: A control oriented architecture for intelligent products in multi-agent manufacturing systems" style="rich" %}
+{% include citation.html lookup="doi:10.1016/j.conengprac.2019.03.009" style="rich" %}
 
 {% include citation.html lookup="doi:10.1109/lra.2019.2921947" style="rich" %}
 
