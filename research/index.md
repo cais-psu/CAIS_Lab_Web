@@ -28,19 +28,23 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 {%- assign ilya_citations = "" | split: "" -%}
 
 {%- for c in site.data.citations -%}
-  {%- assign authors_str = c.authors | join: ' ' | downcase
-     | replace: '.', '' | replace: ',', ' ' | replace: ';', ' ' -%}
-  {%- assign authors_str = authors_str | split: ' ' | join: ' ' -%}  {# 压缩多空格 #}
+  {%- assign authors_arr = c.authors | default: empty -%}
+  {%- assign authors_str = authors_arr | join: ' ' | downcase -%}
+  {%- assign authors_str = authors_str
+      | replace: '.', ''
+      | replace: ',', ' '
+      | replace: ';', ' '
+      | strip
+      | replace: '  ', ' '
+      | replace: '  ', ' '
+  -%}
   {%- assign authors_pad = ' ' | append: authors_str | append: ' ' -%}
 
   {%- assign matched = false -%}
   {%- for n in needles -%}
-    {%- assign n2 = n | strip -%}
-    {%- if n2 != "" -%}
-      {%- assign needle = ' ' | append: n2 | append: ' ' -%}
-      {%- if authors_pad contains needle -%}
-        {%- assign matched = true -%}{%- break -%}
-      {%- endif -%}
+    {%- assign needle = ' ' | append: n | strip | append: ' ' -%}
+    {%- if authors_pad contains needle -%}
+      {%- assign matched = true -%}{%- break -%}
     {%- endif -%}
   {%- endfor -%}
 
@@ -50,4 +54,5 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 {%- endfor -%}
 
 {% include list.html collection=ilya_citations component="citation" style="rich" %}
+
 
