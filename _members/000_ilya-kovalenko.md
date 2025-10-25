@@ -13,4 +13,3 @@ Department of Mechanical Engineering
 Department of Industrial and Manufacturing Engineering
 
 Prof. Ilya Kovalenko joined the Department of Mechanical Engineering and the Department of Industrial and Manufacturing Engineering at Pennsylvania State University in January 2022. He received his PhD in Mechanical Engineering from the University of Michigan (2020), his MS degree in Mechanical Engineering from the University of Michigan (2018), and his BS degree in Mechanical Engineering from the Georgia Institute of Technology (2015). He held a postdoctoral research position at the University of Michigan from September 2020 until December 2021.
-123

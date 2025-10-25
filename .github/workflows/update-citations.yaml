@@ -18,6 +18,7 @@ permissions:
   contents: write
   pull-requests: write
 
+# ✅ 顶层 env 合法（这里注入会传给所有 jobs/steps，除非被覆盖）
 env:
   FORCE_COLOR: true
   GOOGLE_SCHOLAR_API_KEY: ${{ secrets.GOOGLE_SCHOLAR_API_KEY }}
@@ -26,17 +27,20 @@ jobs:
   update-citations:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+
+    # ✅ job 级别的 permissions 合法；不要把 env 放到 permissions 下面
     permissions:
       contents: write
       pull-requests: write
-      env:
-        GOOGLE_SCHOLAR_API_KEY: ${{ secrets.GOOGLE_SCHOLAR_API_KEY }}
 
     steps:
       - name: Debug dump
         if: runner.debug == '1'
         uses: crazy-max/ghaction-dump-context@v2
 
+      # ⚠️ 你的原逻辑在 PR 上 checkout PR head；如果不是 PR，此上下文可能为空。
+      # 若遇到 checkout 失败，可改为简单的默认 checkout：
+      # - uses: actions/checkout@v4
       - name: Checkout branch contents
         if: github.event.action != 'closed'
         uses: actions/checkout@v4
@@ -50,57 +54,4 @@ jobs:
         with:
           python-version: "3.11"
           cache: "pip"
-          cache-dependency-path: "**/requirements.txt"
-
-      - name: Install Python packages
-        if: github.event.action != 'closed'
-        run: |
-          python -m pip install --upgrade --requirement ./_cite/requirements.txt
-
-      - name: SSH debug
-        if: runner.debug == '1'
-        uses: mxschmitt/action-tmate@v3
-
-      - name: Build updated citations
-        if: github.event.action != 'closed'
-        run: python _cite/cite.py
-        timeout-minutes: 15
-
-      - name: Commit cache
-        if: failure()
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          file_pattern: "**/.cache/**"
-          commit_message: "Commit cache"
-
-      - name: Check if citations changed
-        if: github.event.action != 'closed'
-        id: changed
-        uses: tj-actions/verify-changed-files@v18
-        with:
-          files: |
-            _data/citations.yaml
-
-      - name: Commit updated citations to branch
-        if: |
-          github.event.action != 'closed' &&
-          steps.changed.outputs.files_changed == 'true' &&
-          inputs.open-pr != true
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Update citations"
-
-      - name: Open pull request with updated citations
-        if: |
-          github.event.action != 'closed' &&
-          steps.changed.outputs.files_changed == 'true' &&
-          inputs.open-pr == true
-        uses: peter-evans/create-pull-request@v6
-        with:
-          branch: citation-update
-          title: Periodic citation update
-          body: |
-            To see a live preview of this PR, close (don't merge) and reopen it.
-
-    outputs:
-      changed: ${{ steps.changed.outputs.files_changed || false }}
+          cache-dependency-path: "**/r**
