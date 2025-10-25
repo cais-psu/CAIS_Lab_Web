@@ -26,6 +26,11 @@ jobs:
   update-citations:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+      env:
+        GOOGLE_SCHOLAR_API_KEY: ${{ secrets.GOOGLE_SCHOLAR_API_KEY }}
 
     steps:
       - name: Debug dump
@@ -58,8 +63,6 @@ jobs:
 
       - name: Build updated citations
         if: github.event.action != 'closed'
-        env:
-          GOOGLE_SCHOLAR_API_KEY: ${{ secrets.GOOGLE_SCHOLAR_API_KEY }}
         run: python _cite/cite.py
         timeout-minutes: 15
 
