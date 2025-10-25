@@ -24,14 +24,4 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 {% include search-info.html %}
 
-{% assign all = site.data.citations %}
-{% comment %} 下面的筛选条件可按你的数据字段微调 {% endcomment %}
-{% assign journals = all | where: "type", "journal-article" %}
-{% assign conferences = all | where_exp: "c", "c.type contains 'proceedings' or c.genre == 'conference-paper'" %}
-
-### Journal Articles
-{% include list.html collection=journals component="citation" %}
-
-### Conference Papers
-{% include list.html collection=conferences component="citation" %}
-
+{% include list.html data="citations" component="citation" style="rich" %}
