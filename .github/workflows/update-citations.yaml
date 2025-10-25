@@ -2,7 +2,6 @@ name: update-citations
 run-name: update citations
 
 on:
-  # 供其它工作流调用
   workflow_call:
     inputs:
       open-pr:
@@ -10,8 +9,6 @@ on:
     outputs:
       changed:
         value: ${{ jobs.update-citations.outputs.changed }}
-
-  # 手动触发（可选）
   workflow_dispatch:
 
 permissions:
@@ -29,6 +26,9 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+    concurrency:
+      group: update-citations-${{ github.ref }}
+      cancel-in-progress: false
 
     steps:
       - name: Checkout repo
@@ -42,13 +42,40 @@ jobs:
           cache-dependency-path: "**/requirements.txt"
 
       - name: Install cite deps
-        run: python -m pip install --upgrade --requirement ./_cite/requirements.txt
+        run: |
+          python -m pip install --upgrade --requirement ./_cite/requirements.txt
+          python -m pip install --upgrade pyyaml
 
       - name: Build updated citations
         env:
           GOOGLE_SCHOLAR_API_KEY: ${{ secrets.GOOGLE_SCHOLAR_API_KEY }}
         run: python _cite/cite.py
         timeout-minutes: 15
+
+      - name: Postprocess citations (lowercase DOI & dedupe)
+        run: |
+          python - <<'PY'
+          import yaml
+          p = "_data/citations.yaml"
+          data = yaml.safe_load(open(p, "r", encoding="utf-8")) or []
+          seen = set()
+          out = []
+          for it in data:
+              doi = (it.get("DOI") or it.get("doi") or "").strip()
+              if doi:
+                  doi_low = doi.lower()
+                  it["DOI"] = doi_low
+                  it["doi"] = doi_low
+                  key = f"doi:{doi_low}"
+              else:
+                  key = (it.get("id") or it.get("title") or "").strip().lower()
+              if key and key in seen:
+                  continue
+              seen.add(key)
+              out.append(it)
+          yaml.safe_dump(out, open(p, "w", encoding="utf-8"), sort_keys=False, allow_unicode=True)
+          print(f"kept {len(out)} of {len(data)}")
+          PY
 
       - name: Check if citations changed
         id: changed
@@ -64,6 +91,8 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update citations"
+          file_pattern: |
+            _data/citations.yaml
 
       - name: Open pull request with updated citations
         if: |
