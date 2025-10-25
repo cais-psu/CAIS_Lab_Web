@@ -1,5 +1,3 @@
-# DO NOT EDIT, GENERATED AUTOMATICALLY
-
 - id: doi:10.1109/jas.2024.124596
   title: Cyber-Attacks with Resource Constraints on Discrete Event Systems Under Supervisory
     Control
@@ -213,7 +211,7 @@
   authors:
   - Mostafa Tavakkoli Anbarani
   - Jonghan Lim
-  - "R\xF4mulo Meira-G\xF3es"
+  - Rômulo Meira-Góes
   - Ilya Kovalenko
   publisher: IFAC-PapersOnLine
   date: '2024-01-01'
@@ -273,7 +271,7 @@
   authors:
   - Mostafa Tavakkoli Anbarani
   - Efe C. Balta
-  - "R\xF4mulo Meira-G\xF3es"
+  - Rômulo Meira-Góes
   - Ilya Kovalenko
   publisher: 2023 IEEE Conference on Control Technology and Applications (CCTA)
   date: '2023-08-16'
@@ -432,7 +430,7 @@
 - id: doi:10.1007/978-3-030-56554-1_1
   title: First-Order Logic
   authors:
-  - "Jo\xE3o Rasga"
+  - João Rasga
   - Cristina Sernadas
   publisher: Studies in Universal Logic
   date: '2020-01-01'
@@ -724,48 +722,11 @@
   authors:
   - Mostafa Tavakkoli Anbarani
   - Efe C. Balta
-  - "R\xF4mulo Meira-G\xF3es"
+  - Rômulo Meira-Góes
   - Ilya Kovalenko
   publisher: 2023 American Control Conference (ACC)
   date: '2023-05-31'
   link: https://doi.org/g97zqd
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1109/TCST.2021.3054800
-  title: Model Predictive Control of Priced Timed Automata Encoded With First-Order
-    Logic
-  authors:
-  - Efe C. Balta
-  - Ilya Kovalenko
-  - Isaac A. Spiegel
-  - Dawn M. Tilbury
-  - Kira Barton
-  publisher: IEEE Transactions on Control Systems Technology
-  date: '2022-01-01'
-  link: https://doi.org/gh67pw
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1109/ACCESS.2022.3165551
-  title: Toward an Automated Learning Control Architecture for Cyber-Physical Manufacturing
-    Systems
-  authors:
-  - Ilya Kovalenko
-  - James Moyne
-  - Mingjie Bi
-  - EFE C. Balta
-  - Wenyuan Ma
-  - Yassine Qamsane
-  - Xiao Zhu
-  - Z. Morley Mao
-  - Dawn M. Tilbury
-  - Kira Barton
-  publisher: IEEE Access
-  date: '2022-01-01'
-  link: https://doi.org/g97zqf
   orcid: 0000-0003-4764-9117
   jane-doe: true
   plugin: orcid.py
@@ -800,25 +761,6 @@
   jane-doe: true
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1109/ACCESS.2021.3065971
-  title: A Methodology to Develop and Implement Digital Twin Solutions for Manufacturing
-    Systems
-  authors:
-  - Yassine Qamsane
-  - James Moyne
-  - Maxwell Toothman
-  - Ilya Kovalenko
-  - Efe C. Balta
-  - John Faris
-  - Dawn M. Tilbury
-  - Kira Barton
-  publisher: IEEE Access
-  date: '2021-01-01'
-  link: https://doi.org/gndb9n
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
 - id: doi:10.1520/SSMS20200009
   title: 'Developing the Workforce for Next-Generation Smart Manufacturing Systems:
     A Multidisciplinary Research Team Approach'
@@ -835,210 +777,6 @@
   publisher: Smart and Sustainable Manufacturing Systems
   date: '2020-08-21'
   link: https://doi.org/gmz3zt
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1109/CASE49439.2021.9551650
-  title: Manufacturing Line Design Configuration with Optimized Resource Groups
-  authors:
-  - Takahiro Nakano
-  - Kajita Daiki
-  - Heming Chen
-  - Ilya Kovalenko
-  - Efe Balta
-  - Yassine Qamsane
-  - Kira Barton
-  publisher: 2021 IEEE 17th International Conference on Automation Science and Engineering
-    (CASE)
-  date: '2021-08-23'
-  link: https://doi.org/g97zqj
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1109/ACCESS.2020.3000437
-  title: 'A Requirements Driven Digital Twin Framework: Specification and Opportunities'
-  authors:
-  - James Moyne
-  - Yassine Qamsane
-  - Efe C. Balta
-  - Ilya Kovalenko
-  - John Faris
-  - Kira Barton
-  - Dawn M. Tilbury
-  publisher: IEEE Access
-  date: '2020-01-01'
-  link: https://doi.org/gndckt
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1109/LRA.2019.2931825
-  title: A Framework for Automatic Initialization of Multi-Agent Production Systems
-    Using Semantic Web Technologies
-  authors:
-  - Felix Ocker
-  - Ilya Kovalenko
-  - Kira Barton
-  - Dawn Tilbury
-  - Birgit Vogel-Heuser
-  publisher: IEEE Robotics and Automation Letters
-  date: '2019-10-01'
-  link: https://doi.org/g97zqm
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1115/MSEC2019-2966
-  title: A Vision-Based Framework for Enhanced Quality Control in a Smart Manufacturing
-    System
-  authors:
-  - Zixuan Yang
-  - Huaiyuan Teng
-  - Jeremy Goldhawk
-  - Ilya Kovalenko
-  - Efe C. Balta
-  - Felipe Lopez
-  - Dawn Tilbury
-  - Kira Barton
-  publisher: 'Volume 1: Additive Manufacturing; Manufacturing Equipment and Systems;
-    Bio and Sustainable Manufacturing'
-  date: '2019-06-10'
-  link: https://doi.org/g59x43
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1109/LRA.2019.2921947
-  title: Dynamic Resource Task Negotiation to Enable Product Agent Exploration in
-    Multi-Agent Manufacturing Systems
-  authors:
-  - Ilya Kovalenko
-  - Daria Ryashentseva
-  - Birgit Vogel-Heuser
-  - Dawn Tilbury
-  - Kira Barton
-  publisher: IEEE Robotics and Automation Letters
-  date: '2019-07-01'
-  link: https://doi.org/g97zqn
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1109/ETFA.2017.8247652
-  title: Design and implementation of an intelligent product agent architecture in
-    manufacturing systems
-  authors:
-  - Ilya Kovalenko
-  - Kira Barton
-  - Dawn Tilbury
-  publisher: 2017 22nd IEEE International Conference on Emerging Technologies and
-    Factory Automation (ETFA)
-  date: '2017-09-01'
-  link: https://doi.org/g97zqr
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1109/CCTA.2017.8062543
-  title: Hybrid modeling and identification of jetting dynamics in electrohydrodynamic
-    jet printing
-  authors:
-  - Isaac Spiegel
-  - Ilya Kovalenko
-  - David Hoelzle
-  - Patrick M. Sammons
-  - Kira L. Barton
-  publisher: 2017 IEEE Conference on Control Technology and Applications (CCTA)
-  date: '2017-08-01'
-  link: https://doi.org/g97zqs
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1520/SSMS20170006
-  title: 'SMART: A System-Level Manufacturing and Automation Research Testbed'
-  authors:
-  - Ilya Kovalenko
-  - Miguel Saez
-  - Kira Barton
-  - Dawn Tilbury
-  publisher: Smart and Sustainable Manufacturing Systems
-  date: '2017-10-27'
-  link: https://doi.org/g97zqv
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1109/LRA.2016.2530866
-  title: Timing Analysis of Robotic Neuromodulatory Rehabilitation System for Paired
-    Associative Stimulation
-  authors:
-  - Euisun Kim
-  - Ilya Kovalenko
-  - Lauren Lacey
-  - Minoru Shinohara
-  - Jun Ueda
-  publisher: IEEE Robotics and Automation Letters
-  date: '2016-07-01'
-  link: https://doi.org/g97zqw
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1115/DSCC2015-9992
-  title: Analysis of a Tele-Operated MRI-Compatible Vane Actuator for Neuromuscular
-    Facilitation in Hemiparetic Limbs
-  authors:
-  - Melih Turkseven
-  - Ilya Kovalenko
-  - Euisun Kim
-  - Jun Ueda
-  publisher: 'Volume 2: Diagnostics and Detection; Drilling; Dynamics and Control
-    of Wind Energy Systems; Energy Harvesting; Estimation and Identification; Flexible
-    and Smart Structure Control; Fuels Cells/Energy Storage; Human Robot Interaction;
-    HVAC Building Energy Management; Industrial Applications; Intelligent Transportation
-    Systems; Manufacturing; Mechatronics; Modelling and Validation; Motion and Vibration
-    Control Applications'
-  date: '2015-10-28'
-  link: https://doi.org/g97zqx
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1115/DETC2015-48085
-  title: Robotic Neuromuscular Facilitation for Regaining Neural Activation in Hemiparetic
-    Limbs
-  authors:
-  - Jun Ueda
-  - Lauren Lacey
-  - Melih Turkseven
-  - Minoru Shinohara
-  - Ilya Kovalenko
-  - Euisun Kim
-  - Fatiesa Sulejmani
-  publisher: 'Volume 5A: 39th Mechanisms and Robotics Conference'
-  date: '2015-08-02'
-  link: https://doi.org/g97zq2
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1109/ARSO.2014.7020990
-  title: Robotic rehabilitation exercise in hemiparetic limbs based on functional
-    synchronization of voluntary and involuntary nerve impulses
-  authors:
-  - Jun Ueda
-  - Lauren Lacey
-  - Melih Turkseven
-  - Minoru Shinohara
-  - Arnold Maliki
-  - Ilya Kovalenko
-  publisher: 2014 IEEE International Workshop on Advanced Robotics and its Social
-    Impacts
-  date: '2014-09-01'
-  link: https://doi.org/g97zq3
   orcid: 0000-0003-4764-9117
   jane-doe: true
   plugin: orcid.py
