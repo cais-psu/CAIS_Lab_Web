@@ -1,35 +1,51 @@
 ---
 title: Team
+layout: default
+permalink: /team/
 nav:
   order: 3
-  tooltip: About our team
+  tooltip: Members
 ---
 
-# {% include icon.html icon="fa-solid fa-users" %}Team
+# Principal Investigator (PI)
+{% include list.html
+   data="members"
+   component="portrait"
+   filter="role == 'pi' and !alumni"
+%}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+# PhD Students
+{% include list.html
+   data="members"
+   component="portrait"
+   filter="role =~ /^phd$/i and !alumni"
+%}
 
-{% include section.html %}
+# MS Students
+{% include list.html
+   data="members"
+   component="portrait"
+   filter="role =~ /^ms$/i and !alumni"
+%}
 
-{% include list.html data="members" component="portrait" filter="role == 'pi'" %}
-{% include list.html data="members" component="portrait" filter="role != 'pi'" %}
+# Visiting Students / Scholars
+{% include list.html
+   data="members"
+   component="portrait"
+   filter="role =~ /visitor/i and !alumni"
+%}
 
-{% include section.html background="images/background.jpg" dark=true %}
+# Undergraduates
+{% include list.html
+   data="members"
+   component="portrait"
+   filter="role =~ /undergrad/i and !alumni"
+%}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-{% include section.html %}
-
-{% capture content %}
-
-{% include figure.html image="images/photo.jpg" %}
-{% include figure.html image="images/photo.jpg" %}
-{% include figure.html image="images/photo.jpg" %}
-
-{% endcapture %}
-
-{% include grid.html style="square" content=content %}
+# Alumni
+{% include list.html
+   data="members"
+   component="portrait"
+   filter="alumni"
+   style="tiny"
+%}
