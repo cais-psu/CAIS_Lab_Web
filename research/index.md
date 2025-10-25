@@ -15,7 +15,8 @@ nav:
 
 {% include citation.html lookup="The model-based product agent: A control oriented architecture for intelligent products in multi-agent manufacturing systems" style="rich" %}
 
-{% include citation.html lookup="Dynamic resource task negotiation to enable product agent exploration in" style="rich" %}
+{% include citation.html lookup="Dynamic Resource Task Negotiation to Enable Product Agent Exploration in
+    Multi-Agent Manufacturing Systems" style="rich" %}
 
 {% include section.html %}
 
@@ -32,6 +33,7 @@ nav:
   {% assign authors_arr = c.authors %}
   {% if authors_arr == nil %}{% assign authors_arr = c.author %}{% endif %}
   {% if authors_arr == nil %}{% assign authors_arr = '' | split: '' %}{% endif %}
+
   {% assign names = '' %}
   {% for a in authors_arr %}
     {% assign nm = '' %}
@@ -46,10 +48,14 @@ nav:
     {% endif %}
     {% assign names = names | append: ' ' | append: nm %}
   {% endfor %}
+
   {% assign a = names | downcase | replace: '.', '' | replace: ',', ' ' | replace: ';', ' ' | strip | replace: '  ', ' ' | replace: '  ', ' ' %}
+
   {% if a contains 'ilya' and a contains 'kovalenko' %}
-    {% include citation.html entry=c style="rich" %}
+    {% include citation.html lookup=c.id | default: c.title style="rich" %}
   {% endif %}
+{% endfor %}
+
 {% endfor %}
 
 
