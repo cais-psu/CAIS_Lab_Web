@@ -24,8 +24,30 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 {% include search-info.html %}
 
-{%- assign ilya_citations = site.data.citations
-  | where_exp: "c", "c.authors | join: ' ' | downcase | contains: 'ilya'"
--%}
+{%- assign needles = "ilya,kovalenko,ilya kovalenko,i kovalenko" | split: "," -%}
+{%- assign ilya_citations = "" | split: "" -%}
+
+{%- for c in site.data.citations -%}
+  {%- assign authors_str = c.authors | join: ' ' | downcase
+     | replace: '.', '' | replace: ',', ' ' | replace: ';', ' ' -%}
+  {%- assign authors_str = authors_str | split: ' ' | join: ' ' -%}  {# 压缩多空格 #}
+  {%- assign authors_pad = ' ' | append: authors_str | append: ' ' -%}
+
+  {%- assign matched = false -%}
+  {%- for n in needles -%}
+    {%- assign n2 = n | strip -%}
+    {%- if n2 != "" -%}
+      {%- assign needle = ' ' | append: n2 | append: ' ' -%}
+      {%- if authors_pad contains needle -%}
+        {%- assign matched = true -%}{%- break -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if matched -%}
+    {%- assign ilya_citations = ilya_citations | push: c -%}
+  {%- endif -%}
+{%- endfor -%}
+
 {% include list.html collection=ilya_citations component="citation" style="rich" %}
 
