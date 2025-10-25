@@ -1,9 +1,14 @@
-name: update-citations-direct
-run-name: update citations (direct)
+name: update-citations
+run-name: update citations
 
 on:
-  schedule:
-    - cron: "0 3 1,15 * *"   # 每月 1/15 日 03:00 UTC ≈ 每两周一次
+  workflow_call:
+    inputs:
+      open-pr:
+        type: boolean
+    outputs:
+      changed:
+        value: ${{ jobs.update-citations.outputs.changed }}
   workflow_dispatch:
 
 permissions:
@@ -15,7 +20,7 @@ env:
   GOOGLE_SCHOLAR_API_KEY: ${{ secrets.GOOGLE_SCHOLAR_API_KEY }}
 
 jobs:
-  update:
+  update-citations:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -26,21 +31,13 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Assert secret visible in context
+      - name: Assert secrets context visible
         run: |
           if [ -n "${{ secrets.GOOGLE_SCHOLAR_API_KEY }}" ]; then
-            echo "secrets.GOOGLE_SCHOLAR_API_KEY is present in context."
+            echo "secrets.GOOGLE_SCHOLAR_API_KEY present in context."
           else
-            echo "::error::secrets.GOOGLE_SCHOLAR_API_KEY is EMPTY in context."
-            exit 2
-          fi
-
-      - name: Assert runtime env has key
-        run: |
-          if [ -n "$GOOGLE_SCHOLAR_API_KEY" ]; then
-            echo "RUNTIME env has GOOGLE_SCHOLAR_API_KEY."
-          else
-            echo "::error::RUNTIME env missing GOOGLE_SCHOLAR_API_KEY."
+            echo "::error::secrets.GOOGLE_SCHOLAR_API_KEY EMPTY in context."
+            echo "If this was called via 'uses:', the caller MUST set 'secrets: inherit'."
             exit 2
           fi
 
@@ -55,7 +52,7 @@ jobs:
         run: python -m pip install --upgrade --requirement ./_cite/requirements.txt
 
       - name: Build updated citations
-        env:   # 再显式注入一遍（双保险）
+        env:
           GOOGLE_SCHOLAR_API_KEY: ${{ secrets.GOOGLE_SCHOLAR_API_KEY }}
         run: python _cite/cite.py
         timeout-minutes: 15
@@ -68,17 +65,23 @@ jobs:
             _data/citations.yaml
 
       - name: Commit updated citations to branch
-        if: steps.changed.outputs.files_changed == 'true'
+        if: |
+          steps.changed.outputs.files_changed == 'true' &&
+          inputs.open-pr != true
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update citations"
 
-      # 可选：开 PR 而不是直接 push
-      # - name: Open pull request with updated citations
-      #   if: steps.changed.outputs.files_changed == 'true'
-      #   uses: peter-evans/create-pull-request@v6
-      #   with:
-      #     branch: citation-update
-      #     title: Periodic citation update
-      #     body: |
-      #       Auto update citations.
+      - name: Open pull request with updated citations
+        if: |
+          steps.changed.outputs.files_changed == 'true' &&
+          inputs.open-pr == true
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: citation-update
+          title: Periodic citation update
+          body: |
+            Auto update citations.
+
+    outputs:
+      changed: ${{ steps.changed.outputs.files_changed || false }}

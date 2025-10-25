@@ -1,0 +1,16 @@
+name: on-schedule
+on:
+  schedule:
+    - cron: "0 3 1,15 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  call-update:
+    uses: cais-psu/CAIS_Lab_Web/.github/workflows/update-citations.yaml@main
+    secrets: inherit         # ⭐⭐⭐ 这行是关键，没有就拿不到 secrets
+    with:
+      open-pr: true
