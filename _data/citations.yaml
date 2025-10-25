@@ -375,18 +375,15 @@
   link: https://doi.org/g97zqj
   plugin: google-scholar.py
   file: google-scholar.yaml
-- id: doi:10.1109/aps/ursi47566.2021.9704231
-  title: Smart Cloaking Metasurfaces for Next-Generation Antenna Systems
+- id: doi:10.1109/5gwf52925.2021.00049
+  title: 5G-IoT Architecture for Next Generation Smart Systems
   authors:
-  - Stefano Vellucci
-  - Alessandro Toscano
-  - Filiberto Bilotti
-  - Alessio Monti
-  - Mirko Barbuto
-  publisher: 2021 IEEE International Symposium on Antennas and Propagation and USNC-URSI
-    Radio Science Meeting (APS/URSI)
-  date: '2021-12-04'
-  link: https://doi.org/g97zv4
+  - Snigdhaswin Kar
+  - Prabodh Mishra
+  - Kuang-Ching Wang
+  publisher: 2021 IEEE 4th 5G World Forum (5GWF)
+  date: '2021-10-01'
+  link: https://doi.org/g97zvx
   plugin: google-scholar.py
   file: google-scholar.yaml
 - id: doi:10.1109/access.2021.3065971
