@@ -512,8 +512,9 @@
   publisher: IEEE Robotics and Automation Letters
   date: '2019-07-01'
   link: https://doi.org/g97zqn
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://www.google.com/imgres?q=Dynamic%20Resource%20Task%20Negotiation%20to%20Enable%20Product%20Agent%20Exploration%20in%20Multi-Agent%20Manufacturing%20Systems&imgurl=https%3A%2F%2Fwww.researchgate.net%2Fprofile%2FIlya-Kovalenko-3%2Fpublication%2F334771207%2Ffigure%2Ffig1%2FAS%3A786398319755266%401564503378907%2FThe-interactions-between-product-agents-resource-agents-and-the-factory-floor-in-a_Q320.jpg&imgrefurl=https%3A%2F%2Fwww.researchgate.net%2Fpublication%2F334771207_Dynamic_Resource_Task_Negotiation_to_Enable_Product_Agent_Exploration_in_Multi-Agent_Manufacturing_Systems&docid=XkjtdNofJVJNcM&tbnid=UM3Dn64eljqqdM&vet=12ahUKEwiJuKmLusCQAxVsrYkEHfTfKZkQM3oECBkQAA..i&w=320&h=320&hcb=2&itg=1&ved=2ahUKEwiJuKmLusCQAxVsrYkEHfTfKZkQM3oECBkQAA
 - id: doi:10.1016/j.conengprac.2019.03.009
   title: 'The model-based product agent: A control oriented architecture for intelligent
     products in multi-agent manufacturing systems'
