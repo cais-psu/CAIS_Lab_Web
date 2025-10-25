@@ -2,6 +2,7 @@ name: update-citations
 run-name: update citations
 
 on:
+  # 可被其它工作流复用
   workflow_call:
     inputs:
       open-pr:
@@ -9,13 +10,14 @@ on:
     outputs:
       changed:
         value: ${{ jobs.update-citations.outputs.changed }}
+  # 手动触发
   workflow_dispatch:
 
 permissions:
   contents: write
   pull-requests: write
 
-# 顶层 env（双保险其一；如果调用方没传 secrets，这里会是空）
+# 顶层 env（保险层 1）
 env:
   FORCE_COLOR: true
   GOOGLE_SCHOLAR_API_KEY: ${{ secrets.GOOGLE_SCHOLAR_API_KEY }}
@@ -24,24 +26,45 @@ jobs:
   update-citations:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+
+    # 如果你的 Secret 存在某个 Environment（例如 production），
+    # ⭐ 把下面这一行改成那个环境名；不是的话也可以留着不影响：
+    environment: production
+
+    # job 级 env（保险层 2）
+    env:
+      GOOGLE_SCHOLAR_API_KEY: ${{ secrets.GOOGLE_SCHOLAR_API_KEY }}
+
     permissions:
       contents: write
       pull-requests: write
-    # 如果你的 secret 放在某个 Environment（比如 production），务必取消下一行注释：
-    # environment: production
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # 早期断言：明确告诉你 secrets 在当前运行是否可见
-      - name: Assert GOOGLE_SCHOLAR_API_KEY visibility
+      # 诊断 1：secrets 上下文在“模板解析期”是否可见（不能打印值，但能判断非空）
+      - name: Diagnose secrets context visibility
         run: |
-          echo "event_name=${{ github.event_name }}"
-          if [ -n "${GOOGLE_SCHOLAR_API_KEY}" ]; then
-            echo "Top-level env has GOOGLE_SCHOLAR_API_KEY (masked)."
+          if [ -n "${{ secrets.GOOGLE_SCHOLAR_API_KEY }}" ]; then
+            echo "secrets.GOOGLE_SCHOLAR_API_KEY is present in context (masked)."
           else
-            echo "::notice::Top-level env is empty. If this workflow was called via 'uses:', ensure the caller sets 'secrets: inherit'."
+            echo "::error::secrets.GOOGLE_SCHOLAR_API_KEY is EMPTY in context (caller likely missing 'secrets: inherit' or wrong scope)."
+            # 不直接退出，因为下面还有环境变量层面的自检
+          fi
+
+      # 诊断 2：运行时 env 是否真的有这个变量
+      - name: Diagnose runtime env visibility
+        run: |
+          if [ -n "$GOOGLE_SCHOLAR_API_KEY" ]; then
+            echo "RUNTIME ENV has GOOGLE_SCHOLAR_API_KEY."
+          else
+            echo "::error::RUNTIME ENV missing GOOGLE_SCHOLAR_API_KEY."
+            echo "HINTS:"
+            echo " - If this workflow is called via 'uses:', caller must set 'secrets: inherit'."
+            echo " - If your secret is stored under an Environment, ensure 'environment: <name>' is set on this job."
+            echo " - Fork PRs cannot access secrets."
+            exit 2
           fi
 
       - name: Set up Python
@@ -54,17 +77,11 @@ jobs:
       - name: Install Python packages
         run: python -m pip install --upgrade --requirement ./_cite/requirements.txt
 
-      # 学术引用构建；再显式注入 env（双保险其二）
+      # 真正执行：step 级 env（保险层 3）
       - name: Build updated citations
         env:
           GOOGLE_SCHOLAR_API_KEY: ${{ secrets.GOOGLE_SCHOLAR_API_KEY }}
         run: |
-          python - <<'PY'
-          import os, sys
-          if not os.getenv("GOOGLE_SCHOLAR_API_KEY"):
-              sys.stderr.write("FATAL: GOOGLE_SCHOLAR_API_KEY missing before cite.py\n")
-              sys.exit(2)
-          PY
           python _cite/cite.py
         timeout-minutes: 15
 

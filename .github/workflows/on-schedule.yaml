@@ -1,7 +1,7 @@
 name: on-schedule
 on:
   schedule:
-    - cron: "0 3 1,15 * *"   # 每月 1/15 日 03:00 UTC ≈ 两周一次
+    - cron: "0 3 1,15 * *"
   workflow_dispatch:
 
 permissions:
@@ -11,6 +11,6 @@ permissions:
 jobs:
   call-update:
     uses: cais-psu/CAIS_Lab_Web/.github/workflows/update-citations.yaml@main
-    secrets: inherit                 # ⭐ 关键！把 secrets 传进复用工作流
+    secrets: inherit        # ⭐⭐ 没有这一行，被调用方拿不到 secrets！
     with:
       open-pr: true
