@@ -26,127 +26,155 @@ nav:
 
 {%- assign sorted = site.data.citations | sort: "date" | reverse -%}
 
-{%- assign uniq_j = "" -%}
+{%- assign seen_all = "" -%}
+{%- assign bar = "|" -%}
+
+{%- assign make_authors_str = "" -%}
+{%- capture make_authors_str -%}
+{%- raw -%}
+{%- assign authors_arr = c.authors -%}
+{%- if authors_arr == nil -%}{%- assign authors_arr = c.author -%}{%- endif -%}
+{%- if authors_arr == nil -%}{%- assign authors_arr = "" | split: "" -%}{%- endif -%}
+{%- assign names = "" -%}
+{%- for a in authors_arr -%}
+  {%- assign nm = "" -%}
+  {%- if a.name -%}{%- assign nm = a.name -%}
+  {%- elsif a.literal -%}{%- assign nm = a.literal -%}
+  {%- elsif a.family or a.given -%}{%- assign nm = a.given | default: "" | append: " " | append: a.family | strip -%}
+  {%- else -%}{%- assign nm = a -%}{%- endif -%}
+  {%- assign names = names | append: " " | append: nm -%}
+{%- endfor -%}
+{%- assign an = names | downcase | replace: ".", "" | replace: ",", " " | replace: ";", " " | strip | replace: "  ", " " | replace: "  ", " " -%}
+{%- endraw -%}
+{%- endcapture -%}
+
+{%- assign norm_key = "" -%}
+{%- capture norm_key -%}
+{%- raw -%}
+{%- assign doi_raw = c.DOI | default: c.doi | default: c.id | default: "" | downcase -%}
+{%- assign doi_norm = doi_raw
+  | replace: "https://doi.org/", ""
+  | replace: "http://doi.org/", ""
+  | replace: "doi.org/", ""
+  | replace: "doi:", ""
+  | strip -%}
+{%- assign doi_base = doi_norm -%}
+{%- if doi_base contains ".v" -%}
+  {%- assign parts = doi_base | split: ".v" -%}
+  {%- assign doi_base = parts[0] -%}
+{%- endif -%}
+{%- assign key = doi_base -%}
+{%- if key == "" -%}{%- assign key = c.title | default: c.id | downcase -%}{%- endif -%}
+{%- assign pad = bar | append: key | append: bar -%}
+{%- endraw -%}
+{%- endcapture -%}
+
+{%- assign classify = "" -%}
+{%- capture classify -%}
+{%- raw -%}
+{%- assign t = c.type | default: c.genre | default: "" | downcase -%}
+{%- assign venue = c["container-title"] | default: c.venue | default: c.publisher | default: "" | downcase -%}
+{%- assign link_lc = c.link | default: "" | downcase -%}
+{%- assign doi_lc = c.DOI | default: c.doi | default: "" | downcase -%}
+
+{%- assign is_arxiv = false -%}
+{%- if c.id and c.id contains "arxiv:" -%}{%- assign is_arxiv = true -%}{%- endif -%}
+{%- if doi_lc contains "10.48550/arxiv" or link_lc contains "arxiv.org" or venue contains "arxiv" -%}{%- assign is_arxiv = true -%}{%- endif -%}
+
+{%- assign is_book = false -%}
+{%- if t contains "chapter" or t contains "book" -%}{%- assign is_book = true -%}{%- endif -%}
+{%- if venue contains "lecture notes" or venue contains "encyclopedia" or venue contains "handbook" or venue contains "wiley" or venue contains "springer" or venue contains "book" or venue contains "chapter" -%}{%- assign is_book = true -%}{%- endif -%}
+
+{%- assign is_conf = false -%}
+{%- if t contains "proceedings" or t contains "conference" or t contains "workshop" or t contains "symposium" -%}{%- assign is_conf = true -%}{%- endif -%}
+{%- if venue contains "conference" or venue contains "proceedings" or venue contains "workshop" or venue contains "symposium" -%}{%- assign is_conf = true -%}{%- endif -%}
+{%- if venue contains "case" or venue contains "acc" or venue contains "cdc" or venue contains "msec" or venue contains "ccta" or venue contains "etfa" or venue contains "arso" or venue contains "aps/ursi" or venue contains "detc" or venue contains "dscc" or venue contains "ifac" or venue contains "ifac-papersonline" or venue contains "procedia manufacturing" or venue contains "procir" -%}{%- assign is_conf = true -%}{%- endif -%}
+{%- if venue contains "volume " -%}{%- assign is_conf = true -%}{%- endif -%}
+{%- if doi_lc contains "/msec" or doi_lc contains "/dscc" or doi_lc contains "/detc" or doi_lc contains "/case" or doi_lc contains "/ccta" or doi_lc contains "/acc" or doi_lc contains "/cdc" or doi_lc contains "/etfa" or doi_lc contains "/arso" -%}{%- assign is_conf = true -%}{%- endif -%}
+
+{%- assign is_journal = false -%}
+{%- if t contains "journal" or t contains "article" -%}{%- assign is_journal = true -%}{%- endif -%}
+{%- if venue contains "journal" or venue contains "letters" or venue contains "transactions" or venue contains "magazine" or venue contains "frontiers" or venue contains "ieee access" or venue contains "robotics and automation letters" or venue contains "international journal" or venue contains "battery energy" or venue contains "control engineering practice" or venue contains "smart and sustainable manufacturing systems" or venue contains "robotics and computer-integrated manufacturing" or venue contains "journal of medical devices" -%}{%- assign is_journal = true -%}{%- endif -%}
+{%- if venue contains "ifac-papersonline" or venue contains "procedia " -%}{%- assign is_journal = false -%}{%- assign is_conf = true -%}{%- endif -%}
+{%- endraw -%}
+{%- endcapture -%}
+
 ### Journal Articles
 {%- for c in sorted -%}
-  {%- assign authors_arr = c.authors -%}
-  {%- if authors_arr == nil -%}{%- assign authors_arr = c.author -%}{%- endif -%}
-  {%- if authors_arr == nil -%}{%- assign authors_arr = "" | split: "" -%}{%- endif -%}
-  {%- assign names = "" -%}
-  {%- for a in authors_arr -%}
-    {%- assign nm = "" -%}
-    {%- if a.name -%}{%- assign nm = a.name -%}
-    {%- elsif a.literal -%}{%- assign nm = a.literal -%}
-    {%- elsif a.family or a.given -%}{%- assign nm = a.given | default: "" | append: " " | append: a.family | strip -%}
-    {%- else -%}{%- assign nm = a -%}{%- endif -%}
-    {%- assign names = names | append: " " | append: nm -%}
-  {%- endfor -%}
-  {%- assign an = names | downcase | replace: ".", "" | replace: ",", " " | replace: ";", " " | strip | replace: "  ", " " | replace: "  ", " " -%}
-
-  {%- assign doi = c.DOI | default: c.doi | default: "" | downcase -%}
-  {%- assign key = doi -%}
-  {%- if key == "" -%}{%- assign key = c.id | default: c.title | downcase -%}{%- endif -%}
-  {%- assign pad = "|" | append: key | append: "|" -%}
-
-  {%- assign t = c.type | default: c.genre | default: "" | downcase -%}
-  {%- assign venue = c["container-title"] | default: c.venue | default: c.publisher | default: "" | downcase -%}
-
-  {%- assign is_journal = false -%}
-  {%- if t contains "journal" or t contains "article" -%}{%- assign is_journal = true -%}{%- endif -%}
-  {%- if venue contains "journal" or venue contains "letters" or venue contains "transactions" or venue contains "magazine" or venue contains "frontiers" or venue contains "nature" or venue contains "ieee access" or venue contains "robotics and automation letters" -%}{%- assign is_journal = true -%}{%- endif -%}
-  {%- if venue contains "ifac-papersonline" -%}{%- assign is_journal = false -%}{%- endif -%}
-
-  {%- if (an contains "ilya" and an contains "kovalenko") or (an contains " kovalenko i ") -%}
-    {%- if is_journal and uniq_j contains pad -%}{%- assign is_journal = false -%}{%- endif -%}
-    {%- if is_journal -%}
-      {%- assign lookup_key = c.id -%}
-      {%- if lookup_key == nil or lookup_key == "" -%}{%- assign lookup_key = c.title -%}{%- endif -%}
-      {% include citation.html lookup=lookup_key style="rich" %}
-      {%- assign uniq_j = uniq_j | append: pad -%}
-    {%- endif -%}
+  {%- assign _ = make_authors_str -%}
+  {%- assign _ = norm_key -%}
+  {%- assign _ = classify -%}
+  {%- if an contains "ilya" and an contains "kovalenko" or an contains " kovalenko i " -%}
+    {%- unless is_arxiv or is_book or is_conf -%}
+      {%- unless seen_all contains pad -%}
+        {%- assign lookup_key = c.id | default: c.title -%}
+        {% include citation.html lookup=lookup_key style="rich" %}
+        {%- assign seen_all = seen_all | append: pad -%}
+      {%- endunless -%}
+    {%- endunless -%}
   {%- endif -%}
 {%- endfor -%}
 
-{%- assign uniq_c = "" -%}
 ### Conference Papers
 {%- for c in sorted -%}
-  {%- assign authors_arr = c.authors -%}
-  {%- if authors_arr == nil -%}{%- assign authors_arr = c.author -%}{%- endif -%}
-  {%- if authors_arr == nil -%}{%- assign authors_arr = "" | split: "" -%}{%- endif -%}
-  {%- assign names = "" -%}
-  {%- for a in authors_arr -%}
-    {%- assign nm = "" -%}
-    {%- if a.name -%}{%- assign nm = a.name -%}
-    {%- elsif a.literal -%}{%- assign nm = a.literal -%}
-    {%- elsif a.family or a.given -%}{%- assign nm = a.given | default: "" | append: " " | append: a.family | strip -%}
-    {%- else -%}{%- assign nm = a -%}{%- endif -%}
-    {%- assign names = names | append: " " | append: nm -%}
-  {%- endfor -%}
-  {%- assign an = names | downcase | replace: ".", "" | replace: ",", " " | replace: ";", " " | strip | replace: "  ", " " | replace: "  ", " " -%}
-
-  {%- assign doi = c.DOI | default: c.doi | default: "" | downcase -%}
-  {%- assign key = doi -%}
-  {%- if key == "" -%}{%- assign key = c.id | default: c.title | downcase -%}{%- endif -%}
-  {%- assign pad = "|" | append: key | append: "|" -%}
-
-  {%- assign t = c.type | default: c.genre | default: "" | downcase -%}
-  {%- assign venue = c["container-title"] | default: c.venue | default: c.publisher | default: "" | downcase -%}
-
-  {%- assign is_conf = false -%}
-  {%- if t contains "proceedings" or t contains "conference" or t contains "workshop" or t contains "symposium" -%}{%- assign is_conf = true -%}{%- endif -%}
-  {%- if venue contains "conference" or venue contains "proceedings" or venue contains "workshop" or venue contains "symposium" or venue contains "case" or venue contains "icra" or venue contains "iros" or venue contains "acc" or venue contains "cdc" or venue contains "msec" or venue contains "ccta" or venue contains "etfa" or venue contains "arso" or venue contains "aps/ursi" or venue contains "detc" or venue contains "dscc" or venue contains "ifac" or venue contains "ifac-papersonline" or venue contains "procedia manufacturing" or venue contains "procir" or venue contains "msec" -%}{%- assign is_conf = true -%}{%- endif -%}
-
-  {%- if (an contains "ilya" and an contains "kovalenko") or (an contains " kovalenko i ") -%}
-    {%- if is_conf and uniq_c contains pad -%}{%- assign is_conf = false -%}{%- endif -%}
-    {%- if is_conf -%}
-      {%- assign lookup_key = c.id -%}
-      {%- if lookup_key == nil or lookup_key == "" -%}{%- assign lookup_key = c.title -%}{%- endif -%}
-      {% include citation.html lookup=lookup_key style="rich" %}
-      {%- assign uniq_c = uniq_c | append: pad -%}
+  {%- assign _ = make_authors_str -%}
+  {%- assign _ = norm_key -%}
+  {%- assign _ = classify -%}
+  {%- if an contains "ilya" and an contains "kovalenko" or an contains " kovalenko i " -%}
+    {%- if is_conf and not is_arxiv and not is_book -%}
+      {%- unless seen_all contains pad -%}
+        {%- assign lookup_key = c.id | default: c.title -%}
+        {% include citation.html lookup=lookup_key style="rich" %}
+        {%- assign seen_all = seen_all | append: pad -%}
+      {%- endunless -%}
     {%- endif -%}
   {%- endif -%}
 {%- endfor -%}
 
-{%- assign uniq_o = "" -%}
+### Books / Chapters
+{%- for c in sorted -%}
+  {%- assign _ = make_authors_str -%}
+  {%- assign _ = norm_key -%}
+  {%- assign _ = classify -%}
+  {%- if an contains "ilya" and an contains "kovalenko" or an contains " kovalenko i " -%}
+    {%- if is_book -%}
+      {%- unless seen_all contains pad -%}
+        {%- assign lookup_key = c.id | default: c.title -%}
+        {% include citation.html lookup=lookup_key style="rich" %}
+        {%- assign seen_all = seen_all | append: pad -%}
+      {%- endunless -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+### Preprints (arXiv)
+{%- for c in sorted -%}
+  {%- assign _ = make_authors_str -%}
+  {%- assign _ = norm_key -%}
+  {%- assign _ = classify -%}
+  {%- if an contains "ilya" and an contains "kovalenko" or an contains " kovalenko i " -%}
+    {%- if is_arxiv -%}
+      {%- unless seen_all contains pad -%}
+        {%- assign lookup_key = c.id | default: c.title -%}
+        {% include citation.html lookup=lookup_key style="rich" %}
+        {%- assign seen_all = seen_all | append: pad -%}
+      {%- endunless -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
 ### Other Publications
 {%- for c in sorted -%}
-  {%- assign authors_arr = c.authors -%}
-  {%- if authors_arr == nil -%}{%- assign authors_arr = c.author -%}{%- endif -%}
-  {%- if authors_arr == nil -%}{%- assign authors_arr = "" | split: "" -%}{%- endif -%}
-  {%- assign names = "" -%}
-  {%- for a in authors_arr -%}
-    {%- assign nm = "" -%}
-    {%- if a.name -%}{%- assign nm = a.name -%}
-    {%- elsif a.literal -%}{%- assign nm = a.literal -%}
-    {%- elsif a.family or a.given -%}{%- assign nm = a.given | default: "" | append: " " | append: a.family | strip -%}
-    {%- else -%}{%- assign nm = a -%}{%- endif -%}
-    {%- assign names = names | append: " " | append: nm -%}
-  {%- endfor -%}
-  {%- assign an = names | downcase | replace: ".", "" | replace: ",", " " | replace: ";", " " | strip | replace: "  ", " " | replace: "  ", " " -%}
-
-  {%- assign doi = c.DOI | default: c.doi | default: "" | downcase -%}
-  {%- assign key = doi -%}
-  {%- if key == "" -%}{%- assign key = c.id | default: c.title | downcase -%}{%- endif -%}
-  {%- assign pad = "|" | append: key | append: "|" -%}
-
-  {%- assign t = c.type | default: c.genre | default: "" | downcase -%}
-  {%- assign venue = c["container-title"] | default: c.venue | default: c.publisher | default: "" | downcase -%}
-
-  {%- assign is_journal = false -%}
-  {%- if t contains "journal" or t contains "article" -%}{%- assign is_journal = true -%}{%- endif -%}
-  {%- if venue contains "journal" or venue contains "letters" or venue contains "transactions" or venue contains "magazine" or venue contains "frontiers" or venue contains "nature" or venue contains "ieee access" or venue contains "robotics and automation letters" -%}{%- assign is_journal = true -%}{%- endif -%}
-  {%- if venue contains "ifac-papersonline" -%}{%- assign is_journal = false -%}{%- endif -%}
-
-  {%- assign is_conf = false -%}
-  {%- if t contains "proceedings" or t contains "conference" or t contains "workshop" or t contains "symposium" -%}{%- assign is_conf = true -%}{%- endif -%}
-  {%- if venue contains "conference" or venue contains "proceedings" or venue contains "workshop" or venue contains "symposium" or venue contains "case" or venue contains "icra" or venue contains "iros" or venue contains "acc" or venue contains "cdc" or venue contains "msec" or venue contains "ccta" or venue contains "etfa" or venue contains "arso" or venue contains "aps/ursi" or venue contains "detc" or venue contains "dscc" or venue contains "ifac" or venue contains "ifac-papersonline" or venue contains "procedia manufacturing" or venue contains "procir" or venue contains "msec" -%}{%- assign is_conf = true -%}{%- endif -%}
-
-  {%- if (an contains "ilya" and an contains "kovalenko") or (an contains " kovalenko i ") -%}
-    {%- unless is_journal or is_conf or (uniq_o contains pad) -%}
-      {%- assign lookup_key = c.id -%}
-      {%- if lookup_key == nil or lookup_key == "" -%}{%- assign lookup_key = c.title -%}{%- endif -%}
-      {% include citation.html lookup=lookup_key style="rich" %}
-      {%- assign uniq_o = uniq_o | append: pad -%}
+  {%- assign _ = make_authors_str -%}
+  {%- assign _ = norm_key -%}
+  {%- assign _ = classify -%}
+  {%- if an contains "ilya" and an contains "kovalenko" or an contains " kovalenko i " -%}
+    {%- unless is_arxiv or is_book or is_conf or is_journal -%}
+      {%- unless seen_all contains pad -%}
+        {%- assign lookup_key = c.id | default: c.title -%}
+        {% include citation.html lookup=lookup_key style="rich" %}
+        {%- assign seen_all = seen_all | append: pad -%}
+      {%- endunless -%}
     {%- endunless -%}
   {%- endif -%}
 {%- endfor -%}
