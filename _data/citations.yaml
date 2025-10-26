@@ -115,10 +115,8 @@
     (CASE)
   date: '2024-08-28'
   link: https://doi.org/g97zp4
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
+  plugin: google-scholar.py
+  file: google-scholar.yaml
 - id: doi:10.1109/case59546.2024.10711843
   title: Enhancing Human-Robot Collaborative Assembly in Manufacturing Systems Using
     Large Language Models
@@ -133,10 +131,8 @@
     (CASE)
   date: '2024-08-28'
   link: https://doi.org/g97zp3
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
+  plugin: google-scholar.py
+  file: google-scholar.yaml
 - id: doi:10.1115/msec2024-125413
   title: A Mobile Additive Manufacturing Robot Framework for Smart Manufacturing Systems
   authors:
@@ -149,10 +145,8 @@
     Manufacturing Systems; Nano/Micro/Meso Manufacturing; Quality &amp; Reliability'
   date: '2024-06-17'
   link: https://doi.org/g97zp5
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
+  plugin: google-scholar.py
+  file: google-scholar.yaml
 - id: doi:10.3389/fbuil.2024.1384235
   title: Conditional adaptive time series compensation and control design for multi-axial
     real-time hybrid simulation
@@ -166,10 +160,8 @@
   publisher: Frontiers in Built Environment
   date: '2024-05-13'
   link: https://doi.org/g97zp6
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
+  plugin: google-scholar.py
+  file: google-scholar.yaml
 - id: doi:10.1016/j.rcim.2023.102712
   title: Dynamic decision-making for knowledge-enabled distributed resource configuration
     in cloud manufacturing considering stochastic order arrival
@@ -246,10 +238,8 @@
     (CASE)
   date: '2023-08-26'
   link: https://doi.org/g97zp9
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
+  plugin: google-scholar.py
+  file: google-scholar.yaml
 - id: doi:10.1109/case56687.2023.10260642
   title: A System-Level Energy-Efficient Digital Twin Framework for Runtime Control
     of Batch Manufacturing Processes
@@ -261,10 +251,8 @@
     (CASE)
   date: '2023-08-26'
   link: https://doi.org/g97zp8
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
+  plugin: google-scholar.py
+  file: google-scholar.yaml
 - id: doi:10.1109/ccta54093.2023.10253433
   title: A Model Predictive Control Framework for Improving Risk-Tolerance of Manufacturing
     Systems
@@ -276,10 +264,8 @@
   publisher: 2023 IEEE Conference on Control Technology and Applications (CCTA)
   date: '2023-08-16'
   link: https://doi.org/g97zqb
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
+  plugin: google-scholar.py
+  file: google-scholar.yaml
 - id: doi:10.1109/mra.2023.3262464
   title: 'Opportunities and Challenges to Integrate Artificial Intelligence Into Manufacturing
     Systems: Thoughts From a Panel Discussion [Opinion]'
@@ -291,10 +277,8 @@
   publisher: IEEE Robotics &amp; Automation Magazine
   date: '2023-06-01'
   link: https://doi.org/g97zqc
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
+  plugin: google-scholar.py
+  file: google-scholar.yaml
 - id: doi:10.1109/tcst.2021.3054800
   title: Model Predictive Control of Priced Timed Automata Encoded With First-Order
     Logic
@@ -423,10 +407,8 @@
   publisher: IFAC-PapersOnLine
   date: '2021-01-01'
   link: https://doi.org/gnshnb
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
+  plugin: google-scholar.py
+  file: google-scholar.yaml
 - id: doi:10.1007/978-3-030-56554-1_1
   title: First-Order Logic
   authors:
@@ -447,10 +429,8 @@
   publisher: IFAC-PapersOnLine
   date: '2020-01-01'
   link: https://doi.org/g97zqk
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
+  plugin: google-scholar.py
+  file: google-scholar.yaml
 - id: doi:10.1109/access.2020.3000437
   title: 'A Requirements Driven Digital Twin Framework: Specification and Opportunities'
   authors:
@@ -525,8 +505,6 @@
   link: https://doi.org/g97zqp
   plugin: sources.py
   file: sources.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
   image: https://ars.els-cdn.com/content/image/1-s2.0-S0967066118305057-gr1.jpg
 - id: doi:10.1016/c2018-0-02206-9
   title: Digital Twin Driven Smart Manufacturing
@@ -547,10 +525,8 @@
   publisher: Procedia Manufacturing
   date: '2018-01-01'
   link: https://doi.org/g97zqq
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
+  plugin: google-scholar.py
+  file: google-scholar.yaml
 - id: doi:10.1520/ssms20170006
   title: 'SMART: A System-Level Manufacturing and Automation Research Testbed'
   authors:
@@ -600,10 +576,8 @@
   publisher: Procedia CIRP
   date: '2017-01-01'
   link: https://doi.org/g97zqt
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
+  plugin: google-scholar.py
+  file: google-scholar.yaml
 - id: doi:10.1109/lra.2016.2530866
   title: Timing Analysis of Robotic Neuromodulatory Rehabilitation System for Paired
     Associative Stimulation
@@ -648,10 +622,8 @@
   publisher: Journal of Medical Devices
   date: '2015-09-01'
   link: https://doi.org/g97zqz
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
+  plugin: google-scholar.py
+  file: google-scholar.yaml
 - id: doi:10.1115/detc2015-48085
   title: Robotic Neuromuscular Facilitation for Regaining Neural Activation in Hemiparetic
     Limbs
@@ -684,100 +656,3 @@
   link: https://doi.org/g97zq3
   plugin: google-scholar.py
   file: google-scholar.yaml
-- id: doi:10.1080/00207543.2023.2200567
-  title: Dynamic distributed decision-making for resilient resource reallocation in
-    disrupted manufacturing systems
-  authors:
-  - Mingjie Bi
-  - Ilya Kovalenko
-  - Dawn M. Tilbury
-  - Kira Barton
-  publisher: International Journal of Production Research
-  date: '2023-04-18'
-  link: https://doi.org/g97zp7
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1002/bte2.20230023
-  title: Multifunctional composite designs for structural energy storage
-  authors:
-  - Bo Nie
-  - Jonghan Lim
-  - Tengxiao Liu
-  - Ilya Kovalenko
-  - Kaixuan Guo
-  - Junfei Liang
-  - Jian Zhu
-  - Hongtao Sun
-  publisher: Battery Energy
-  date: '2023-10-13'
-  link: https://doi.org/gtnt8g
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.23919/acc55779.2023.10156587
-  title: Risk-Averse Model Predictive Control for Priced Timed Automata
-  authors:
-  - Mostafa Tavakkoli Anbarani
-  - Efe C. Balta
-  - Rômulo Meira-Góes
-  - Ilya Kovalenko
-  publisher: 2023 American Control Conference (ACC)
-  date: '2023-05-31'
-  link: https://doi.org/g97zqd
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.36227/techrxiv.17136680
-  title: 'Cooperative Product Agents to Improve Manufacturing System Flexibility:
-    A Model-Based Decision Framework'
-  authors:
-  - Ilya Kovalenko
-  - Efe Balta
-  - Dawn Tilbury
-  - Kira Barton
-  publisher: Institute of Electrical and Electronics Engineers (IEEE)
-  date: '2021-12-12'
-  link: https://doi.org/g97zqg
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.36227/techrxiv.17136680.v1
-  title: 'Cooperative Product Agents to Improve Manufacturing System Flexibility:
-    A Model-Based Decision Framework'
-  authors:
-  - Ilya Kovalenko
-  - Efe Balta
-  - Dawn Tilbury
-  - Kira Barton
-  publisher: Institute of Electrical and Electronics Engineers (IEEE)
-  date: '2021-12-12'
-  link: https://doi.org/g97zqh
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1520/SSMS20200009
-  title: 'Developing the Workforce for Next-Generation Smart Manufacturing Systems:
-    A Multidisciplinary Research Team Approach'
-  authors:
-  - Ilya Kovalenko
-  - Efe C. Balta
-  - Yassine Qamsane
-  - Patricia D. Koman
-  - Xiao Zhu
-  - Yikai Lin
-  - Dawn M. Tilbury
-  - Z. Morley Mao
-  - Kira Barton
-  publisher: Smart and Sustainable Manufacturing Systems
-  date: '2020-08-21'
-  link: https://doi.org/gmz3zt
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  plugin: orcid.py
-  file: orcid.yaml
