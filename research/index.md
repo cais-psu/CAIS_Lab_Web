@@ -24,19 +24,22 @@ nav:
 {% include search-box.html %}
 {% include search-info.html %}
 
-{% assign base = site.data.citations | where_exp: "c", "(c.authors | join: ' ') contains 'Kovalenko'" %}
-{% assign items = base | sort: "date" | reverse %}
+{% assign items_all = site.data.citations | sort: "date" | reverse %}
 
 {% assign SEP = "|" %}
 {% assign seen = "" %}
 {% assign dedup = "" %}
-{% for c in items %}
-  {% assign key = c.DOI | default: c.doi | default: c.id | default: c.title | downcase %}
-  {% assign pad = SEP | append: key | append: SEP %}
-  {% unless seen contains pad %}
-    {% assign dedup = dedup | push: c %}
-    {% assign seen = seen | append: pad %}
-  {% endunless %}
+
+{% for c in items_all %}
+  {% assign authors_str = c.authors | join: " " %}
+  {% if authors_str contains "Kovalenko" %}
+    {% assign key = c.DOI | default: c.doi | default: c.id | default: c.title | downcase %}
+    {% assign pad = SEP | append: key | append: SEP %}
+    {% unless seen contains pad %}
+      {% assign dedup = dedup | push: c %}
+      {% assign seen = seen | append: pad %}
+    {% endunless %}
+  {% endif %}
 {% endfor %}
 
 {% assign journal_keys = "journal,letters,transactions,magazine,frontiers,ieee access,robotics and automation letters,international journal,battery energy,control engineering practice,smart and sustainable manufacturing systems,robotics and computer-integrated manufacturing" | split: "," %}
@@ -53,25 +56,34 @@ nav:
   {% assign venue = c["container-title"] | default: c.venue | default: c.publisher | default: "" | downcase %}
   {% assign link_lc = c.link | default: "" | downcase %}
   {% assign doi_lc = c.DOI | default: c.doi | default: "" | downcase %}
+
   {% assign is_arxiv = false %}
   {% if c.id and c.id contains "arxiv:" %}{% assign is_arxiv = true %}{% endif %}
   {% if doi_lc contains "10.48550/arxiv" or link_lc contains "arxiv.org" or venue contains "arxiv" %}{% assign is_arxiv = true %}{% endif %}
+
   {% assign is_book = false %}
   {% for k in book_keys %}
-    {% if venue contains k | strip %}{% assign is_book = true %}{% endif %}
+    {% assign k2 = k | strip %}
+    {% if venue contains k2 %}{% assign is_book = true %}{% endif %}
   {% endfor %}
+
   {% assign is_conf = false %}
   {% for k in conf_keys %}
-    {% if venue contains k | strip %}{% assign is_conf = true %}{% endif %}
+    {% assign k2 = k | strip %}
+    {% if venue contains k2 %}{% assign is_conf = true %}{% endif %}
   {% endfor %}
+
   {% assign is_journal = false %}
   {% for k in journal_keys %}
-    {% if venue contains k | strip %}{% assign is_journal = true %}{% endif %}
+    {% assign k2 = k | strip %}
+    {% if venue contains k2 %}{% assign is_journal = true %}{% endif %}
   {% endfor %}
+
   {% if venue contains "ifac-papersonline" or venue contains "procedia " %}
     {% assign is_journal = false %}
     {% assign is_conf = true %}
   {% endif %}
+
   {% if is_arxiv %}
     {% assign preprints = preprints | push: c %}
   {% elsif is_book %}
@@ -122,3 +134,4 @@ nav:
   {% assign lookup_key = c.id | default: c.title %}
   {% include citation.html lookup=lookup_key style="rich" %}
 {% endfor %}
+
