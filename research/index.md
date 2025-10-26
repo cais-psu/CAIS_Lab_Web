@@ -60,7 +60,7 @@ or venue contains "smart and sustainable manufacturing systems" or venue contain
 or venue contains "additive manufacturing" or venue contains "materials today" or venue contains "engineering applications"
 or venue contains "mechatronics" or venue contains "manufacturing systems" or venue contains "manufacturing letters"
 or venue contains "advanced manufacturing" or venue contains "journal of manufacturing" or venue contains "production research"
-or venue contains "energy storage" or venue contains "automation science and engineering" %}
+or venue contains "energy storage" %}
     {% assign is_journal = true %}
 {% endif %}
 
