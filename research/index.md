@@ -58,7 +58,7 @@ or venue contains "frontiers" or venue contains "nature" or venue contains "ieee
 or venue contains "battery energy" or venue contains "wiley" or venue contains "institute of electrical and electronics engineers"
 or venue contains "smart and sustainable manufacturing systems" or venue contains "control engineering practice" or venue contains "procedia cirp"
 or venue contains "additive manufacturing" or venue contains "materials today" or venue contains "engineering applications"
-or venue contains "mechatronics" or venue contains "manufacturing systems" or venue contains "manufacturing letters"
+or venue contains "mechatronics" or venue contains "Smart and Sustainable" or venue contains "manufacturing letters"
 or venue contains "advanced manufacturing" or venue contains "journal of manufacturing" or venue contains "production research"
 or venue contains "energy storage" %}
     {% assign is_journal = true %}
