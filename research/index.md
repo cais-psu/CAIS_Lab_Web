@@ -53,7 +53,17 @@ nav:
 
   {%- assign is_journal = false -%}
   {%- if t contains "journal" or t contains "article" -%}{%- assign is_journal = true -%}{%- endif -%}
-  {%- if venue contains "journal" or venue contains "letters" or venue contains "transactions" or venue contains "magazine" or venue contains "frontiers" or venue contains "nature" or venue contains "ieee access" or venue contains "robotics and automation letters" or venue contains “Battery Energy” or venue contains “Wiley” or venue contains “Institute of Electrical and Electronics Engineers” or venue contains “Smart and Sustainable Manufacturing Systems” or venue contains “Control Engineering Practice” or venue contains “Procedia CIRP” -%}{%- assign is_journal = true -%}{%- endif -%}
+  {% if venue contains "journal" or venue contains "letters" or venue contains "transactions" or venue contains "magazine"
+or venue contains "frontiers" or venue contains "nature" or venue contains "ieee access" or venue contains "robotics and automation letters"
+or venue contains "battery energy" or venue contains "wiley" or venue contains "institute of electrical and electronics engineers"
+or venue contains "smart and sustainable manufacturing systems" or venue contains "control engineering practice" or venue contains "procedia cirp"
+or venue contains "additive manufacturing" or venue contains "materials today" or venue contains "engineering applications"
+or venue contains "mechatronics" or venue contains "manufacturing systems" or venue contains "manufacturing letters"
+or venue contains "advanced manufacturing" or venue contains "journal of manufacturing" or venue contains "production research"
+or venue contains "energy storage" or venue contains "automation science and engineering" %}
+    {% assign is_journal = true %}
+{% endif %}
+
   {%- if venue contains "ifac-papersonline" -%}{%- assign is_journal = false -%}{%- endif -%}
 
   {%- if (an contains "ilya" and an contains "kovalenko") or (an contains " kovalenko i ") -%}
@@ -94,7 +104,20 @@ nav:
 
   {%- assign is_conf = false -%}
   {%- if t contains "proceedings" or t contains "conference" or t contains "workshop" or t contains "symposium" -%}{%- assign is_conf = true -%}{%- endif -%}
-  {%- if venue contains "conference" or venue contains "proceedings" or venue contains "workshop" or venue contains "symposium" or venue contains "case" or venue contains "icra" or venue contains "iros" or venue contains "acc" or venue contains "cdc" or venue contains "msec" or venue contains "ccta" or venue contains "etfa" or venue contains "arso" or venue contains "aps/ursi" or venue contains "detc" or venue contains "dscc" or venue contains "ifac" or venue contains "ifac-papersonline" or venue contains "procedia manufacturing" or venue contains "procir" or venue contains "Manufacturing Equipment and Systems" or venue contains "Dynamics and Control" -%}{%- assign is_conf = true -%}{%- endif -%}
+  {% if venue contains "conference" or venue contains "proceedings" or venue contains "workshop" or venue contains "symposium"
+or venue contains "case" or venue contains "icra" or venue contains "iros" or venue contains "acc" or venue contains "cdc"
+or venue contains "msec" or venue contains "ccta" or venue contains "etfa" or venue contains "arso" or venue contains "aps/ursi"
+or venue contains "detc" or venue contains "dscc" or venue contains "ifac" or venue contains "ifac-papersonline"
+or venue contains "procedia manufacturing" or venue contains "procir" or venue contains "manufacturing equipment and systems"
+or venue contains "dynamics and control" or venue contains "intelligent transportation systems" or venue contains "smart manufacturing"
+or venue contains "motion and vibration control" or venue contains "human robot interaction" or venue contains "additive manufacturing"
+or venue contains "energy harvesting" or venue contains "wind energy systems" or venue contains "mechatronics"
+or venue contains "industrial applications" or venue contains "equipment design" or venue contains "automation"
+or venue contains "semiconductor manufacturing" or venue contains "surface engineering" or venue contains "welding and joining processes"
+or venue contains "thin films" or venue contains "functional devices" %}
+    {% assign is_conf = true %}
+{% endif %}
+
 
   {%- if (an contains "ilya" and an contains "kovalenko") or (an contains " kovalenko i ") -%}
     {%- if is_conf and uniq_c contains pad -%}{%- assign is_conf = false -%}{%- endif -%}
