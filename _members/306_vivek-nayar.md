@@ -1,6 +1,6 @@
 ---
 name: Vivek Nayar
-image: images/team/Vivek Nayar.png
+image: images/team/Vivek.png
 role: undergrad  # pi / phd / ms / visitor / undergrad
 alumni: false  
 description: Undergraduate Student, PSU CE
