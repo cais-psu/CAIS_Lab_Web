@@ -1,451 +1,242 @@
-#!/usr/bin/env python3
+# _cite/plugins/google-scholar.py
 # -*- coding: utf-8 -*-
+
 """
-Google Scholar plugin for Greene Lab LWT (CAIS-PSU customized).
+Google Scholar plugin (SerpAPI-backed) for LWT/Manubot citation pipeline.
 
-Implements your 1–4 steps:
-1) From a Google Scholar author ID (GSID) fetch all publications (with cluster ids)
-2) Resolve each paper's original URL (DOI/arXiv/publisher), not the Scholar URL
-   - Use SerpAPI "google_scholar_author" first, then "google_scholar" with cluster=...
-   - Skip scholar.google.com links
-   - Persist raw fetch artifacts under _data/.cache/google-scholar/
-3) Convert resolved URL to a Manubot id: doi:/arxiv:/url: (fallback to Crossref title search)
-4) Return sources list for cite.py to generate citations; site lists them via research page include.
-
-Environment:
-- GOOGLE_SCHOLAR_API_KEY (required)
-- CROSSREF_MAILTO (optional)
+- Reads `gsid` (Google Scholar author id) from a data entry provided by cite.py
+- Requires env GOOGLE_SCHOLAR_API_KEY
+- Fetches all publications with pagination
+- Emits Manubot-compatible source ids:
+    * Prefer DOI (including DataCite arXiv DOI like 10.48550/arXiv.YYYY.NNNNN)
+    * Else derive arXiv id from arxiv.org/abs|pdf/YYYY.NNNNN
+- Prints progress and returns [{"id": "..."}...]
 """
 
 from __future__ import annotations
-
 import os
 import re
 import json
 import time
-import pathlib
-import logging
-from typing import Any, Dict, List, Optional, Tuple
-
+from typing import Dict, Any, Iterable, List, Optional
 import requests
 
-# ---------------- Config ----------------
-CACHE_DIR = pathlib.Path("_data/.cache/google-scholar")
-CACHE_DIR.mkdir(parents=True, exist_ok=True)
+# --- Regex helpers -----------------------------------------------------------
 
-SERPAPI_ENDPOINT = "https://serpapi.com/search.json"
-CROSSREF_ENDPOINT = "https://api.crossref.org/works"
+_DOI_RE = re.compile(r"10\.\d{4,9}/\S+", re.IGNORECASE)
+_ARXIV_DOI_RE = re.compile(r"10\.48550/arXiv\.\d{4}\.\d{5}", re.IGNORECASE)
+_ARXIV_URL_RE = re.compile(r"arxiv\.org/(abs|pdf)/(\d{4}\.\d{5})(?:v\d+)?", re.IGNORECASE)
 
-REQ_TIMEOUT = 20
-MAX_RETRY = 4
-BACKOFF_BASE = 1.8
+# --- Small utils -------------------------------------------------------------
 
-ARXIV_RE = re.compile(r"arxiv\.org/(abs|pdf)/([0-9]+\.[0-9]+)(v[0-9]+)?", re.I)
-DOI_URL_RE = re.compile(r"doi\.org/([^/\s]+/[^/\s]+)", re.I)
-
-# ---------------- Utils ----------------
 def _get_env_required(name: str) -> str:
-    val = os.getenv(name)
-    if not val:
+    v = os.environ.get(name, "").strip()
+    if not v:
         raise RuntimeError(f"Missing required environment variable: {name}")
-    return val
+    return v
 
-def _session() -> requests.Session:
-    s = requests.Session()
-    s.headers.update({"User-Agent": "CAIS-PSU-LWT-GS/1.1 (+https://cais-psu.github.io/CAIS_Lab_Web/)"})
-    return s
+def _extract_doi(text: str | None) -> Optional[str]:
+    if not text:
+        return None
+    m = _DOI_RE.search(text)
+    return m.group(0) if m else None
 
-def _sleep(attempt: int):  # exponential backoff
-    time.sleep((BACKOFF_BASE ** attempt) + 0.25 * attempt)
-
-def _norm(s: Optional[str]) -> str:
-    import re as _re
-    return _re.sub(r"\s+", " ", s or "").strip()
-
-def _year_from(v: Any) -> Optional[int]:
-    try:
-        y = int(str(v)[:4])
-        if 1800 <= y <= 2100:
-            return y
-    except Exception:
-        pass
-    return None
-
-def _dump_json(path: pathlib.Path, data: Any):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-
-def _coerce_authors(obj) -> List[str]:
-    """Normalize authors to ['Alice', 'Bob'] regardless of source structure."""
-    out: List[str] = []
-    if not obj:
-        return out
-    if isinstance(obj, list):
-        for a in obj:
-            if isinstance(a, dict):
-                n = a.get("name") or a.get("author") or a.get("full_name")
-                if n:
-                    out.append(str(n))
-            elif isinstance(a, str):
-                s = a.strip()
-                if s:
-                    out.append(s)
-    elif isinstance(obj, dict):
-        n = obj.get("name") or obj.get("author") or obj.get("full_name")
-        if n:
-            out.append(str(n))
-    return out
-
-# ---------------- Manubot id helpers ----------------
-def _arxiv_id_from(url: Optional[str]) -> Optional[str]:
+def _extract_arxiv_id_from_url(url: str | None) -> Optional[str]:
     if not url:
         return None
-    m = ARXIV_RE.search(url)
-    return f"arxiv:{m.group(2)}" if m else None
+    m = _ARXIV_URL_RE.search(url)
+    return m.group(2) if m else None
 
-def _doi_id_from(url: Optional[str]) -> Optional[str]:
-    if not url:
-        return None
-    m = DOI_URL_RE.search(url)
-    return f"doi:{m.group(1).lower()}" if m else None
-
-def _non_scholar(url: Optional[str]) -> bool:
-    return bool(url) and ("scholar.google." not in url)
-
-def _prefer_original(links: List[str]) -> Optional[str]:
-    """Select best 'original' URL: doi.org > arxiv.org > publisher (non-scholar) > else None."""
-    if not links:
-        return None
-    # dedupe & keep order
-    seen, ordered = set(), []
-    for u in links:
-        if u and u not in seen:
-            seen.add(u); ordered.append(u)
-
-    # 1) doi.org
-    for u in ordered:
-        if "doi.org/" in u:
-            return u
-    # 2) arxiv
-    for u in ordered:
-        if "arxiv.org/" in u:
-            return u
-    # 3) any non-scholar http
-    for u in ordered:
-        if u.startswith("http") and _non_scholar(u):
-            return u
-    return None
-
-def _mb_id_from_links(links: List[str]) -> Optional[str]:
-    # Try DOI
-    for u in links:
-        d = _doi_id_from(u)
-        if d: return d
-    # Then arXiv
-    for u in links:
-        a = _arxiv_id_from(u)
-        if a: return a
-    # Then non-scholar URL
-    for u in links:
-        if u and u.startswith("http") and _non_scholar(u):
-            return "url:" + u
-    return None
-
-# ---------------- SerpAPI ----------------
-def _serpapi_author_pubs(s: requests.Session, gsid: str, api_key: str) -> List[Dict[str, Any]]:
-    pubs: List[Dict[str, Any]] = []
-    start = 0
-    while True:
-        params = {
-            "engine": "google_scholar_author",
-            "author_id": gsid,
-            "num": "100",
-            "hl": "en",
-            "api_key": api_key,
-            "start": str(start),
-            "sort": "pubdate",
-        }
-        for attempt in range(1, MAX_RETRY+1):
-            try:
-                r = s.get(SERPAPI_ENDPOINT, params=params, timeout=REQ_TIMEOUT)
-                if r.status_code == 429:
-                    _sleep(attempt); continue
-                r.raise_for_status()
-                data = r.json()
-                page_items = data.get("articles") or data.get("publications") or []
-                pubs.extend(page_items)
-                next_link = data.get("serpapi_pagination", {}).get("next")
-                if next_link:
-                    start += 100
-                    break
-                return pubs
-            except Exception as e:
-                logging.warning(f"SerpAPI author fetch error (attempt {attempt}): {e}")
-                if attempt >= MAX_RETRY:
-                    raise
-                _sleep(attempt)
-
-def _serpapi_cluster_detail(s: requests.Session, cluster_id: str, api_key: str) -> Optional[Dict[str, Any]]:
+def _norm_id_from_entry(entry: Dict[str, Any]) -> Optional[str]:
     """
-    Resolve a scholar cluster to detailed search result.
-    Returns a dict with potential original links (resources, inline_links, publication_info.link).
+    Build a Manubot id from a Scholar publication dict.
+    Preference:
+      1) DOI (normalize, lowercase)
+      2) arxiv:<id> from arxiv.org URL
+      3) None (caller may skip)
+    """
+    # Try dedicated fields first
+    doi = entry.get("doi")
+    if not doi:
+        # probe common text-ish fields
+        for k in ("publication_info", "snippet", "title"):
+            doi = _extract_doi(entry.get(k, ""))
+            if doi:
+                break
+        # also check link/url if they contain doi.org/...
+        if not doi:
+            for k in ("link", "url"):
+                doi = _extract_doi(entry.get(k, ""))
+                if doi:
+                    break
+
+    if doi:
+        doi = doi.strip().strip(".").strip()
+        return f"doi:{doi.lower()}"
+
+    # try arXiv url
+    for k in ("link", "url"):
+        aid = _extract_arxiv_id_from_url(entry.get(k, ""))
+        if aid:
+            return f"arxiv:{aid}"
+
+    return None
+
+def _safe_get(d: Dict[str, Any], *keys, default=None):
+    for k in keys:
+        if isinstance(d, dict) and k in d:
+            d = d[k]
+        else:
+            return default
+    return d
+
+# --- SerpAPI calls -----------------------------------------------------------
+
+SERP_BASE = "https://serpapi.com/search.json"
+
+def _fetch_author_page(gsid: str, api_key: str, start: int = 0) -> Dict[str, Any]:
+    """
+    One page of author publications via SerpAPI google_scholar_author engine.
     """
     params = {
-        "engine": "google_scholar",
-        "cluster": cluster_id,
-        "hl": "en",
+        "engine": "google_scholar_author",
+        "author_id": gsid,
         "api_key": api_key,
+        "sort": "pubdate",   # newest first
+        "num": 20,           # SerpAPI default page size
+        "start": start,      # pagination offset
     }
-    for attempt in range(1, MAX_RETRY+1):
-        try:
-            r = s.get(SERPAPI_ENDPOINT, params=params, timeout=REQ_TIMEOUT)
-            if r.status_code == 429:
-                _sleep(attempt); continue
-            r.raise_for_status()
-            data = r.json()
-            # SerpAPI returns an "organic_results" list; first is usually the canonical item
-            res = (data.get("organic_results") or [None])[0]
-            return res
-        except Exception as e:
-            logging.warning(f"SerpAPI cluster fetch error (attempt {attempt}): {e}")
-            if attempt >= MAX_RETRY:
-                return None
-            _sleep(attempt)
-    return None
+    r = requests.get(SERP_BASE, params=params, timeout=30)
+    r.raise_for_status()
+    return r.json()
 
-# ---------------- Crossref fallback ----------------
-def _crossref_find_doi(s: requests.Session, title: str, authors: List[str], year: Optional[int]) -> Optional[str]:
-    if not title:
-        return None
-    params = {"query.title": title, "rows": 3}
-    if authors:
-        params["query.author"] = authors[0].split()[-1]
-    if year:
-        params["filter"] = f"from-pub-date:{year}-01-01,until-pub-date:{year}-12-31"
-
-    headers = {}
-    mailto = os.getenv("CROSSREF_MAILTO")
-    if mailto:
-        headers["User-Agent"] = f"CAIS-PSU-LWT-GS/1.1 (mailto:{mailto})"
-
-    for attempt in range(1, MAX_RETRY+1):
-        try:
-            r = s.get(CROSSREF_ENDPOINT, params=params, headers=headers, timeout=REQ_TIMEOUT)
-            if r.status_code == 429:
-                _sleep(attempt); continue
-            r.raise_for_status()
-            items = r.json().get("message", {}).get("items", [])
-            title_norm = _norm(title).lower()
-            for it in items:
-                doi = (it.get("DOI") or "").lower()
-                cr_titles = it.get("title") or []
-                cr_title = _norm(cr_titles[0] if cr_titles else "").lower()
-                if doi and cr_title and (title_norm in cr_title or cr_title in title_norm):
-                    return "doi:" + doi
-            if items and items[0].get("DOI"):
-                return "doi:" + items[0]["DOI"].lower()
-            return None
-        except Exception as e:
-            logging.warning(f"Crossref error (attempt {attempt}): {e}")
-            if attempt >= MAX_RETRY:
-                return None
-            _sleep(attempt)
-
-# ---------------- Core normalize ----------------
-def _extract_links_from_author_item(it: Dict[str, Any]) -> List[str]:
+def _iter_all_publications(gsid: str, api_key: str) -> Iterable[Dict[str, Any]]:
     """
-    Pull candidate links from the author publications item.
+    Iterate all publications with pagination.
     """
-    links: List[str] = []
-    if it.get("link"):
-        links.append(it["link"])
-    # Sometimes publication_info.link holds the publisher page
-    pi = it.get("publication_info") or {}
-    if isinstance(pi, dict) and pi.get("link"):
-        links.append(pi["link"])
-    # resources may contain PDFs
-    for res in (it.get("resources") or []):
-        if isinstance(res, dict) and res.get("link"):
-            links.append(res["link"])
-        elif isinstance(res, str):
-            links.append(res)
-    # Remove pure scholar links here is not necessary yet; we'll prefer non-scholar later.
-    return links
+    start = 0
+    seen_keys = set()
+    while True:
+        data = _fetch_author_page(gsid, api_key, start=start)
 
-def _extract_links_from_cluster_detail(detail: Dict[str, Any]) -> List[str]:
-    """
-    Pull more/better links from cluster organic result:
-    - resources: [{'title':'PDF','link':...}, ...]
-    - inline_links: {'versions':[{'link':...}], 'pdf': {'link':...}, 'related_pages':[...] }
-    - publication_info: {'link': ...}
-    - link: main result link
-    """
-    links: List[str] = []
-    if not detail:
-        return links
+        # articles in this page
+        articles = data.get("articles") or []
+        if not isinstance(articles, list):
+            articles = []
 
-    # main link
-    if detail.get("link"):
-        links.append(detail["link"])
+        for art in articles:
+            # de-dupe by a stable key (prefer cite_id or link)
+            key = _safe_get(art, "cite_id") or art.get("link") or art.get("title")
+            if not key:
+                key = json.dumps(art, sort_keys=True)
+            if key in seen_keys:
+                continue
+            seen_keys.add(key)
+            yield art
 
-    # publication_info.link
-    pubinfo = detail.get("publication_info") or {}
-    if isinstance(pubinfo, dict) and pubinfo.get("link"):
-        links.append(pubinfo["link"])
+        # pagination
+        pag = data.get("serpapi_pagination") or {}
+        next_url = pag.get("next")
+        next_offset = pag.get("next_offset")
+        if next_url and isinstance(next_offset, int):
+            start = next_offset
+            # be nice to API / avoid rate limiting
+            time.sleep(0.8)
+            continue
+        break
 
-    # resources list
-    for res in (detail.get("resources") or []):
-        if isinstance(res, dict) and res.get("link"):
-            links.append(res["link"])
-        elif isinstance(res, str):
-            links.append(res)
+# --- Cache helpers (optional, safe no-op if folder missing) ------------------
 
-    # inline_links could have many types
-    inl = detail.get("inline_links") or {}
-    if isinstance(inl, dict):
-        # pdf
-        pdf = inl.get("pdf") or {}
-        if isinstance(pdf, dict) and pdf.get("link"):
-            links.append(pdf["link"])
-        elif isinstance(pdf, list):
-            for x in pdf:
-                if isinstance(x, dict) and x.get("link"):
-                    links.append(x["link"])
+def _write_cache(path: str, obj: Any) -> None:
+    try:
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(obj, f, ensure_ascii=False, indent=2)
+    except Exception:
+        # cache is optional – ignore errors
+        pass
 
-        # versions
-        for v in (inl.get("versions") or []):
-            if isinstance(v, dict) and v.get("link"):
-                links.append(v["link"])
+# --- Public entrypoint -------------------------------------------------------
 
-        # related pages
-        for v in (inl.get("related_pages") or []):
-            if isinstance(v, dict) and v.get("link"):
-                links.append(v["link"])
-
-    # dedupe
-    seen, out = set(), []
-    for u in links:
-        if u and u not in seen:
-            seen.add(u); out.append(u)
-    return out
-
-def _normalize_item(it: Dict[str, Any], s: requests.Session, api_key: str) -> Tuple[Optional[str], Dict[str, Any], Dict[str, Any]]:
-    """
-    Returns (manubot_id, manual_fallback_fields, debug_info)
-    manual_fallback_fields is dict with title/date/link when mb_id is None
-    debug_info records what we looked at (candidate links, chosen link, cluster detail)
-    """
-    title = _norm(it.get("title") or it.get("name"))
-    year  = _year_from(
-        it.get("year")
-        or (it.get("publication_info") or {}).get("year")
-        or (it.get("citation") or {}).get("year")
-    )
-    authors = _coerce_authors(it.get("authors"))
-    cluster_id = it.get("citation_id") or it.get("result_id") or None
-
-    cand_links = _extract_links_from_author_item(it)
-
-    # If author item only has Scholar links, resolve cluster for original links
-    chosen_detail = None
-    if (not any(_non_scholar(u) for u in cand_links)) and cluster_id:
-        chosen_detail = _serpapi_cluster_detail(s, cluster_id, api_key)
-        cand_links.extend(_extract_links_from_cluster_detail(chosen_detail or {}))
-
-    # Choose best "original" url (skip Scholar)
-    best_url = _prefer_original(cand_links) if cand_links else None
-
-    # Build Manubot id
-    mb_id = _mb_id_from_links([best_url] if best_url else [])
-
-    # Fallback: Crossref (title/year/author) to get DOI
-    if not mb_id and title:
-        mb_id = _crossref_find_doi(s, title, authors, year)
-
-    # Debug record
-    dbg = {
-        "title": title,
-        "year": year,
-        "cluster_id": cluster_id,
-        "author_item_links": cand_links,
-        "best_url": best_url,
-        "cluster_detail_used": bool(chosen_detail),
-    }
-
-    if not mb_id:
-        manual = {
-            "title": title or None,
-            "publisher": None,
-            "date": f"{year}-01-01" if year else None,
-            "link": best_url or None,  # still non-scholar if we found one
-        }
-        # prune None
-        manual = {k: v for k, v in manual.items() if v}
-        return None, manual, dbg
-
-    return mb_id, {}, dbg
-
-# ---------------- Plugin entry ----------------
 def main(entry: Dict[str, Any]) -> List[Dict[str, Any]]:
     """
-    Required by cite.py: take one entry from _data/google-scholar*.yaml
-    and return a list of "sources" dicts.
+    Expected to be called by _cite/cite.py:
+        expanded = import_module("plugins.google-scholar").main(entry)
+    `entry` comes from `_cite/data/google-scholar.yaml`, e.g.:
+        - gsid: secQmYUAAAAJ
+    Returns: [{"id": "doi:..."}, {"id": "arxiv:..."} ...]
     """
-    # optional local .env
+    api_key = _get_env_required("GOOGLE_SCHOLAR_API_KEY")
+
+    gsid = (entry.get("gsid") or entry.get("author_id") or "").strip()
+    if not gsid:
+        raise RuntimeError('google-scholar: missing required "gsid" in data entry')
+
+    print(f"    Processing data file google-scholar.yaml")
+    print(f"Processing entry 1 of 1, gsid: {gsid}", flush=True)
+
+    # Walk all pages
+    results: List[Dict[str, Any]] = []
+    seen_ids: set[str] = set()
+
+    # (optional) fetch and cache author metadata
     try:
-        from dotenv import load_dotenv  # type: ignore
-        load_dotenv()
+        author_meta = _fetch_author_page(gsid, api_key, start=0).get("author", {})
+        _write_cache(f"_data/.cache/google-scholar/{gsid}.author.json", author_meta)
+    except Exception:
+        author_meta = {}
+
+    idx = 0
+    for pub in _iter_all_publications(gsid, api_key):
+        idx += 1
+
+        # Try to derive a canonical Manubot id
+        source_id = _norm_id_from_entry(pub)
+
+        # 额外兜底：从 publication_info 的外链里再尝试一次 DOI / arXiv
+        if not source_id:
+            pubinfo = pub.get("publication_info") or ""
+            # SerpAPI 有时 publication_info 是纯文本
+            if isinstance(pubinfo, str):
+                doi2 = _extract_doi(pubinfo)
+                if doi2:
+                    source_id = f"doi:{doi2.lower().strip().strip('.')}"
+            # 尝试 link/url
+            if not source_id:
+                source_id = _norm_id_from_entry({
+                    "link": pub.get("link") or "",
+                    "url": pub.get("link") or "",
+                })
+
+        if not source_id:
+            # 放行：无法确定引用标识就跳过该条目
+            continue
+
+        # 统一去重（doi 忽略大小写）
+        norm = source_id.lower().strip()
+        if norm in seen_ids:
+            continue
+        seen_ids.add(norm)
+
+        # 输出与返回
+        print(f"id: {norm}")
+        results.append({"id": norm})
+
+    # 也把所有解析过的 publication 列表缓存下来（便于调试）
+    try:
+        _write_cache(f"_data/.cache/google-scholar/{gsid}.resolved.json", results)
     except Exception:
         pass
 
-    gsid = (entry or {}).get("gsid")
-    if not gsid:
-        logging.info("google-scholar entry without 'gsid'; skipping.")
-        return []
+    print(f"            {len(results)} source(s)")
+    return results
 
-    forward_tags = {k: v for k, v in (entry or {}).items() if k != "gsid"}
-    api_key = _get_env_required("GOOGLE_SCHOLAR_API_KEY")
-    s = _session()
 
-    logging.info(f"Processing GSID: {gsid}")
-    pubs = _serpapi_author_pubs(s, gsid, api_key)
-    _dump_json(CACHE_DIR / f"{gsid}.author.json", pubs)
-
-    out: List[Dict[str, Any]] = []
-    dbg_all: List[Dict[str, Any]] = []
-
-    for it in pubs:
-        try:
-            mb_id, manual, dbg = _normalize_item(it, s, api_key)
-            dbg_all.append(dbg)
-            if mb_id:
-                out.append({"id": mb_id, **forward_tags})
-            else:
-                # manual fallback still produces a visible entry on site
-                out.append({**manual, **forward_tags})
-        except Exception as e:
-            t = _norm(it.get("title") or it.get("name"))
-            logging.warning(f"Normalize error for '{t}': {e}")
-            continue
-
-    # persist debug resolution data
-    _dump_json(CACHE_DIR / f"{gsid}.resolved.json", dbg_all)
-
-    # de-duplicate: by id or by (title|date)
-    deduped: List[Dict[str, Any]] = []
-    seen = set()
-    for it in out:
-        key = it.get("id") or f"{it.get('title','')}|{it.get('date','')}"
-        if key in seen: continue
-        seen.add(key); deduped.append(it)
-
-    logging.info(f"Resolved {len(deduped)} item(s) for GSID {gsid}")
-    # Optional: show a few stats in logs
-    n_doi = sum(1 for x in deduped if (x.get("id") or "").startswith("doi:"))
-    n_axv = sum(1 for x in deduped if (x.get("id") or "").startswith("arxiv:"))
-    n_url = sum(1 for x in deduped if (x.get("id") or "").startswith("url:"))
-    n_man = sum(1 for x in deduped if "id" not in x)
-    logging.info(f"Stats → doi:{n_doi}  arxiv:{n_axv}  url:{n_url}  manual:{n_man}")
-
-    return deduped
+# 允许本地调试（可选）
+if __name__ == "__main__":
+    # 简单自测：设置环境变量后执行
+    try:
+        main({"gsid": os.environ.get("GOOGLE_SCHOLAR_GSID", "secQmYUAAAAJ")})
+    except Exception as e:
+        print(f"google-scholar plugin error: {e}")
+        raise
