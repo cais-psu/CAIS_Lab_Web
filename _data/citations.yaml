@@ -1,124 +1,3 @@
-- id: doi:10.1109/jas.2024.124596
-  title: Cyber-Attacks with Resource Constraints on Discrete Event Systems Under Supervisory
-    Control
-  authors:
-  - Zhaoyang He
-  - Naiqi Wu
-  - Rong Su
-  - Zhiwu Li
-  publisher: IEEE/CAA Journal of Automatica Sinica
-  date: '2025-03-01'
-  link: https://doi.org/g97zvf
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1007/978-981-96-9697-0_50
-  title: 'Towards Mass Customization and Individualization of Agricultural Products:
-    Introducing Reconfigurable Manufacturing Systems to Agriculture'
-  authors:
-  - Yongbing Feng
-  - Guohua Gao
-  publisher: Lecture Notes in Operations Research
-  date: '2025-01-01'
-  link: https://doi.org/g97zvg
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/case58245.2025.11164034
-  title: Energy-Aware Model Predictive Control for Batch Manufacturing System Scheduling
-    Under Different Electricity Pricing Strategies
-  authors:
-  - Hongliang Li
-  - Herschel C. Pangborn
-  - Ilya Kovalenko
-  publisher: 2025 IEEE 21st International Conference on Automation Science and Engineering
-    (CASE)
-  date: '2025-08-17'
-  link: https://doi.org/g97zvh
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/case58245.2025.11163792
-  title: A Model Predictive Control Framework to Enhance Safety and Quality in Mobile
-    Additive Manufacturing Systems
-  authors:
-  - Yifei Li
-  - Joshua A. Robbins
-  - Guha Manogharan
-  - Herschel C. Pangborn
-  - Ilya Kovalenko
-  publisher: 2025 IEEE 21st International Conference on Automation Science and Engineering
-    (CASE)
-  date: '2025-08-17'
-  link: https://doi.org/g97zvj
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1115/msec2025-155848
-  title: 'A Digital Twin Framework for Computer Hardware Design and Assembly: A Risk-Prioritized
-    Approach'
-  authors:
-  - Ryan Elsasser
-  - Hongliang Li
-  - Ilya Kovalenko
-  publisher: 'Volume 2: Functional Devices/Bioinspired Structures; Sustainability;
-    Semiconductor Manufacturing; Surface Engineering; Clean Energy and E-Mobility
-    Manufacturing; Machining and Deformation Processes; Welding and Joining Processes
-    of Advanced Materials and Structures; Equipment Design, Control and Automation;
-    Human Integration to Smart Manufacturing Systems; Thin Films and Coatings; Meso,
-    Micro, Nano Subtractive and Formative Manufacturing; Explainable AI for Knowledge
-    Discovery'
-  date: '2025-06-23'
-  link: https://doi.org/g97zvk
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1016/j.robot.2024.104913
-  title: 'LLM-controller: Dynamic robot control adaptation using large language models'
-  authors:
-  - Rasoul Zahedifar
-  - Mahdieh Soleymani Baghshah
-  - Alireza Taheri
-  publisher: Robotics and Autonomous Systems
-  date: '2025-04-01'
-  link: https://doi.org/g97zvm
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/case58245.2025.11163802
-  title: A Large Language Model-Enabled Control Architecture for Dynamic Resource
-    Capability Exploration in Multi-Agent Manufacturing Systems
-  authors:
-  - Jonghan Lim
-  - Ilya Kovalenko
-  publisher: 2025 IEEE 21st International Conference on Automation Science and Engineering
-    (CASE)
-  date: '2025-08-17'
-  link: https://doi.org/g97zvn
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/tase.2025.3550678
-  title: 'Guest Editorial: Engineering and Operating Digital Twins for Automated Production
-    or Construction Systems'
-  authors:
-  - Birgit Vogel-Heuser
-  - Min-Hsiung Hung
-  - Manuel Wimmer
-  - Ilya Kovalenko
-  - Xun Xu
-  publisher: IEEE Transactions on Automation Science and Engineering
-  date: '2025-01-01'
-  link: https://doi.org/g97zvp
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/case59546.2024.10711432
-  title: Large Language Model-Enabled Multi-Agent Manufacturing Systems
-  authors:
-  - Jonghan Lim
-  - Birgit Vogel-Heuser
-  - Ilya Kovalenko
-  publisher: 2024 IEEE 20th International Conference on Automation Science and Engineering
-    (CASE)
-  date: '2024-08-28'
-  link: https://doi.org/g97zp4
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
 - id: doi:10.1109/case59546.2024.10711843
   title: Enhancing Human-Robot Collaborative Assembly in Manufacturing Systems Using
     Large Language Models
@@ -133,10 +12,24 @@
     (CASE)
   date: '2024-08-28'
   link: https://doi.org/g97zp3
-  plugin: orcid.py
-  file: orcid.yaml
   orcid: 0000-0003-4764-9117
   jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/case59546.2024.10711432
+  title: Large Language Model-Enabled Multi-Agent Manufacturing Systems
+  authors:
+  - Jonghan Lim
+  - Birgit Vogel-Heuser
+  - Ilya Kovalenko
+  publisher: 2024 IEEE 20th International Conference on Automation Science and Engineering
+    (CASE)
+  date: '2024-08-28'
+  link: https://doi.org/g97zp4
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.1115/msec2024-125413
   title: A Mobile Additive Manufacturing Robot Framework for Smart Manufacturing Systems
   authors:
@@ -149,10 +42,10 @@
     Manufacturing Systems; Nano/Micro/Meso Manufacturing; Quality &amp; Reliability'
   date: '2024-06-17'
   link: https://doi.org/g97zp5
-  plugin: orcid.py
-  file: orcid.yaml
   orcid: 0000-0003-4764-9117
   jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.3389/fbuil.2024.1384235
   title: Conditional adaptive time series compensation and control design for multi-axial
     real-time hybrid simulation
@@ -166,524 +59,10 @@
   publisher: Frontiers in Built Environment
   date: '2024-05-13'
   link: https://doi.org/g97zp6
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
   plugin: orcid.py
   file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-- id: doi:10.1016/j.rcim.2023.102712
-  title: Dynamic decision-making for knowledge-enabled distributed resource configuration
-    in cloud manufacturing considering stochastic order arrival
-  authors:
-  - Yi Zhang
-  - Zequn Zhang
-  - Yuqian Lu
-  - Haihua Zhu
-  - Dunbing Tang
-  publisher: Robotics and Computer-Integrated Manufacturing
-  date: '2024-06-01'
-  link: https://doi.org/g97zvq
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1016/b978-0-323-90386-8.00131-5
-  title: Harnessing Controls and Robotics for Sustainable Manufacturing
-  authors:
-  - Ilya Kovalenko
-  - Hongliang Li
-  - Yifei Li
-  publisher: Encyclopedia of Sustainable Technologies
-  date: '2024-01-01'
-  link: https://doi.org/g97zvr
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1016/j.ifacol.2025.01.139
-  title: Model-Based Control of Water Treatment with Pumped Water Storage
-  authors:
-  - Ryan Mauery
-  - Margaret Busse
-  - Ilya Kovalenko
-  publisher: IFAC-PapersOnLine
-  date: '2024-01-01'
-  link: https://doi.org/g97zvs
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1016/j.ifacol.2024.07.029
-  title: Modeling and Mitigating Silent Faults in Coupled Discrete Event Systems
-  authors:
-  - Mostafa Tavakkoli Anbarani
-  - Jonghan Lim
-  - Rômulo Meira-Góes
-  - Ilya Kovalenko
-  publisher: IFAC-PapersOnLine
-  date: '2024-01-01'
-  link: https://doi.org/g97zvt
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.22541/au.168787448.81156855/v1
-  title: Multifunctional Composite Designs for Structural Energy Storage
-  authors:
-  - Bo Nie
-  - Jonghan Lim
-  - Tengxiao Liu
-  - Ilya Kovalenko
-  - Junfei Liang
-  - Jian Zhu
-  - Hongtao Sun
-  publisher: Wiley
-  date: '2023-06-27'
-  link: https://doi.org/g97zvv
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/case56687.2023.10260621
-  title: Ontology-Based Feedback to Improve Runtime Control for Multi-Agent Manufacturing
-    Systems
-  authors:
-  - Jonghan Lim
-  - Leander Pfeiffer
-  - Felix Ocker
-  - Birgit Vogel-Heuser
-  - Ilya Kovalenko
-  publisher: 2023 IEEE 19th International Conference on Automation Science and Engineering
-    (CASE)
-  date: '2023-08-26'
-  link: https://doi.org/g97zp9
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-- id: doi:10.1109/case56687.2023.10260642
-  title: A System-Level Energy-Efficient Digital Twin Framework for Runtime Control
-    of Batch Manufacturing Processes
-  authors:
-  - Hongliang Li
-  - Herschel C. Pangborn
-  - Ilya Kovalenko
-  publisher: 2023 IEEE 19th International Conference on Automation Science and Engineering
-    (CASE)
-  date: '2023-08-26'
-  link: https://doi.org/g97zp8
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-- id: doi:10.1109/ccta54093.2023.10253433
-  title: A Model Predictive Control Framework for Improving Risk-Tolerance of Manufacturing
-    Systems
-  authors:
-  - Mostafa Tavakkoli Anbarani
-  - Efe C. Balta
-  - Rômulo Meira-Góes
-  - Ilya Kovalenko
-  publisher: 2023 IEEE Conference on Control Technology and Applications (CCTA)
-  date: '2023-08-16'
-  link: https://doi.org/g97zqb
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-- id: doi:10.1109/mra.2023.3262464
-  title: 'Opportunities and Challenges to Integrate Artificial Intelligence Into Manufacturing
-    Systems: Thoughts From a Panel Discussion [Opinion]'
-  authors:
-  - Ilya Kovalenko
-  - Kira Barton
-  - James Moyne
-  - Dawn M. Tilbury
-  publisher: IEEE Robotics &amp; Automation Magazine
-  date: '2023-06-01'
-  link: https://doi.org/g97zqc
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-- id: doi:10.1109/tcst.2021.3054800
-  title: Model Predictive Control of Priced Timed Automata Encoded With First-Order
-    Logic
-  authors:
-  - Efe C. Balta
-  - Ilya Kovalenko
-  - Isaac A. Spiegel
-  - Dawn M. Tilbury
-  - Kira Barton
-  publisher: IEEE Transactions on Control Systems Technology
-  date: '2022-01-01'
-  link: https://doi.org/gh67pw
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/case49997.2022.9926689
-  title: An Integrated Framework for Dynamic Manufacturing Planning to Obtain New
-    Line Configurations
-  authors:
-  - Laxmi Poudel
-  - Ilya Kovalenko
-  - Ruijie Geng
-  - Matsui Takaharu
-  - Youichi Nonaka
-  - Nakano Takahiro
-  - Umeda Shota
-  - Dawn M. Tilbury
-  - Kira Barton
-  publisher: 2022 IEEE 18th International Conference on Automation Science and Engineering
-    (CASE)
-  date: '2022-08-20'
-  link: https://doi.org/gr9w6k
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/access.2022.3165551
-  title: Toward an Automated Learning Control Architecture for Cyber-Physical Manufacturing
-    Systems
-  authors:
-  - Ilya Kovalenko
-  - James Moyne
-  - Mingjie Bi
-  - EFE C. Balta
-  - Wenyuan Ma
-  - Yassine Qamsane
-  - Xiao Zhu
-  - Z. Morley Mao
-  - Dawn M. Tilbury
-  - Kira Barton
-  publisher: IEEE Access
-  date: '2022-01-01'
-  link: https://doi.org/g97zqf
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.32604/iasc.2022.020660
-  title: IIoT Framework Based ML Model to Improve Automobile Industry Product
-  authors:
-  - S. Gopalakrishnan
-  - M. Senthil Kumaran
-  publisher: Intelligent Automation &amp; Soft Computing
-  date: '2022-01-01'
-  link: https://doi.org/g97zvw
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/case49439.2021.9551650
-  title: Manufacturing Line Design Configuration with Optimized Resource Groups
-  authors:
-  - Takahiro Nakano
-  - Kajita Daiki
-  - Heming Chen
-  - Ilya Kovalenko
-  - Efe Balta
-  - Yassine Qamsane
-  - Kira Barton
-  publisher: 2021 IEEE 17th International Conference on Automation Science and Engineering
-    (CASE)
-  date: '2021-08-23'
-  link: https://doi.org/g97zqj
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/aps/ursi47566.2021.9704231
-  title: Smart Cloaking Metasurfaces for Next-Generation Antenna Systems
-  authors:
-  - Stefano Vellucci
-  - Alessandro Toscano
-  - Filiberto Bilotti
-  - Alessio Monti
-  - Mirko Barbuto
-  publisher: 2021 IEEE International Symposium on Antennas and Propagation and USNC-URSI
-    Radio Science Meeting (APS/URSI)
-  date: '2021-12-04'
-  link: https://doi.org/g97zv4
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/access.2021.3065971
-  title: A Methodology to Develop and Implement Digital Twin Solutions for Manufacturing
-    Systems
-  authors:
-  - Yassine Qamsane
-  - James Moyne
-  - Maxwell Toothman
-  - Ilya Kovalenko
-  - Efe C. Balta
-  - John Faris
-  - Dawn M. Tilbury
-  - Kira Barton
-  publisher: IEEE Access
-  date: '2021-01-01'
-  link: https://doi.org/gndb9n
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.4171/automata-1/34
-  title: Timed automata
-  authors:
-  - Patricia Bouyer
-  publisher: Handbook of Automata Theory
-  date: '2021-09-13'
-  link: https://doi.org/g97zvz
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1016/j.ifacol.2021.11.220
-  title: Dynamic Resource Allocation Using Multi-Agent Control for Manufacturing Systems
-  authors:
-  - Mingjie Bi
-  - Ilya Kovalenko
-  - Dawn M. Tilbury
-  - Kira Barton
-  publisher: IFAC-PapersOnLine
-  date: '2021-01-01'
-  link: https://doi.org/gnshnb
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-- id: doi:10.1007/978-3-030-56554-1_1
-  title: First-Order Logic
-  authors:
-  - João Rasga
-  - Cristina Sernadas
-  publisher: Studies in Universal Logic
-  date: '2020-01-01'
-  link: https://doi.org/g97zv2
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1016/j.ifacol.2021.04.051
-  title: Priced Timed Automata Models for Control of Intelligent Product Agents in
-    Manufacturing Systems
-  authors:
-  - Ilya Kovalenko
-  - Dawn Tilbury
-  - Kira Barton
-  publisher: IFAC-PapersOnLine
-  date: '2020-01-01'
-  link: https://doi.org/g97zqk
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-- id: doi:10.1109/access.2020.3000437
-  title: 'A Requirements Driven Digital Twin Framework: Specification and Opportunities'
-  authors:
-  - James Moyne
-  - Yassine Qamsane
-  - Efe C. Balta
-  - Ilya Kovalenko
-  - John Faris
-  - Kira Barton
-  - Dawn M. Tilbury
-  publisher: IEEE Access
-  date: '2020-01-01'
-  link: https://doi.org/gndckt
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/lra.2019.2931825
-  title: A Framework for Automatic Initialization of Multi-Agent Production Systems
-    Using Semantic Web Technologies
-  authors:
-  - Felix Ocker
-  - Ilya Kovalenko
-  - Kira Barton
-  - Dawn Tilbury
-  - Birgit Vogel-Heuser
-  publisher: IEEE Robotics and Automation Letters
-  date: '2019-10-01'
-  link: https://doi.org/g97zqm
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1115/msec2019-2966
-  title: A Vision-Based Framework for Enhanced Quality Control in a Smart Manufacturing
-    System
-  authors:
-  - Zixuan Yang
-  - Huaiyuan Teng
-  - Jeremy Goldhawk
-  - Ilya Kovalenko
-  - Efe C. Balta
-  - Felipe Lopez
-  - Dawn Tilbury
-  - Kira Barton
-  publisher: 'Volume 1: Additive Manufacturing; Manufacturing Equipment and Systems;
-    Bio and Sustainable Manufacturing'
-  date: '2019-06-10'
-  link: https://doi.org/g59x43
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/lra.2019.2921947
-  title: Dynamic Resource Task Negotiation to Enable Product Agent Exploration in
-    Multi-Agent Manufacturing Systems
-  authors:
-  - Ilya Kovalenko
-  - Daria Ryashentseva
-  - Birgit Vogel-Heuser
-  - Dawn Tilbury
-  - Kira Barton
-  publisher: IEEE Robotics and Automation Letters
-  date: '2019-07-01'
-  link: https://doi.org/g97zqn
-  plugin: sources.py
-  file: sources.yaml
-  image: data:image/jpeg;base64,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
-- id: doi:10.1016/j.conengprac.2019.03.009
-  title: 'The model-based product agent: A control oriented architecture for intelligent
-    products in multi-agent manufacturing systems'
-  authors:
-  - Ilya Kovalenko
-  - Dawn Tilbury
-  - Kira Barton
-  publisher: Control Engineering Practice
-  date: '2019-05-01'
-  link: https://doi.org/g97zqp
-  plugin: sources.py
-  file: sources.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-  image: https://ars.els-cdn.com/content/image/1-s2.0-S0967066118305057-gr1.jpg
-- id: doi:10.1016/c2018-0-02206-9
-  title: Digital Twin Driven Smart Manufacturing
-  authors: []
-  publisher: Elsevier
-  date: '2019-01-01'
-  link: https://doi.org/g97zv3
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1016/j.promfg.2018.10.053
-  title: 'Integrating Human Operators into Agent-based Manufacturing Systems: A Table-top
-    Demonstration'
-  authors:
-  - Gary Zheng
-  - Ilya Kovalenko
-  - Kira Barton
-  - Dawn Tilbury
-  publisher: Procedia Manufacturing
-  date: '2018-01-01'
-  link: https://doi.org/g97zqq
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-- id: doi:10.1520/ssms20170006
-  title: 'SMART: A System-Level Manufacturing and Automation Research Testbed'
-  authors:
-  - Ilya Kovalenko
-  - Miguel Saez
-  - Kira Barton
-  - Dawn Tilbury
-  publisher: Smart and Sustainable Manufacturing Systems
-  date: '2017-10-27'
-  link: https://doi.org/g97zqv
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/etfa.2017.8247652
-  title: Design and implementation of an intelligent product agent architecture in
-    manufacturing systems
-  authors:
-  - Ilya Kovalenko
-  - Kira Barton
-  - Dawn Tilbury
-  publisher: 2017 22nd IEEE International Conference on Emerging Technologies and
-    Factory Automation (ETFA)
-  date: '2017-09-01'
-  link: https://doi.org/g97zqr
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/ccta.2017.8062543
-  title: Hybrid modeling and identification of jetting dynamics in electrohydrodynamic
-    jet printing
-  authors:
-  - Isaac Spiegel
-  - Ilya Kovalenko
-  - David Hoelzle
-  - Patrick M. Sammons
-  - Kira L. Barton
-  publisher: 2017 IEEE Conference on Control Technology and Applications (CCTA)
-  date: '2017-08-01'
-  link: https://doi.org/g97zqs
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1016/j.procir.2017.04.014
-  title: 'Manufacturing Choices for Ankle-Foot Orthoses: A Multi-objective Optimization'
-  authors:
-  - Deema Totah
-  - Ilya Kovalenko
-  - Miguel Saez
-  - Kira Barton
-  publisher: Procedia CIRP
-  date: '2017-01-01'
-  link: https://doi.org/g97zqt
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-- id: doi:10.1109/lra.2016.2530866
-  title: Timing Analysis of Robotic Neuromodulatory Rehabilitation System for Paired
-    Associative Stimulation
-  authors:
-  - Euisun Kim
-  - Ilya Kovalenko
-  - Lauren Lacey
-  - Minoru Shinohara
-  - Jun Ueda
-  publisher: IEEE Robotics and Automation Letters
-  date: '2016-07-01'
-  link: https://doi.org/g97zqw
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1115/dscc2015-9992
-  title: Analysis of a Tele-Operated MRI-Compatible Vane Actuator for Neuromuscular
-    Facilitation in Hemiparetic Limbs
-  authors:
-  - Melih Turkseven
-  - Ilya Kovalenko
-  - Euisun Kim
-  - Jun Ueda
-  publisher: 'Volume 2: Diagnostics and Detection; Drilling; Dynamics and Control
-    of Wind Energy Systems; Energy Harvesting; Estimation and Identification; Flexible
-    and Smart Structure Control; Fuels Cells/Energy Storage; Human Robot Interaction;
-    HVAC Building Energy Management; Industrial Applications; Intelligent Transportation
-    Systems; Manufacturing; Mechatronics; Modelling and Validation; Motion and Vibration
-    Control Applications'
-  date: '2015-10-28'
-  link: https://doi.org/g97zqx
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1115/1.4030548
-  title: Design and Testing of a Pneumatic Hemiparesis Rehabilitation Device for a
-    Neurofacilitation Exercise1
-  authors:
-  - Ilya Kovalenko
-  - Jonathan Lai
-  - Johnathan Williams
-  - Arnold Maliki
-  - Jun Ueda
-  publisher: Journal of Medical Devices
-  date: '2015-09-01'
-  link: https://doi.org/g97zqz
-  plugin: orcid.py
-  file: orcid.yaml
-  orcid: 0000-0003-4764-9117
-  jane-doe: true
-- id: doi:10.1115/detc2015-48085
-  title: Robotic Neuromuscular Facilitation for Regaining Neural Activation in Hemiparetic
-    Limbs
-  authors:
-  - Jun Ueda
-  - Lauren Lacey
-  - Melih Turkseven
-  - Minoru Shinohara
-  - Ilya Kovalenko
-  - Euisun Kim
-  - Fatiesa Sulejmani
-  publisher: 'Volume 5A: 39th Mechanisms and Robotics Conference'
-  date: '2015-08-02'
-  link: https://doi.org/g97zq2
-  plugin: google-scholar.py
-  file: google-scholar.yaml
-- id: doi:10.1109/arso.2014.7020990
-  title: Robotic rehabilitation exercise in hemiparetic limbs based on functional
-    synchronization of voluntary and involuntary nerve impulses
-  authors:
-  - Jun Ueda
-  - Lauren Lacey
-  - Melih Turkseven
-  - Minoru Shinohara
-  - Arnold Maliki
-  - Ilya Kovalenko
-  publisher: 2014 IEEE International Workshop on Advanced Robotics and its Social
-    Impacts
-  date: '2014-09-01'
-  link: https://doi.org/g97zq3
-  plugin: google-scholar.py
-  file: google-scholar.yaml
 - id: doi:10.1080/00207543.2023.2200567
   title: Dynamic distributed decision-making for resilient resource reallocation in
     disrupted manufacturing systems
@@ -717,6 +96,68 @@
   jane-doe: true
   plugin: orcid.py
   file: orcid.yaml
+- id: doi:10.1109/case56687.2023.10260642
+  title: A System-Level Energy-Efficient Digital Twin Framework for Runtime Control
+    of Batch Manufacturing Processes
+  authors:
+  - Hongliang Li
+  - Herschel C. Pangborn
+  - Ilya Kovalenko
+  publisher: 2023 IEEE 19th International Conference on Automation Science and Engineering
+    (CASE)
+  date: '2023-08-26'
+  link: https://doi.org/g97zp8
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/case56687.2023.10260621
+  title: Ontology-Based Feedback to Improve Runtime Control for Multi-Agent Manufacturing
+    Systems
+  authors:
+  - Jonghan Lim
+  - Leander Pfeiffer
+  - Felix Ocker
+  - Birgit Vogel-Heuser
+  - Ilya Kovalenko
+  publisher: 2023 IEEE 19th International Conference on Automation Science and Engineering
+    (CASE)
+  date: '2023-08-26'
+  link: https://doi.org/g97zp9
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/ccta54093.2023.10253433
+  title: A Model Predictive Control Framework for Improving Risk-Tolerance of Manufacturing
+    Systems
+  authors:
+  - Mostafa Tavakkoli Anbarani
+  - Efe C. Balta
+  - Rômulo Meira-Góes
+  - Ilya Kovalenko
+  publisher: 2023 IEEE Conference on Control Technology and Applications (CCTA)
+  date: '2023-08-16'
+  link: https://doi.org/g97zqb
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/mra.2023.3262464
+  title: 'Opportunities and Challenges to Integrate Artificial Intelligence Into Manufacturing
+    Systems: Thoughts From a Panel Discussion [Opinion]'
+  authors:
+  - Ilya Kovalenko
+  - Kira Barton
+  - James Moyne
+  - Dawn M. Tilbury
+  publisher: IEEE Robotics &amp; Automation Magazine
+  date: '2023-06-01'
+  link: https://doi.org/g97zqc
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.23919/acc55779.2023.10156587
   title: Risk-Averse Model Predictive Control for Priced Timed Automata
   authors:
@@ -727,6 +168,43 @@
   publisher: 2023 American Control Conference (ACC)
   date: '2023-05-31'
   link: https://doi.org/g97zqd
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/TCST.2021.3054800
+  title: Model Predictive Control of Priced Timed Automata Encoded With First-Order
+    Logic
+  authors:
+  - Efe C. Balta
+  - Ilya Kovalenko
+  - Isaac A. Spiegel
+  - Dawn M. Tilbury
+  - Kira Barton
+  publisher: IEEE Transactions on Control Systems Technology
+  date: '2022-01-01'
+  link: https://doi.org/gh67pw
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/ACCESS.2022.3165551
+  title: Toward an Automated Learning Control Architecture for Cyber-Physical Manufacturing
+    Systems
+  authors:
+  - Ilya Kovalenko
+  - James Moyne
+  - Mingjie Bi
+  - EFE C. Balta
+  - Wenyuan Ma
+  - Yassine Qamsane
+  - Xiao Zhu
+  - Z. Morley Mao
+  - Dawn M. Tilbury
+  - Kira Barton
+  publisher: IEEE Access
+  date: '2022-01-01'
+  link: https://doi.org/g97zqf
   orcid: 0000-0003-4764-9117
   jane-doe: true
   plugin: orcid.py
@@ -761,6 +239,25 @@
   jane-doe: true
   plugin: orcid.py
   file: orcid.yaml
+- id: doi:10.1109/ACCESS.2021.3065971
+  title: A Methodology to Develop and Implement Digital Twin Solutions for Manufacturing
+    Systems
+  authors:
+  - Yassine Qamsane
+  - James Moyne
+  - Maxwell Toothman
+  - Ilya Kovalenko
+  - Efe C. Balta
+  - John Faris
+  - Dawn M. Tilbury
+  - Kira Barton
+  publisher: IEEE Access
+  date: '2021-01-01'
+  link: https://doi.org/gndb9n
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.1520/SSMS20200009
   title: 'Developing the Workforce for Next-Generation Smart Manufacturing Systems:
     A Multidisciplinary Research Team Approach'
@@ -777,6 +274,298 @@
   publisher: Smart and Sustainable Manufacturing Systems
   date: '2020-08-21'
   link: https://doi.org/gmz3zt
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/j.ifacol.2021.11.220
+  title: Dynamic Resource Allocation Using Multi-Agent Control for Manufacturing Systems
+  authors:
+  - Mingjie Bi
+  - Ilya Kovalenko
+  - Dawn M. Tilbury
+  - Kira Barton
+  publisher: IFAC-PapersOnLine
+  date: '2021-01-01'
+  link: https://doi.org/gnshnb
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/CASE49439.2021.9551650
+  title: Manufacturing Line Design Configuration with Optimized Resource Groups
+  authors:
+  - Takahiro Nakano
+  - Kajita Daiki
+  - Heming Chen
+  - Ilya Kovalenko
+  - Efe Balta
+  - Yassine Qamsane
+  - Kira Barton
+  publisher: 2021 IEEE 17th International Conference on Automation Science and Engineering
+    (CASE)
+  date: '2021-08-23'
+  link: https://doi.org/g97zqj
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/ACCESS.2020.3000437
+  title: 'A Requirements Driven Digital Twin Framework: Specification and Opportunities'
+  authors:
+  - James Moyne
+  - Yassine Qamsane
+  - Efe C. Balta
+  - Ilya Kovalenko
+  - John Faris
+  - Kira Barton
+  - Dawn M. Tilbury
+  publisher: IEEE Access
+  date: '2020-01-01'
+  link: https://doi.org/gndckt
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/j.ifacol.2021.04.051
+  title: Priced Timed Automata Models for Control of Intelligent Product Agents in
+    Manufacturing Systems
+  authors:
+  - Ilya Kovalenko
+  - Dawn Tilbury
+  - Kira Barton
+  publisher: IFAC-PapersOnLine
+  date: '2020-01-01'
+  link: https://doi.org/g97zqk
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/LRA.2019.2931825
+  title: A Framework for Automatic Initialization of Multi-Agent Production Systems
+    Using Semantic Web Technologies
+  authors:
+  - Felix Ocker
+  - Ilya Kovalenko
+  - Kira Barton
+  - Dawn Tilbury
+  - Birgit Vogel-Heuser
+  publisher: IEEE Robotics and Automation Letters
+  date: '2019-10-01'
+  link: https://doi.org/g97zqm
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1115/MSEC2019-2966
+  title: A Vision-Based Framework for Enhanced Quality Control in a Smart Manufacturing
+    System
+  authors:
+  - Zixuan Yang
+  - Huaiyuan Teng
+  - Jeremy Goldhawk
+  - Ilya Kovalenko
+  - Efe C. Balta
+  - Felipe Lopez
+  - Dawn Tilbury
+  - Kira Barton
+  publisher: 'Volume 1: Additive Manufacturing; Manufacturing Equipment and Systems;
+    Bio and Sustainable Manufacturing'
+  date: '2019-06-10'
+  link: https://doi.org/g59x43
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/LRA.2019.2921947
+  title: Dynamic Resource Task Negotiation to Enable Product Agent Exploration in
+    Multi-Agent Manufacturing Systems
+  authors:
+  - Ilya Kovalenko
+  - Daria Ryashentseva
+  - Birgit Vogel-Heuser
+  - Dawn Tilbury
+  - Kira Barton
+  publisher: IEEE Robotics and Automation Letters
+  date: '2019-07-01'
+  link: https://doi.org/g97zqn
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/j.conengprac.2019.03.009
+  title: 'The model-based product agent: A control oriented architecture for intelligent
+    products in multi-agent manufacturing systems'
+  authors:
+  - Ilya Kovalenko
+  - Dawn Tilbury
+  - Kira Barton
+  publisher: Control Engineering Practice
+  date: '2019-05-01'
+  link: https://doi.org/g97zqp
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: sources.py
+  file: sources.yaml
+  image: https://ars.els-cdn.com/content/image/1-s2.0-S0967066118305057-gr1.jpg
+- id: doi:10.1016/j.promfg.2018.10.053
+  title: 'Integrating Human Operators into Agent-based Manufacturing Systems: A Table-top
+    Demonstration'
+  authors:
+  - Gary Zheng
+  - Ilya Kovalenko
+  - Kira Barton
+  - Dawn Tilbury
+  publisher: Procedia Manufacturing
+  date: '2018-01-01'
+  link: https://doi.org/g97zqq
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/ETFA.2017.8247652
+  title: Design and implementation of an intelligent product agent architecture in
+    manufacturing systems
+  authors:
+  - Ilya Kovalenko
+  - Kira Barton
+  - Dawn Tilbury
+  publisher: 2017 22nd IEEE International Conference on Emerging Technologies and
+    Factory Automation (ETFA)
+  date: '2017-09-01'
+  link: https://doi.org/g97zqr
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/CCTA.2017.8062543
+  title: Hybrid modeling and identification of jetting dynamics in electrohydrodynamic
+    jet printing
+  authors:
+  - Isaac Spiegel
+  - Ilya Kovalenko
+  - David Hoelzle
+  - Patrick M. Sammons
+  - Kira L. Barton
+  publisher: 2017 IEEE Conference on Control Technology and Applications (CCTA)
+  date: '2017-08-01'
+  link: https://doi.org/g97zqs
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/j.procir.2017.04.014
+  title: 'Manufacturing Choices for Ankle-Foot Orthoses: A Multi-objective Optimization'
+  authors:
+  - Deema Totah
+  - Ilya Kovalenko
+  - Miguel Saez
+  - Kira Barton
+  publisher: Procedia CIRP
+  date: '2017-01-01'
+  link: https://doi.org/g97zqt
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1520/SSMS20170006
+  title: 'SMART: A System-Level Manufacturing and Automation Research Testbed'
+  authors:
+  - Ilya Kovalenko
+  - Miguel Saez
+  - Kira Barton
+  - Dawn Tilbury
+  publisher: Smart and Sustainable Manufacturing Systems
+  date: '2017-10-27'
+  link: https://doi.org/g97zqv
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/LRA.2016.2530866
+  title: Timing Analysis of Robotic Neuromodulatory Rehabilitation System for Paired
+    Associative Stimulation
+  authors:
+  - Euisun Kim
+  - Ilya Kovalenko
+  - Lauren Lacey
+  - Minoru Shinohara
+  - Jun Ueda
+  publisher: IEEE Robotics and Automation Letters
+  date: '2016-07-01'
+  link: https://doi.org/g97zqw
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1115/DSCC2015-9992
+  title: Analysis of a Tele-Operated MRI-Compatible Vane Actuator for Neuromuscular
+    Facilitation in Hemiparetic Limbs
+  authors:
+  - Melih Turkseven
+  - Ilya Kovalenko
+  - Euisun Kim
+  - Jun Ueda
+  publisher: 'Volume 2: Diagnostics and Detection; Drilling; Dynamics and Control
+    of Wind Energy Systems; Energy Harvesting; Estimation and Identification; Flexible
+    and Smart Structure Control; Fuels Cells/Energy Storage; Human Robot Interaction;
+    HVAC Building Energy Management; Industrial Applications; Intelligent Transportation
+    Systems; Manufacturing; Mechatronics; Modelling and Validation; Motion and Vibration
+    Control Applications'
+  date: '2015-10-28'
+  link: https://doi.org/g97zqx
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1115/1.4030548
+  title: Design and Testing of a Pneumatic Hemiparesis Rehabilitation Device for a
+    Neurofacilitation Exercise1
+  authors:
+  - Ilya Kovalenko
+  - Jonathan Lai
+  - Johnathan Williams
+  - Arnold Maliki
+  - Jun Ueda
+  publisher: Journal of Medical Devices
+  date: '2015-09-01'
+  link: https://doi.org/g97zqz
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1115/DETC2015-48085
+  title: Robotic Neuromuscular Facilitation for Regaining Neural Activation in Hemiparetic
+    Limbs
+  authors:
+  - Jun Ueda
+  - Lauren Lacey
+  - Melih Turkseven
+  - Minoru Shinohara
+  - Ilya Kovalenko
+  - Euisun Kim
+  - Fatiesa Sulejmani
+  publisher: 'Volume 5A: 39th Mechanisms and Robotics Conference'
+  date: '2015-08-02'
+  link: https://doi.org/g97zq2
+  orcid: 0000-0003-4764-9117
+  jane-doe: true
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1109/ARSO.2014.7020990
+  title: Robotic rehabilitation exercise in hemiparetic limbs based on functional
+    synchronization of voluntary and involuntary nerve impulses
+  authors:
+  - Jun Ueda
+  - Lauren Lacey
+  - Melih Turkseven
+  - Minoru Shinohara
+  - Arnold Maliki
+  - Ilya Kovalenko
+  publisher: 2014 IEEE International Workshop on Advanced Robotics and its Social
+    Impacts
+  date: '2014-09-01'
+  link: https://doi.org/g97zq3
   orcid: 0000-0003-4764-9117
   jane-doe: true
   plugin: orcid.py
