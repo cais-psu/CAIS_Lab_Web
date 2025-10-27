@@ -1,6 +1,6 @@
 ---
-title: Jonghan's Ph.D. Comprehensive Exam
-author: Yifei
+title: "Jonghan's Ph.D. Comprehensive Exam"
+author: Jonghan
 tags: Exams
 ---
 
