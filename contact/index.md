@@ -7,27 +7,30 @@ nav:
 
 # {% include icon.html icon="fa-regular fa-envelope" %}Contact
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+##Openings
+The CAIS lab is seeking graduate and undergraduate students to join the team. Students interested in joining should be motivated and hard-working individuals who are interested in one or more of the following topics:
+
+Control theory and applications
+Dynamic systems
+Industrial automation
+Applied artificial intelligence
+Smart manufacturing/Industry 4.0
+Robotics
+
 
 {%
   include button.html
   type="email"
-  text="jane@smith.com"
-  link="jane@smith.com"
+  text="iqk5135@psu.edu"
+  link="iqk5135@psu.edu"
 %}
-{%
-  include button.html
-  type="phone"
-  text="(555) 867-5309"
-  link="+1-555-867-5309"
-%}
+
 {%
   include button.html
   type="address"
+  text="107 Leonhard Building"
   tooltip="Our location on Google Maps for easy navigation"
-  link="https://www.google.com/maps"
+  link="https://maps.app.goo.gl/U1Mg42kpajPp4ukQA"
 %}
 
 {% include section.html %}
