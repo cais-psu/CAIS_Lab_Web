@@ -7,11 +7,10 @@ description: M.S. Student, PSU ME
 #aliases:
 #  - 
 links:
-  github: 
+  github:
+  email: emailto:jpz5469@psu.edu 
 ---
 
 B.S., Mechanical Engineering, Penn State University
 
 Research interests: Automation, Large Language Model, Vision Language Model and Robotics
-
-Email: jpz5469 (at) psu (dot) edu

@@ -7,7 +7,8 @@ description: PhD Student, PSU ME
 #aliases:
 #  - 
 links:
-  github: 
+  github:
+  email: emailto:eww5242@psu.edu 
 ---
 
 M.S., Mechanical Engineering, Texas Tech University
@@ -15,5 +16,3 @@ M.S., Mechanical Engineering, Texas Tech University
 B.S., Mechanical Engineering, Texas TechUniversity
 
 Research interests: Model Predictive Control, Robotics, Autonomous Systems
-
-Email: eww5242(at) psu (dot) edu

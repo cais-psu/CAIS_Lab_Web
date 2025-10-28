@@ -7,11 +7,10 @@ description: Undergraduate Student, PSU ME
 #aliases:
 #  - 
 links:
-  github: 
+  github:
+  email: emailto:mgm5828@psu.edu 
 ---
 
 Major: Mechanical Engineering
 
 Research interests: Smart Manufacturing, and Automation
-
-Email: mgm5828 (at) psu (dot) edu

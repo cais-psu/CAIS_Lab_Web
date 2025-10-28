@@ -7,11 +7,10 @@ description: Undergraduate Student, PSU IE
 #aliases:
 #  - 
 links:
-  github: 
+  github:
+  email: emailto:amo5960@psu.edu 
 ---
 
 Major: Industrial Engineering
 
 Research interests: Designing and optimizing water treatment systems
-
-Email: amo5960 (at) psu (dot) edu

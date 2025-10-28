@@ -1,17 +1,16 @@
 ---
-name: Ezekiel Hernandez
-image: images/team/Ezekiel.png
+name: Rayleen Fu 
+image: images/team/Rayleen.png
 role: undergrad  # pi / phd / ms / visitor / undergrad
 alumni: false  
 description: Undergraduate Student, PSU CS
 #aliases:
 #  - 
 links:
-  github: 
+  github:
+  email: emailto:rxf5324@psu.edu 
 ---
 
 Major: Computer Science
 
-Research interests: Machine Learning, and Multiagent-systems
-
-Email: ejh6103 (at) psu (dot) edu
+Research interests: Robotics, Control Systems, and ROS

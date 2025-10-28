@@ -7,11 +7,10 @@ description: Undergraduate Student, PSU ES
 #aliases:
 #  - 
 links:
-  github: 
+  github:
+  email: emailto:glb5367@psu.edu 
 ---
 
 Major: Engineering Science
 
 Research interests: Robotics, Control Systems, and Smart Manufacturing
-
-Email: glb5367 (at) psu (dot) edu

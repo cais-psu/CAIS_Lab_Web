@@ -7,7 +7,8 @@ description: PhD Candidate, PSU IME
 #aliases:
 #  - 
 links:
-  github: 
+  github:
+  email: emailto:jxl567@psu.edu 
 ---
 
 M.S., Industrial and Systems Engineering, University of Southern California
@@ -15,5 +16,3 @@ M.S., Industrial and Systems Engineering, University of Southern California
 B.S., Mechanical Engineering, Missouri University of Science and Technology
 
 Research interests: Smart manufacturing, Large language model, and Multi-agent system
-
-Email: jxl567 (at) psu (dot) edu

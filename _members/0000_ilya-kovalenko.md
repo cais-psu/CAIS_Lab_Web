@@ -6,6 +6,7 @@ affiliation: The Pennsylvania State University
 links:
   home-page: https://www.linkedin.com/in/kovalenkoilya/
   orcid: 0000-0003-4764-9117
+  email: emailto:iqk5135@psu.edu
 ---
 
 Department of Mechanical Engineering

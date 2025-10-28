@@ -1,17 +1,16 @@
 ---
-name: Vivek Nayar
-image: images/team/Vivek.png
+name: Huihang Liu
+image: images/team/Huihang.png
 role: undergrad  # pi / phd / ms / visitor / undergrad
 alumni: false  
 description: Undergraduate Student, PSU CE
 #aliases:
 #  - 
 links:
-  github: 
+  github:
+  email: emailto:hql5777@psu.edu 
 ---
 
 Major: Computer Engineering
 
-Research interests: Robotics, Embedded systems, and Control systems
-
-Email: vjn5114 (at) psu (dot) edu
+Research interests: Robotics, Additive manufacturing, and ROS

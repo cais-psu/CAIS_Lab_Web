@@ -7,7 +7,8 @@ description: PhD Candidate, PSU ME
 #aliases:
 #  - 
 links:
-  github: 
+  github:
+  email: emailto:mkt5457@psu.edu
 ---
 
 M.S., Mechanical Engineering, Sharif University of Technology
@@ -15,5 +16,3 @@ M.S., Mechanical Engineering, Sharif University of Technology
 B.S., Mechanical Engineering, Sharif University of Technology
 
 Research interests: Priced timed automata, and Discrete event systems
-
-Email: mkt5457 (at) psu (dot) edu

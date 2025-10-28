@@ -8,6 +8,7 @@ description: PhD Candidate, PSU IME
 #  - 
 links:
   github: 
+  email: emailto:hjl5377@psu.edu
 ---
 
 M.S., Civil Engineering, Tianjin University
@@ -15,5 +16,3 @@ M.S., Civil Engineering, Tianjin University
 B.S., Civil Engineering, Tianjin University
 
 Research interests: Optimal Control, and Sustainable Manufacturing Systems
-
-Email: hjl5377 (at) psu (dot) edu

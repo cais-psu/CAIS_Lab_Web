@@ -7,11 +7,10 @@ description: Undergraduate Student, PSU ME
 #aliases:
 #  - 
 links:
-  github: 
+  github:
+  email: emailto:cjc7252@psu.edu 
 ---
 
 Major: Mechanical Engineering
 
 Research interests: Mechanical Design, and Manufacturing Automation
-
-Email: cjc7252 (at) psu (dot) edu
