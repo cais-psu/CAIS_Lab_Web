@@ -33,6 +33,9 @@ Robotics
   link="https://maps.app.goo.gl/U1Mg42kpajPp4ukQA"
 %}
 
+
+<script type="text/javascript" id="mmvst_globe" src="//mapmyvisitors.com/globe.js?d=SFE1ob3BCP1q2sysWDn7lHXot7v9oYEbjjNNt1XMM1Y"></script>
+
 {% include section.html %}
 
 {% capture col1 %}
