@@ -1,6 +1,6 @@
 ---
 name: Isabel
-image: images/photo.jpg
+image: images/team/Isabel.png
 role: visitor  # pi / phd / ms / visitor / undergrad
 alumni: false  
 description: Visiting Researcher
