@@ -12,6 +12,6 @@ tags:
 The CAIS Lab attends [the Pittsburgh Robotics Discovery Day](https://www.robopgh.org/robotics-ai-discovery-day){:target="_blank" rel="noopener noreferrer"} to showcase the lab’s work and network with academic and industry professionals in the robotics space.
 
 
-<p align="center">
-  <img src="{{ 'images/news/202411120DiscoveryDay.png' | relative_url }}" alt="Christmas" width="720">
+<p style="text-align:center;">
+  <img src="{{ '/images/news/202411120DiscoveryDay.png' | relative_url }}" alt="Discovery Day" style="max-width:100%; height:auto;">
 </p>
