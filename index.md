@@ -38,7 +38,7 @@ Our goal is to improve the flexibility, safety, and efficiency of complex, dynam
 
 {% capture text %}
 
-2
+The primary laboratory is situated at 107 Leonhard Building on 310 S Barnard St, State College, PA 16801. Additional graduate student offices are located in 338 Leonhard Building. 
 
 {%
   include button.html
@@ -53,7 +53,7 @@ Our goal is to improve the flexibility, safety, and efficiency of complex, dynam
 
 {%
   include feature.html
-  image="images/photo.jpg"
+  image="images/project.png"
   link="projects"
   title="Our Projects"
   flip=true
@@ -63,7 +63,12 @@ Our goal is to improve the flexibility, safety, and efficiency of complex, dynam
 
 {% capture text %}
 
-3
+We are a multidisciplinary team of faculty, graduate and undergraduate researchers working at the intersection of AI, controls, and manufacturing systems.
+
+1. Principal Investigator: Prof. Ilya Kovalenko  
+2. Graduate Researchers and Scholars  
+3. Undergraduate Researchers and Visitors
+
 {%
   include button.html
   link="team"
@@ -77,7 +82,7 @@ Our goal is to improve the flexibility, safety, and efficiency of complex, dynam
 
 {%
   include feature.html
-  image="images/photo.jpg"
+  image="images/news/20241015cookout.jpg"
   link="team"
   title="Our Team"
   text=text
