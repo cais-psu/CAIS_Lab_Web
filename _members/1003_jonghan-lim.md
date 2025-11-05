@@ -9,7 +9,6 @@ description: PhD Candidate, PSU IME
 links:
   github:https://github.com/jxl567
   email: emailto:jxl567@psu.edu
-  google_scholar:https://scholar.google.com/citations?user=Y9mHRtsAAAAJ&hl=en
 ---
 
 M.S., Industrial and Systems Engineering, University of Southern California
