@@ -14,8 +14,8 @@ Here we share photos from our lab activities, field demonstrations, and conferen
 
 <p align="center">
   <img src="{{ '/images/gallery/1.jpg' | relative_url }}" alt="Lab Gallery" width="300">
-  <img src="{{ '/images/gallery/1.jpg' | relative_url }}" alt="Lab Gallery" width="300">
-  <img src="{{ '/iimages/gallery/1.jpg' | relative_url }}" alt="Lab Gallery" width="300">
+  <img src="{{ '/images/gallery/2.jpg' | relative_url }}" alt="Lab Gallery" width="300">
+  <img src="{{ '/images/gallery/3.jpg' | relative_url }}" alt="Lab Gallery" width="300">
 </p>
 
 <p style="text-align:center;">
