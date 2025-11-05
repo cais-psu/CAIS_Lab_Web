@@ -9,7 +9,7 @@ description: PhD Student, PSU ME
 links:
   github: liyifei1997
   home-page: https://www.linkedin.com/in/yifei-li-psu/
-  google scholar: 4LtB9AUAAAAJ
+  google-scholar: 4LtB9AUAAAAJ
   email: emailto:yifei.li@psu.edu
 ---
 
