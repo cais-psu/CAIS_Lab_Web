@@ -7,7 +7,8 @@ description: PhD Candidate, PSU IME
 #aliases:
 #  - 
 links:
-  github: 
+  github: HongliangLiPSU
+  google-scholar: LSQbauYAAAAJ
   email: emailto:hjl5377@psu.edu
 ---
 
