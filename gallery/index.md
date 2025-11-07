@@ -41,10 +41,9 @@ Here we share photos from our lab activities, field demonstrations, and conferen
             frameborder="0"
             allowfullscreen></iframe>
   </div>
-
-  <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; max-width:100%;">
+  <div style="position:relative; padding-bottom:125%; height:0; overflow:hidden; max-width:100%;">
     <iframe src="https://dms.licdn.com/playlist/vid/pl/v2/D4E12AQFNJRmgFxpDHw/hls-360p-30fp-crf28/B4EZhkDVJNHEA4-/0/1754025331779?e=1763081089&v=beta&t=N5c1pMOSoNXooHMgyrGUODn_vpctJwuSc0eipxK0FZ4"
-            style="position:absolute; top:0; left:0; width:100%; height:100%;"
+            style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;"
             frameborder="0"
             allowfullscreen></iframe>
   </div>
