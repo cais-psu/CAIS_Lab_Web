@@ -24,3 +24,93 @@
 
 - id: doi:10.1016/b978-0-323-90386-8.00131-5
   image: images/paper/industry-5.jpg
+
+- id: doi:10.1109/tase.2025.3550678
+  image: images/paper/TASE.png
+
+- id: doi:10.3389/fbuil.2024.1384235
+  image: images/paper/1384235.jpg
+
+- id: doi:10.1109/mra.2023.3262464
+  image: images/paper/3262464.gif
+
+- id: doi:10.1109/access.2022.3165551
+  image: images/paper/3165551.gif
+
+- id: doi:10.1109/tcst.2021.3054800
+  image: images/paper/3054800.gif
+
+- id: doi:10.1109/access.2021.3065971
+  image: images/paper/3065971.jpg
+
+- id: doi:10.1109/access.2020.3000437
+  image: images/paper/3000437.gif
+
+- id: doi:10.1109/lra.2019.2931825
+  image: images/paper/2931825.gif
+
+- id: doi:10.1016/j.promfg.2018.10.053
+  image: images/paper/2018.10.053.png
+
+- id: doi:10.1520/ssms20170006
+  image: images/paper/SSMS20170006.png
+
+- id: doi:10.1016/j.procir.2017.04.014
+  image: images/paper/2017.04.014.png
+
+- id: doi:10.1109/lra.2016.2530866
+  image: images/paper/2530866.gif
+
+- id: doi:10.1115/1.4030548
+  image: images/paper/1.4030548.png
+
+- id: doi:10.1115/msec2025-155848
+  image: images/paper/msec2025-155848.png
+
+- id: doi:10.1016/j.ifacol.2024.07.029
+  image: images/paper/ifacol.2024.07.029.png
+
+- id: doi:10.1016/j.ifacol.2025.01.139
+  image: images/paper/ifacol.2025.01.139.png
+
+- id: doi:10.1109/case56687.2023.10260642
+  image: images/paper/10260642.gif
+
+- id: doi:10.1109/case56687.2023.10260621
+  image: images/paper/10260621.gif
+
+- id: doi:10.1109/ccta54093.2023.10253433
+  image: images/paper/10253433.gif
+
+- id: doi:10.1109/case49997.2022.9926689
+  image: images/paper/9926689.gif
+
+- id: doi:10.1109/case49439.2021.9551650
+  image: images/paper/9551650.gif
+
+- id: doi:10.1016/j.ifacol.2021.11.220
+  image: images/paper/ifacol.2021.11.220.png
+
+- id: doi:10.1016/j.ifacol.2021.04.051
+  image: images/paper/ifacol.2021.04.051.png
+
+- id: doi:10.1115/msec2019-2966
+  image: images/paper/msec2019-2966.png
+
+- id: doi:10.1109/etfa.2017.8247652
+  image: images/paper/8247652.gif
+
+- id: doi:10.1109/ccta.2017.8062543
+  image: images/paper/8062543.gif
+
+- id: doi:10.1115/dscc2015-9992
+  image: images/paper/dscc2015-9992.png
+
+- id: doi:10.1115/detc2015-48085
+  image: images/paper/detc2015-48085.png
+
+- id: doi:10.1109/arso.2014.7020990
+  image: images/paper/7020990.gif
+
+- id: doi:10.22541/au.168787448.81156855/v1
+  image: images/paper/bte220230023.jpg
