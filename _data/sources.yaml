@@ -26,10 +26,10 @@
   image: images/paper/industry-5.jpg
 
 - id: doi:10.1109/tase.2025.3550678
-  image: images/paper/industry-5.jpg
+  image: images/paper/TASE.png
 
 - id: doi:10.3389/fbuil.2024.1384235
-  image: https://arxiv.org/html/2404.13034v1/extracted/2404.13034v1/figures/overview.jpg
+  image: images/paper/1384235.jpg
 
 - id: doi:10.1109/mra.2023.3262464
   image: images/paper/3262464.gif
