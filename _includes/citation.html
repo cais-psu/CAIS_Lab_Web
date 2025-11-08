@@ -1,3 +1,40 @@
+{% assign raw = include.lookup | default: "" | downcase | strip %}
+{% assign cand = raw
+  | replace:"https://doi.org/","" | replace:"http://doi.org/",""
+  | replace:"doi.org/","" | replace:"doi:","" | strip %}
+{% if cand contains ".v" %}{% assign cand = cand | split:".v" | first %}{% endif %}
+
+{% assign c_doi = include.DOI | default: include.doi | default: "" | downcase | strip %}
+{% assign c_doi = c_doi
+  | replace:"https://doi.org/","" | replace:"http://doi.org/",""
+  | replace:"doi.org/","" | replace:"doi:","" | strip %}
+{% if c_doi contains ".v" %}{% assign c_doi = c_doi | split:".v" | first %}{% endif %}
+
+{% assign c_id = include.id | default: "" | downcase | strip %}
+{% assign c_id = c_id
+  | replace:"https://doi.org/","" | replace:"http://doi.org/",""
+  | replace:"doi.org/","" | replace:"doi:","" | strip %}
+{% if c_id contains ".v" %}{% assign c_id = c_id | split:".v" | first %}{% endif %}
+
+{% assign keys = cand | append:"|" | append:c_doi | append:"|" | append:c_id | split:"|" %}
+
+{% assign paper_img = "" %}
+{% for pi in site.data.paper_images %}
+  {% assign pid = pi.id | downcase | strip
+    | replace:"https://doi.org/","" | replace:"http://doi.org/",""
+    | replace:"doi.org/","" | replace:"doi:","" | strip %}
+  {% if pid contains ".v" %}{% assign pid = pid | split:".v" | first %}{% endif %}
+  {% if keys contains pid %}
+    {% assign paper_img = pi.image %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if paper_img != "" %}
+  <div class="pub-thumb"><img src="{{ '/' | append: paper_img | relative_url }}" alt="thumbnail" loading="lazy"></div>
+{% endif %}
+
+
 {% if include.lookup %}
   {% assign citation = site.data.citations
     | where_exp: "citation",
