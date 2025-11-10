@@ -2,8 +2,8 @@
 name: Hang-Ling (Oscar) Wu
 image: images/team/Oscar.png
 role: undergrad  # pi / phd / ms / visitor / undergrad
-alumni: false  
-description: Undergraduate Student, PSU CE
+alumni: true 
+description: Undergraduate Student, PSU ME
 #aliases:
 #  - 
 links:
