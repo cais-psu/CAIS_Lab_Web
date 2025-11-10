@@ -11,4 +11,6 @@ links:
   email: emailto:rgm5359@psu.edu 
 ---
 
+Major: Mechanical Engineering
+
 August 2023 – May 2025
