@@ -22,9 +22,10 @@
 - id: doi:10.1115/msec2024-125413
   image: https://arxiv.org/html/2404.13034v1/extracted/2404.13034v1/figures/overview.jpg
 
-
-
 - id: doi:10.1016/b978-0-323-90386-8.00131-5
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/industry-5.jpg
+
+- id: doi:10.1109/tase.2025.3550678
   image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/TASE.png
 
 - id: doi:10.3389/fbuil.2024.1384235
