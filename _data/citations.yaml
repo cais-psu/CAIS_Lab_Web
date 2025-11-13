@@ -68,8 +68,9 @@
     Discovery'
   date: '2025-06-23'
   link: https://doi.org/g97zvk
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/msec2025-155848.png
 - id: doi:10.1016/j.robot.2024.104913
   title: 'LLM-controller: Dynamic robot control adaptation using large language models'
   authors:
@@ -106,8 +107,9 @@
   publisher: IEEE Transactions on Automation Science and Engineering
   date: '2025-01-01'
   link: https://doi.org/g97zvp
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/TASE.png
 - id: doi:10.1109/case59546.2024.10711432
   title: Large Language Model-Enabled Multi-Agent Manufacturing Systems
   authors:
@@ -166,8 +168,9 @@
   publisher: Frontiers in Built Environment
   date: '2024-05-13'
   link: https://doi.org/g97zp6
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/1384235.jpg
 - id: doi:10.1016/j.rcim.2023.102712
   title: Dynamic decision-making for knowledge-enabled distributed resource configuration
     in cloud manufacturing considering stochastic order arrival
@@ -182,6 +185,19 @@
   link: https://doi.org/g97zvq
   plugin: google-scholar.py
   file: google-scholar.yaml
+- id: doi:10.31893/multirev.2023ss055
+  title: Assessing the pros and cons of wire-arc additive manufacturing for material
+    production
+  authors:
+  - Rakesh Kumar Singh
+  - K. Venkadeshwaran
+  - Bhanu Pratap Singh
+  - Ganesh Kumar Kantak
+  publisher: Multidisciplinary Reviews
+  date: '2024-04-24'
+  link: https://doi.org/hbbcb4
+  plugin: google-scholar.py
+  file: google-scholar.yaml
 - id: doi:10.1016/b978-0-323-90386-8.00131-5
   title: Harnessing Controls and Robotics for Sustainable Manufacturing
   authors:
@@ -193,7 +209,7 @@
   link: https://doi.org/g97zvr
   plugin: sources.py
   file: sources.yaml
-  image: images/paper/industry-5.jpg
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/industry-5.jpg
 - id: doi:10.1016/j.ifacol.2025.01.139
   title: Model-Based Control of Water Treatment with Pumped Water Storage
   authors:
@@ -203,8 +219,9 @@
   publisher: IFAC-PapersOnLine
   date: '2024-01-01'
   link: https://doi.org/g97zvs
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/ifacol.2025.01.139.png
 - id: doi:10.1016/j.ifacol.2024.07.029
   title: Modeling and Mitigating Silent Faults in Coupled Discrete Event Systems
   authors:
@@ -215,8 +232,9 @@
   publisher: IFAC-PapersOnLine
   date: '2024-01-01'
   link: https://doi.org/g97zvt
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/ifacol.2024.07.029.png
 - id: doi:10.22541/au.168787448.81156855/v1
   title: Multifunctional Composite Designs for Structural Energy Storage
   authors:
@@ -230,8 +248,9 @@
   publisher: Wiley
   date: '2023-06-27'
   link: https://doi.org/g97zvv
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/bte220230023.jpg
 - id: doi:10.1109/case56687.2023.10260621
   title: Ontology-Based Feedback to Improve Runtime Control for Multi-Agent Manufacturing
     Systems
@@ -245,8 +264,9 @@
     (CASE)
   date: '2023-08-26'
   link: https://doi.org/g97zp9
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/10260621.gif
 - id: doi:10.1109/case56687.2023.10260642
   title: A System-Level Energy-Efficient Digital Twin Framework for Runtime Control
     of Batch Manufacturing Processes
@@ -258,8 +278,9 @@
     (CASE)
   date: '2023-08-26'
   link: https://doi.org/g97zp8
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/10260642.gif
 - id: doi:10.1109/ccta54093.2023.10253433
   title: A Model Predictive Control Framework for Improving Risk-Tolerance of Manufacturing
     Systems
@@ -271,8 +292,9 @@
   publisher: 2023 IEEE Conference on Control Technology and Applications (CCTA)
   date: '2023-08-16'
   link: https://doi.org/g97zqb
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/10253433.gif
 - id: doi:10.1109/mra.2023.3262464
   title: 'Opportunities and Challenges to Integrate Artificial Intelligence Into Manufacturing
     Systems: Thoughts From a Panel Discussion [Opinion]'
@@ -284,8 +306,9 @@
   publisher: IEEE Robotics &amp; Automation Magazine
   date: '2023-06-01'
   link: https://doi.org/g97zqc
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/3262464.gif
 - id: doi:10.1109/tcst.2021.3054800
   title: Model Predictive Control of Priced Timed Automata Encoded With First-Order
     Logic
@@ -298,8 +321,9 @@
   publisher: IEEE Transactions on Control Systems Technology
   date: '2022-01-01'
   link: https://doi.org/gh67pw
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/3054800.gif
 - id: doi:10.1109/case49997.2022.9926689
   title: An Integrated Framework for Dynamic Manufacturing Planning to Obtain New
     Line Configurations
@@ -317,8 +341,9 @@
     (CASE)
   date: '2022-08-20'
   link: https://doi.org/gr9w6k
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/9926689.gif
 - id: doi:10.1109/access.2022.3165551
   title: Toward an Automated Learning Control Architecture for Cyber-Physical Manufacturing
     Systems
@@ -336,8 +361,9 @@
   publisher: IEEE Access
   date: '2022-01-01'
   link: https://doi.org/g97zqf
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/3165551.gif
 - id: doi:10.32604/iasc.2022.020660
   title: IIoT Framework Based ML Model to Improve Automobile Industry Product
   authors:
@@ -362,8 +388,9 @@
     (CASE)
   date: '2021-08-23'
   link: https://doi.org/g97zqj
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/9551650.gif
 - id: doi:10.1109/aps/ursi47566.2021.9704231
   title: Smart Cloaking Metasurfaces for Next-Generation Antenna Systems
   authors:
@@ -393,8 +420,9 @@
   publisher: IEEE Access
   date: '2021-01-01'
   link: https://doi.org/gndb9n
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/3065971.jpg
 - id: doi:10.4171/automata-1/34
   title: Timed automata
   authors:
@@ -414,8 +442,9 @@
   publisher: IFAC-PapersOnLine
   date: '2021-01-01'
   link: https://doi.org/gnshnb
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/ifacol.2021.11.220.png
 - id: doi:10.1007/978-3-030-56554-1_1
   title: First-Order Logic
   authors:
@@ -436,8 +465,9 @@
   publisher: IFAC-PapersOnLine
   date: '2020-01-01'
   link: https://doi.org/g97zqk
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/ifacol.2021.04.051.png
 - id: doi:10.1109/access.2020.3000437
   title: 'A Requirements Driven Digital Twin Framework: Specification and Opportunities'
   authors:
@@ -451,8 +481,9 @@
   publisher: IEEE Access
   date: '2020-01-01'
   link: https://doi.org/gndckt
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/3000437.gif
 - id: doi:10.1109/lra.2019.2931825
   title: A Framework for Automatic Initialization of Multi-Agent Production Systems
     Using Semantic Web Technologies
@@ -465,8 +496,9 @@
   publisher: IEEE Robotics and Automation Letters
   date: '2019-10-01'
   link: https://doi.org/g97zqm
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/2931825.gif
 - id: doi:10.1115/msec2019-2966
   title: A Vision-Based Framework for Enhanced Quality Control in a Smart Manufacturing
     System
@@ -483,8 +515,9 @@
     Bio and Sustainable Manufacturing'
   date: '2019-06-10'
   link: https://doi.org/g59x43
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/msec2019-2966.png
 - id: doi:10.1109/lra.2019.2921947
   title: Dynamic Resource Task Negotiation to Enable Product Agent Exploration in
     Multi-Agent Manufacturing Systems
@@ -532,8 +565,9 @@
   publisher: Procedia Manufacturing
   date: '2018-01-01'
   link: https://doi.org/g97zqq
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/2018.10.053.png
 - id: doi:10.1520/ssms20170006
   title: 'SMART: A System-Level Manufacturing and Automation Research Testbed'
   authors:
@@ -544,8 +578,9 @@
   publisher: Smart and Sustainable Manufacturing Systems
   date: '2017-10-27'
   link: https://doi.org/g97zqv
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/SSMS20170006.png
 - id: doi:10.1109/etfa.2017.8247652
   title: Design and implementation of an intelligent product agent architecture in
     manufacturing systems
@@ -557,8 +592,9 @@
     Factory Automation (ETFA)
   date: '2017-09-01'
   link: https://doi.org/g97zqr
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/8247652.gif
 - id: doi:10.1109/ccta.2017.8062543
   title: Hybrid modeling and identification of jetting dynamics in electrohydrodynamic
     jet printing
@@ -571,8 +607,9 @@
   publisher: 2017 IEEE Conference on Control Technology and Applications (CCTA)
   date: '2017-08-01'
   link: https://doi.org/g97zqs
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/8062543.gif
 - id: doi:10.1016/j.procir.2017.04.014
   title: 'Manufacturing Choices for Ankle-Foot Orthoses: A Multi-objective Optimization'
   authors:
@@ -583,8 +620,9 @@
   publisher: Procedia CIRP
   date: '2017-01-01'
   link: https://doi.org/g97zqt
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/2017.04.014.png
 - id: doi:10.1109/lra.2016.2530866
   title: Timing Analysis of Robotic Neuromodulatory Rehabilitation System for Paired
     Associative Stimulation
@@ -597,8 +635,9 @@
   publisher: IEEE Robotics and Automation Letters
   date: '2016-07-01'
   link: https://doi.org/g97zqw
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/2530866.gif
 - id: doi:10.1115/dscc2015-9992
   title: Analysis of a Tele-Operated MRI-Compatible Vane Actuator for Neuromuscular
     Facilitation in Hemiparetic Limbs
@@ -615,8 +654,9 @@
     Control Applications'
   date: '2015-10-28'
   link: https://doi.org/g97zqx
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/dscc2015-9992.png
 - id: doi:10.1115/1.4030548
   title: Design and Testing of a Pneumatic Hemiparesis Rehabilitation Device for a
     Neurofacilitation Exercise1
@@ -629,8 +669,9 @@
   publisher: Journal of Medical Devices
   date: '2015-09-01'
   link: https://doi.org/g97zqz
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/1.4030548.png
 - id: doi:10.1115/detc2015-48085
   title: Robotic Neuromuscular Facilitation for Regaining Neural Activation in Hemiparetic
     Limbs
@@ -645,8 +686,9 @@
   publisher: 'Volume 5A: 39th Mechanisms and Robotics Conference'
   date: '2015-08-02'
   link: https://doi.org/g97zq2
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/detc2015-48085.png
 - id: doi:10.1109/arso.2014.7020990
   title: Robotic rehabilitation exercise in hemiparetic limbs based on functional
     synchronization of voluntary and involuntary nerve impulses
@@ -661,5 +703,6 @@
     Impacts
   date: '2014-09-01'
   link: https://doi.org/g97zq3
-  plugin: google-scholar.py
-  file: google-scholar.yaml
+  plugin: sources.py
+  file: sources.yaml
+  image: https://cais-psu.github.io/CAIS_Lab_Web/images/paper/7020990.gif
