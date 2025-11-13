@@ -185,19 +185,6 @@
   link: https://doi.org/g97zvq
   plugin: google-scholar.py
   file: google-scholar.yaml
-- id: doi:10.31893/multirev.2023ss055
-  title: Assessing the pros and cons of wire-arc additive manufacturing for material
-    production
-  authors:
-  - Rakesh Kumar Singh
-  - K. Venkadeshwaran
-  - Bhanu Pratap Singh
-  - Ganesh Kumar Kantak
-  publisher: Multidisciplinary Reviews
-  date: '2024-04-24'
-  link: https://doi.org/hbbcb4
-  plugin: google-scholar.py
-  file: google-scholar.yaml
 - id: doi:10.1016/b978-0-323-90386-8.00131-5
   title: Harnessing Controls and Robotics for Sustainable Manufacturing
   authors:
