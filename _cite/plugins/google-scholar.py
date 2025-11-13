@@ -154,6 +154,23 @@ def _mb_id_from_links(links: List[str]) -> Optional[str]:
 
 # ---------------- SerpAPI ----------------
 def _serpapi_author_pubs(s: requests.Session, gsid: str, api_key: str) -> List[Dict[str, Any]]:
+    """
+    Fetch publications for GSID from SerpAPI.
+    Add 24h cache to reduce API usage.
+    """
+    cache_path = CACHE_DIR / f"{gsid}.author.json"
+
+    # --- 24h valid cache ---
+    if cache_path.exists():
+        age_hours = (time.time() - cache_path.stat().st_mtime) / 3600.0
+        if age_hours <= 24:
+            try:
+                with cache_path.open("r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception:
+                pass  # corrupted cache → fall through to live fetch
+
+    # ----- Real SerpAPI Fetch -----
     pubs: List[Dict[str, Any]] = []
     start = 0
     while True:
@@ -175,16 +192,21 @@ def _serpapi_author_pubs(s: requests.Session, gsid: str, api_key: str) -> List[D
                 data = r.json()
                 page_items = data.get("articles") or data.get("publications") or []
                 pubs.extend(page_items)
+
                 next_link = data.get("serpapi_pagination", {}).get("next")
                 if next_link:
                     start += 100
                     break
+                # finished
+                _dump_json(cache_path, pubs)   # <-- SAVE CACHE
                 return pubs
+
             except Exception as e:
                 logging.warning(f"SerpAPI author fetch error (attempt {attempt}): {e}")
                 if attempt >= MAX_RETRY:
                     raise
                 _sleep(attempt)
+
 
 def _serpapi_cluster_detail(s: requests.Session, cluster_id: str, api_key: str) -> Optional[Dict[str, Any]]:
     """
