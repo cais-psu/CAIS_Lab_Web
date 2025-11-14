@@ -3,18 +3,7 @@
 """
 Google Scholar plugin for Greene Lab LWT (CAIS-PSU customized).
 
-Implements your 1–4 steps:
-1) From a Google Scholar author ID (GSID) fetch all publications (with cluster ids)
-2) Resolve each paper's original URL (DOI/arXiv/publisher), not the Scholar URL
-   - Use SerpAPI "google_scholar_author" first, then "google_scholar" with cluster=...
-   - Skip scholar.google.com links
-   - Persist raw fetch artifacts under _data/.cache/google-scholar/
-3) Convert resolved URL to a Manubot id: doi:/arxiv:/url: (fallback to Crossref title search)
-4) Return sources list for cite.py to generate citations; site lists them via research page include.
 
-Environment:
-- GOOGLE_SCHOLAR_API_KEY (required)
-- CROSSREF_MAILTO (optional)
 """
 
 from __future__ import annotations
@@ -34,7 +23,6 @@ CACHE_DIR = pathlib.Path("_data/.cache/google-scholar")
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
 SERPAPI_ENDPOINT = "https://serpapi.com/search.json"
-CROSSREF_ENDPOINT = "https://api.crossref.org/works"
 
 REQ_TIMEOUT = 20
 MAX_RETRY = 4
@@ -105,6 +93,9 @@ def _arxiv_id_from(url: Optional[str]) -> Optional[str]:
     return f"arxiv:{m.group(2)}" if m else None
 
 def _doi_id_from(url: Optional[str]) -> Optional[str]:
+    """
+     URL DOI。
+    """
     if not url:
         return None
     m = DOI_URL_RE.search(url)
@@ -138,14 +129,21 @@ def _prefer_original(links: List[str]) -> Optional[str]:
     return None
 
 def _mb_id_from_links(links: List[str]) -> Optional[str]:
+    """
+    - DOI
+    - arXiv
+    - scholar 的 URL
+    """
     # Try DOI
     for u in links:
         d = _doi_id_from(u)
-        if d: return d
+        if d:
+            return d
     # Then arXiv
     for u in links:
         a = _arxiv_id_from(u)
-        if a: return a
+        if a:
+            return a
     # Then non-scholar URL
     for u in links:
         if u and u.startswith("http") and _non_scholar(u):
@@ -156,7 +154,7 @@ def _mb_id_from_links(links: List[str]) -> Optional[str]:
 def _serpapi_author_pubs(s: requests.Session, gsid: str, api_key: str) -> List[Dict[str, Any]]:
     """
     Fetch publications for GSID from SerpAPI.
-    Add 24h cache to reduce API usage.
+    24 h：_data/.cache/google-scholar/{gsid}.author.json
     """
     cache_path = CACHE_DIR / f"{gsid}.author.json"
 
@@ -168,7 +166,9 @@ def _serpapi_author_pubs(s: requests.Session, gsid: str, api_key: str) -> List[D
                 with cache_path.open("r", encoding="utf-8") as f:
                     return json.load(f)
             except Exception:
-                pass  # corrupted cache → fall through to live fetch
+                # 如果缓存坏掉了，就继续 live fetch
+                logging.warning(f"Cached author file {cache_path} is corrupted, refetching.")
+                pass
 
     # ----- Real SerpAPI Fetch -----
     pubs: List[Dict[str, Any]] = []
@@ -183,22 +183,22 @@ def _serpapi_author_pubs(s: requests.Session, gsid: str, api_key: str) -> List[D
             "start": str(start),
             "sort": "pubdate",
         }
-        for attempt in range(1, MAX_RETRY+1):
+        for attempt in range(1, MAX_RETRY + 1):
             try:
                 r = s.get(SERPAPI_ENDPOINT, params=params, timeout=REQ_TIMEOUT)
                 if r.status_code == 429:
-                    _sleep(attempt); continue
+                    _sleep(attempt)
+                    continue
                 r.raise_for_status()
                 data = r.json()
                 page_items = data.get("articles") or data.get("publications") or []
                 pubs.extend(page_items)
-
                 next_link = data.get("serpapi_pagination", {}).get("next")
                 if next_link:
                     start += 100
                     break
                 # finished
-                _dump_json(cache_path, pubs)   # <-- SAVE CACHE
+                _dump_json(cache_path, pubs)   # 保存到缓存
                 return pubs
 
             except Exception as e:
@@ -206,7 +206,6 @@ def _serpapi_author_pubs(s: requests.Session, gsid: str, api_key: str) -> List[D
                 if attempt >= MAX_RETRY:
                     raise
                 _sleep(attempt)
-
 
 def _serpapi_cluster_detail(s: requests.Session, cluster_id: str, api_key: str) -> Optional[Dict[str, Any]]:
     """
@@ -219,14 +218,14 @@ def _serpapi_cluster_detail(s: requests.Session, cluster_id: str, api_key: str) 
         "hl": "en",
         "api_key": api_key,
     }
-    for attempt in range(1, MAX_RETRY+1):
+    for attempt in range(1, MAX_RETRY + 1):
         try:
             r = s.get(SERPAPI_ENDPOINT, params=params, timeout=REQ_TIMEOUT)
             if r.status_code == 429:
-                _sleep(attempt); continue
+                _sleep(attempt)
+                continue
             r.raise_for_status()
             data = r.json()
-            # SerpAPI returns an "organic_results" list; first is usually the canonical item
             res = (data.get("organic_results") or [None])[0]
             return res
         except Exception as e:
@@ -235,44 +234,6 @@ def _serpapi_cluster_detail(s: requests.Session, cluster_id: str, api_key: str) 
                 return None
             _sleep(attempt)
     return None
-
-# ---------------- Crossref fallback ----------------
-def _crossref_find_doi(s: requests.Session, title: str, authors: List[str], year: Optional[int]) -> Optional[str]:
-    if not title:
-        return None
-    params = {"query.title": title, "rows": 3}
-    if authors:
-        params["query.author"] = authors[0].split()[-1]
-    if year:
-        params["filter"] = f"from-pub-date:{year}-01-01,until-pub-date:{year}-12-31"
-
-    headers = {}
-    mailto = os.getenv("CROSSREF_MAILTO")
-    if mailto:
-        headers["User-Agent"] = f"CAIS-PSU-LWT-GS/1.1 (mailto:{mailto})"
-
-    for attempt in range(1, MAX_RETRY+1):
-        try:
-            r = s.get(CROSSREF_ENDPOINT, params=params, headers=headers, timeout=REQ_TIMEOUT)
-            if r.status_code == 429:
-                _sleep(attempt); continue
-            r.raise_for_status()
-            items = r.json().get("message", {}).get("items", [])
-            title_norm = _norm(title).lower()
-            for it in items:
-                doi = (it.get("DOI") or "").lower()
-                cr_titles = it.get("title") or []
-                cr_title = _norm(cr_titles[0] if cr_titles else "").lower()
-                if doi and cr_title and (title_norm in cr_title or cr_title in title_norm):
-                    return "doi:" + doi
-            if items and items[0].get("DOI"):
-                return "doi:" + items[0]["DOI"].lower()
-            return None
-        except Exception as e:
-            logging.warning(f"Crossref error (attempt {attempt}): {e}")
-            if attempt >= MAX_RETRY:
-                return None
-            _sleep(attempt)
 
 # ---------------- Core normalize ----------------
 def _extract_links_from_author_item(it: Dict[str, Any]) -> List[str]:
@@ -292,16 +253,11 @@ def _extract_links_from_author_item(it: Dict[str, Any]) -> List[str]:
             links.append(res["link"])
         elif isinstance(res, str):
             links.append(res)
-    # Remove pure scholar links here is not necessary yet; we'll prefer non-scholar later.
     return links
 
 def _extract_links_from_cluster_detail(detail: Dict[str, Any]) -> List[str]:
     """
-    Pull more/better links from cluster organic result:
-    - resources: [{'title':'PDF','link':...}, ...]
-    - inline_links: {'versions':[{'link':...}], 'pdf': {'link':...}, 'related_pages':[...] }
-    - publication_info: {'link': ...}
-    - link: main result link
+    Pull more/better links from cluster organic result.
     """
     links: List[str] = []
     if not detail:
@@ -349,14 +305,16 @@ def _extract_links_from_cluster_detail(detail: Dict[str, Any]) -> List[str]:
     seen, out = set(), []
     for u in links:
         if u and u not in seen:
-            seen.add(u); out.append(u)
+            seen.add(u)
+            out.append(u)
     return out
 
 def _normalize_item(it: Dict[str, Any], s: requests.Session, api_key: str) -> Tuple[Optional[str], Dict[str, Any], Dict[str, Any]]:
     """
     Returns (manubot_id, manual_fallback_fields, debug_info)
-    manual_fallback_fields is dict with title/date/link when mb_id is None
-    debug_info records what we looked at (candidate links, chosen link, cluster detail)
+
+    - manubot_id 只来自已有链接（doi.org / arxiv.org / publisher url）
+    - 不调用 Crossref，不猜 DOI，也不更改 DOI
     """
     title = _norm(it.get("title") or it.get("name"))
     year  = _year_from(
@@ -369,23 +327,15 @@ def _normalize_item(it: Dict[str, Any], s: requests.Session, api_key: str) -> Tu
 
     cand_links = _extract_links_from_author_item(it)
 
-    # If author item only has Scholar links, resolve cluster for original links
     chosen_detail = None
     if (not any(_non_scholar(u) for u in cand_links)) and cluster_id:
         chosen_detail = _serpapi_cluster_detail(s, cluster_id, api_key)
         cand_links.extend(_extract_links_from_cluster_detail(chosen_detail or {}))
 
-    # Choose best "original" url (skip Scholar)
     best_url = _prefer_original(cand_links) if cand_links else None
 
-    # Build Manubot id
     mb_id = _mb_id_from_links([best_url] if best_url else [])
 
-    # Fallback: Crossref (title/year/author) to get DOI
-    if not mb_id and title:
-        mb_id = _crossref_find_doi(s, title, authors, year)
-
-    # Debug record
     dbg = {
         "title": title,
         "year": year,
@@ -400,9 +350,8 @@ def _normalize_item(it: Dict[str, Any], s: requests.Session, api_key: str) -> Tu
             "title": title or None,
             "publisher": None,
             "date": f"{year}-01-01" if year else None,
-            "link": best_url or None,  # still non-scholar if we found one
+            "link": best_url or None,
         }
-        # prune None
         manual = {k: v for k, v in manual.items() if v}
         return None, manual, dbg
 
@@ -432,7 +381,6 @@ def main(entry: Dict[str, Any]) -> List[Dict[str, Any]]:
 
     logging.info(f"Processing GSID: {gsid}")
     pubs = _serpapi_author_pubs(s, gsid, api_key)
-    _dump_json(CACHE_DIR / f"{gsid}.author.json", pubs)
 
     out: List[Dict[str, Any]] = []
     dbg_all: List[Dict[str, Any]] = []
@@ -444,26 +392,31 @@ def main(entry: Dict[str, Any]) -> List[Dict[str, Any]]:
             if mb_id:
                 out.append({"id": mb_id, **forward_tags})
             else:
-                # manual fallback still produces a visible entry on site
+
                 out.append({**manual, **forward_tags})
         except Exception as e:
+
             t = _norm(it.get("title") or it.get("name"))
             logging.warning(f"Normalize error for '{t}': {e}")
+            if t:
+                out.append({"title": t, **forward_tags})
             continue
 
-    # persist debug resolution data
     _dump_json(CACHE_DIR / f"{gsid}.resolved.json", dbg_all)
 
-    # de-duplicate: by id or by (title|date)
+
     deduped: List[Dict[str, Any]] = []
     seen = set()
     for it in out:
-        key = it.get("id") or f"{it.get('title','')}|{it.get('date','')}"
-        if key in seen: continue
-        seen.add(key); deduped.append(it)
+        key = it.get("id")
+        if not key:
+            key = f"{it.get('title','')}|{it.get('date','')}|{it.get('link','')}"
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(it)
 
     logging.info(f"Resolved {len(deduped)} item(s) for GSID {gsid}")
-    # Optional: show a few stats in logs
     n_doi = sum(1 for x in deduped if (x.get("id") or "").startswith("doi:"))
     n_axv = sum(1 for x in deduped if (x.get("id") or "").startswith("arxiv:"))
     n_url = sum(1 for x in deduped if (x.get("id") or "").startswith("url:"))
