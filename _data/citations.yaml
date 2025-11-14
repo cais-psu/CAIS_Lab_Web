@@ -1,414 +1,368 @@
 - title: Robust Recovery and Control of Cyber-physical Discrete Event Systems under
     Actuator Attacks
-  authors: []
-  publisher: arXiv preprint arXiv:2510.11405, 2025
   date: '2025-01-01'
+  publisher: arXiv preprint arXiv:2510.11405, 2025
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:2P1L_qKh6hAC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: 'CAREER: Intelligent Products for Mass Individualization in Manufacturing
     Systems'
-  authors: []
+  date: '2025-01-01'
   publisher: NSF Award Number 2442362. Directorate for Engineering 24 (2442362), 42362,
     2025
-  date: '2025-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:RGFaLdJalmkC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Bi-level Model Predictive Control for Energy-aware Integrated Product Pricing
     and Production Scheduling
-  authors: []
-  publisher: arXiv preprint arXiv:2507.14385, 2025
   date: '2025-01-01'
+  publisher: arXiv preprint arXiv:2507.14385, 2025
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:35N4QoGY0k4C
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: A Model Predictive Control Framework to Enhance Safety and Quality in Mobile
     Additive Manufacturing Systems
-  authors: []
-  publisher: arXiv preprint arXiv:2506.23400, 2025
   date: '2025-01-01'
+  publisher: arXiv preprint arXiv:2506.23400, 2025
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:lSLTfruPkqcC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Energy-Aware Model Predictive Control for Batch Manufacturing System Scheduling
     Under Different Electricity Pricing Strategies
-  authors: []
-  publisher: arXiv preprint arXiv:2506.22923, 2025
   date: '2025-01-01'
+  publisher: arXiv preprint arXiv:2506.22923, 2025
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:vV6vV6tmYwMC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: 'A Digital Twin Framework for Computer Hardware Design and Assembly: A Risk-Prioritized
     Approach'
-  authors: []
+  date: '2025-01-01'
   publisher: International Manufacturing Science and Engineering Conference 89022
     …, 2025
-  date: '2025-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:70eg2SAEIzsC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Dynamic Task Adaptation for Multi-Robot Manufacturing Systems with Large
     Language Models
-  authors: []
-  publisher: arXiv preprint arXiv:2505.22804, 2025
   date: '2025-01-01'
+  publisher: arXiv preprint arXiv:2505.22804, 2025
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:J_g5lzvAfSwC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: A Large Language Model-Enabled Control Architecture for Dynamic Resource
     Capability Exploration in Multi-Agent Manufacturing Systems
-  authors: []
-  publisher: arXiv preprint arXiv:2505.22814, 2025
   date: '2025-01-01'
+  publisher: arXiv preprint arXiv:2505.22814, 2025
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:NaGl4SEjCO4C
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: 'Guest Editorial: Engineering and Operating Digital Twins for Automated Production
     or Construction Systems'
-  authors: []
+  date: '2025-01-01'
   publisher: IEEE Transactions on Automation Science and Engineering 22, 11288-11290,
     2025
-  date: '2025-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:ns9cj8rnVeAC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Large language model-enabled multi-agent manufacturing systems
-  authors: []
+  date: '2024-01-01'
   publisher: 2024 IEEE 20th International Conference on Automation Science and …,
     2024
-  date: '2024-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:NMxIlDl6LWMC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Enhancing human-robot collaborative assembly in manufacturing systems using
     large language models
-  authors: []
+  date: '2024-01-01'
   publisher: 2024 IEEE 20th International Conference on Automation Science and …,
     2024
-  date: '2024-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:hMod-77fHWUC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: A Mobile Additive Manufacturing Robot Framework for Smart Manufacturing Systems
-  authors: []
+  date: '2024-01-01'
   publisher: International Manufacturing Science and Engineering Conference 88117
     …, 2024
-  date: '2024-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:JV2RwH3_ST0C
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Conditional adaptive time series compensation and control design for multi-axial
     real-time hybrid simulation
-  authors: []
-  publisher: Frontiers in Built Environment 10, 1384235, 2024
   date: '2024-01-01'
+  publisher: Frontiers in Built Environment 10, 1384235, 2024
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:blknAaTinKkC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Dynamic distributed decision-making for resilient resource reallocation in
     disrupted manufacturing systems
-  authors: []
-  publisher: International Journal of Production Research 62 (5), 1737-1757, 2024
   date: '2024-01-01'
+  publisher: International Journal of Production Research 62 (5), 1737-1757, 2024
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:TFP_iSt0sucC
   plugin: google-scholar.py
   file: google-scholar.yaml
+- title: Pros and Cons of Industrial Robots in Additive Manufacturing
+  date: '2024-01-01'
+  publisher: University of Texas at Austin, 2024
+  link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:ldfaerwXgEUC
+  plugin: google-scholar.py
+  file: google-scholar.yaml
 - title: Harnessing controls and robotics for sustainable manufacturing
-  authors: []
+  date: '2024-01-01'
   publisher: 'Encyclopedia of Sustainable Technologies, Second Edition: Volumes 1-4,
     V1 …, 2024'
-  date: '2024-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:GnPB-g6toBAC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Model-Based Control of Water Treatment with Pumped Water Storage
-  authors: []
-  publisher: IFAC-PapersOnLine 58 (28), 1073-1078, 2024
   date: '2024-01-01'
+  publisher: IFAC-PapersOnLine 58 (28), 1073-1078, 2024
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:BqipwSGYUEgC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Modeling and Mitigating Silent Faults in Coupled Discrete Event Systems
-  authors: []
-  publisher: IFAC-PapersOnLine 58 (1), 168-173, 2024
   date: '2024-01-01'
+  publisher: IFAC-PapersOnLine 58 (1), 168-173, 2024
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:YFjsv_pBGBYC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Multifunctional composite designs for structural energy storage
-  authors: []
-  publisher: Battery Energy 2 (6), 20230023, 2023
   date: '2023-01-01'
+  publisher: Battery Energy 2 (6), 20230023, 2023
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:isC4tDSrTZIC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Ontology-Based Feedback to Improve Runtime Control for Multi-Agent Manufacturing
     Systems
-  authors: []
+  date: '2023-01-01'
   publisher: 2023 IEEE 19th International Conference on Automation Science and …,
     2023
-  date: '2023-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:maZDTaKrznsC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: A system-level energy-efficient digital twin framework for runtime control
     of batch manufacturing processes
-  authors: []
+  date: '2023-01-01'
   publisher: 2023 IEEE 19th International Conference on Automation Science and …,
     2023
-  date: '2023-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:k_IJM867U9cC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: A model predictive control framework for improving risk-tolerance of manufacturing
     systems
-  authors: []
+  date: '2023-01-01'
   publisher: 2023 IEEE Conference on Control Technology and Applications (CCTA), 136-142,
     2023
-  date: '2023-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:4JMBOYKVnBMC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: 'Opportunities and challenges to integrate artificial intelligence into manufacturing
     systems: Thoughts from a panel discussion [opinion]'
-  authors: []
-  publisher: IEEE Robotics & Automation Magazine 30 (2), 109-112, 2023
   date: '2023-01-01'
+  publisher: IEEE Robotics & Automation Magazine 30 (2), 109-112, 2023
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:iH-uZ7U-co4C
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Risk-averse model predictive control for priced timed automata
-  authors: []
-  publisher: arXiv preprint arXiv:2210.15604, 2022
   date: '2022-01-01'
+  publisher: arXiv preprint arXiv:2210.15604, 2022
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:e5wmG9Sq2KIC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: An integrated framework for dynamic manufacturing planning to obtain new
     line configurations
-  authors: []
+  date: '2022-01-01'
   publisher: 2022 IEEE 18th International Conference on Automation Science and …,
     2022
-  date: '2022-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:_Qo2XoVZTnwC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Toward an automated learning control architecture for cyber-physical manufacturing
     systems
-  authors: []
-  publisher: IEEE Access 10, 38755-38773, 2022
   date: '2022-01-01'
+  publisher: IEEE Access 10, 38755-38773, 2022
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:HDshCWvjkbEC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: 'Cooperative product agents to improve manufacturing system flexibility:
     A model-based decision framework'
-  authors: []
+  date: '2022-01-01'
   publisher: IEEE Transactions on Automation Science and Engineering 20 (1), 440-457,
     2022
-  date: '2022-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:7PzlFSSx8tAC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: 'Details About Agent Response in “Cooperative Product Agents to Improve Manufacturing
     System Flexibility: A Model-Based Decision Framework”'
-  authors: []
-  publisher: ''
   date: '2022-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:RYcK_YlVTxYC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Manufacturing line design configuration with optimized resource groups
-  authors: []
+  date: '2021-01-01'
   publisher: 2021 IEEE 17th International Conference on Automation Science and …,
     2021
-  date: '2021-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:QIV2ME_5wuYC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: 'Developing the workforce for next-generation smart manufacturing systems:
     a multidisciplinary research team approach'
-  authors: []
-  publisher: Smart and Sustainable Manufacturing Systems 5 (2), 4-24, 2021
   date: '2021-01-01'
+  publisher: Smart and Sustainable Manufacturing Systems 5 (2), 4-24, 2021
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:qxL8FJ1GzNcC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: A methodology to develop and implement digital twin solutions for manufacturing
     systems
-  authors: []
-  publisher: Ieee Access 9, 44247-44265, 2021
   date: '2021-01-01'
+  publisher: Ieee Access 9, 44247-44265, 2021
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:Wp0gIr-vW9MC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Model predictive control of priced timed automata encoded with first-order
     logic
-  authors: []
-  publisher: IEEE Transactions on Control Systems Technology 30 (1), 352-359, 2021
   date: '2021-01-01'
+  publisher: IEEE Transactions on Control Systems Technology 30 (1), 352-359, 2021
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:4DMP91E08xMC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Dynamic resource allocation using multi-agent control for manufacturing systems
-  authors: []
-  publisher: IFAC-PapersOnLine 54 (20), 488-494, 2021
   date: '2021-01-01'
+  publisher: IFAC-PapersOnLine 54 (20), 488-494, 2021
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:dhFuZR0502QC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Details of the first-order logic representation in ‘model predictive control
     of priced timed automata encoded with first-order logic
-  authors: []
+  date: '2020-01-01'
   publisher: Univ. Michigan Barton Res. Group, Ann Arbor, MI, USA, Tech. Rep 1, 2020,
     2020
-  date: '2020-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:hFOr9nPyWt4C
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Priced timed automata models for control of intelligent product agents in
     manufacturing systems
-  authors: []
-  publisher: IFAC-PapersOnLine 53 (4), 136-142, 2020
   date: '2020-01-01'
+  publisher: IFAC-PapersOnLine 53 (4), 136-142, 2020
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:mVmsd5A6BfQC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Intelligent Product Agents for Multi-Agent Control of Manufacturing Systems
-  authors: []
-  publisher: University of Michigan, 2020
   date: '2020-01-01'
+  publisher: University of Michigan, 2020
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:aqlVkmm33-oC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: 'A requirements driven digital twin framework: Specification and opportunities'
-  authors: []
-  publisher: Ieee Access 8, 2020
   date: '2020-01-01'
+  publisher: Ieee Access 8, 2020
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:M3ejUd6NZC8C
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: A framework for automatic initialization of multi-agent production systems
     using semantic web technologies
-  authors: []
-  publisher: IEEE Robotics and Automation Letters 4 (4), 4330-4337, 2019
   date: '2019-01-01'
+  publisher: IEEE Robotics and Automation Letters 4 (4), 4330-4337, 2019
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:Zph67rFs4hoC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: A Vision-Based Framework for Enhanced Quality Control in a Smart Manufacturing
     System
-  authors: []
+  date: '2019-01-01'
   publisher: International Manufacturing Science and Engineering Conference 58745
     …, 2019
-  date: '2019-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:_kc_bZDykSQC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Dynamic resource task negotiation to enable product agent exploration in
     multi-agent manufacturing systems
-  authors: []
-  publisher: IEEE Robotics and Automation Letters 4 (3), 2854-2861, 2019
   date: '2019-01-01'
+  publisher: IEEE Robotics and Automation Letters 4 (3), 2854-2861, 2019
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:MXK_kJrjxJIC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: 'The model-based product agent: A control oriented architecture for intelligent
     products in multi-agent manufacturing systems'
-  authors: []
-  publisher: Control Engineering Practice 86, 105-117, 2019
   date: '2019-01-01'
+  publisher: Control Engineering Practice 86, 105-117, 2019
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:_FxGoFyzp5QC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: The digital twin in the manufacturing ecosystem of the future
-  authors: []
+  date: '2019-01-01'
   publisher: 1st International Workshop on Smart Manufacturing Modeling and Analysis,
     2019
-  date: '2019-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:4TOpqqG69KYC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: 'Integrating human operators into agent-based manufacturing systems: A table-top
     demonstration'
-  authors: []
-  publisher: Procedia manufacturing 17, 326-333, 2018
   date: '2018-01-01'
+  publisher: Procedia manufacturing 17, 326-333, 2018
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:WF5omc3nYNoC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: 'SMART: A system-level manufacturing and automation research testbed'
-  authors: []
-  publisher: Smart and Sustainable Manufacturing Systems 1 (1), 232-261, 2017
   date: '2017-01-01'
+  publisher: Smart and Sustainable Manufacturing Systems 1 (1), 232-261, 2017
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:YsMSGLbcyi4C
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Design and implementation of an intelligent product agent architecture in
     manufacturing systems
-  authors: []
+  date: '2017-01-01'
   publisher: 2017 22nd IEEE international conference on emerging technologies and
     factory …, 2017
-  date: '2017-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:eQOLeE2rZwMC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Hybrid modeling and identification of jetting dynamics in electrohydrodynamic
     jet printing
-  authors: []
+  date: '2017-01-01'
   publisher: 2017 IEEE Conference on Control Technology and Applications (CCTA), 695-701,
     2017
-  date: '2017-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:Y0pCki6q_DkC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: 'Manufacturing choices for ankle-foot orthoses: a multi-objective optimization'
-  authors: []
-  publisher: Procedia Cirp 65, 145-150, 2017
   date: '2017-01-01'
+  publisher: Procedia Cirp 65, 145-150, 2017
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:Tyk-4Ss8FVUC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Timing analysis of robotic neuromodulatory rehabilitation system for paired
     associative stimulation
-  authors: []
-  publisher: IEEE Robotics and Automation Letters 1 (2), 1028-1035, 2016
   date: '2016-01-01'
+  publisher: IEEE Robotics and Automation Letters 1 (2), 1028-1035, 2016
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:UeHWp8X0CEIC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Analysis of a Tele-Operated MRI-Compatible Vane Actuator for Neuromuscular
     Facilitation in Hemiparetic Limbs
-  authors: []
-  publisher: Dynamic Systems and Control Conference 57250, V002T27A012, 2015
   date: '2015-01-01'
+  publisher: Dynamic Systems and Control Conference 57250, V002T27A012, 2015
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:qjMakFHDy7sC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Design and testing of a pneumatic hemiparesis rehabilitation device for a
     neurofacilitation exercise
-  authors: []
-  publisher: Journal of Medical Devices 9 (3), 030910, 2015
   date: '2015-01-01'
+  publisher: Journal of Medical Devices 9 (3), 030910, 2015
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:9yKSN-GCB0IC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Robotic neuromuscular facilitation for regaining neural activation in hemiparetic
     limbs
-  authors: []
+  date: '2015-01-01'
   publisher: International Design Engineering Technical Conferences and Computers
     and …, 2015
-  date: '2015-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:u-x6o8ySG0sC
   plugin: google-scholar.py
   file: google-scholar.yaml
 - title: Robotic rehabilitation exercise in hemiparetic limbs based on functional
     synchronization of voluntary and involuntary nerve impulses
-  authors: []
+  date: '2014-01-01'
   publisher: 2014 IEEE International Workshop on Advanced Robotics and its Social
     Impacts …, 2014
-  date: '2014-01-01'
   link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=secQmYUAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=secQmYUAAAAJ:d1gkVwhDpl0C
   plugin: google-scholar.py
   file: google-scholar.yaml
