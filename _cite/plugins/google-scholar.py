@@ -3,12 +3,12 @@
 """
 Google Scholar plugin for Greene Lab LWT (CAIS-PSU customized).
 
-简化且更保守的版本：
-- 从 GSID 获取所有 publications（使用 SerpAPI）
-- 仅从现有链接中提取原始 DOI / arXiv / URL，不调用 Crossref、不猜 DOI
-- 保留原本 DOI（来自 doi.org/...）
-- 每条记录输出 title, authors, publisher, date, link，并附加 id（若可得）
-- SerpAPI author 调用结果缓存 24 小时：_data/.cache/google-scholar/{gsid}.author.json
+- 从 GSID 获取所有 publications（SerpAPI）
+- 只从已有链接中提取 DOI / arXiv / URL，不调用 Crossref，不猜 DOI
+- 返回的每条记录包含：
+    id, title, authors, publisher, date, link, 以及 entry 中的其他字段（image, plugin, file 等）
+- 对 SerpAPI author 结果做 24 小时缓存（_data/.cache/google-scholar/{gsid}.author.json）
+- 如果标题相同，保留 date 更晚的一条记录
 """
 
 from __future__ import annotations
@@ -48,7 +48,8 @@ def _session() -> requests.Session:
     s.headers.update({"User-Agent": "CAIS-PSU-LWT-GS/1.1 (+https://cais-psu.github.io/CAIS_Lab_Web/)"})
     return s
 
-def _sleep(attempt: int):  # exponential backoff
+def _sleep(attempt: int):
+    # exponential backoff
     time.sleep((BACKOFF_BASE ** attempt) + 0.25 * attempt)
 
 def _norm(s: Optional[str]) -> str:
@@ -100,7 +101,7 @@ def _arxiv_id_from(url: Optional[str]) -> Optional[str]:
 def _doi_id_from(url: Optional[str]) -> Optional[str]:
     """
     从原始 URL 中提取 DOI。
-    不做任何修正或猜测，只是从 doi.org/... 截取后半段并小写。
+    不做任何“修正”或“猜测”，只是截取 doi.org/... 后面的部分，然后统一小写。
     """
     if not url:
         return None
@@ -137,23 +138,19 @@ def _prefer_original(links: List[str]) -> Optional[str]:
 
 def _mb_id_from_links(links: List[str]) -> Optional[str]:
     """
-    只根据链接构造 Manubot id：
+    不调用 Crossref，不猜 DOI，只从已有的链接中找：
     - 先 DOI
     - 再 arXiv
     - 再非 scholar 的 URL
-    不调用 Crossref、不猜 DOI。
     """
-    # Try DOI
     for u in links:
         d = _doi_id_from(u)
         if d:
             return d
-    # Then arXiv
     for u in links:
         a = _arxiv_id_from(u)
         if a:
             return a
-    # Then non-scholar URL
     for u in links:
         if u and u.startswith("http") and _non_scholar(u):
             return "url:" + u
@@ -163,7 +160,7 @@ def _mb_id_from_links(links: List[str]) -> Optional[str]:
 def _serpapi_author_pubs(s: requests.Session, gsid: str, api_key: str) -> List[Dict[str, Any]]:
     """
     Fetch publications for GSID from SerpAPI.
-    加入 24 小时缓存：_data/.cache/google-scholar/{gsid}.author.json
+    24 小时缓存：_data/.cache/google-scholar/{gsid}.author.json
     """
     cache_path = CACHE_DIR / f"{gsid}.author.json"
 
@@ -176,8 +173,7 @@ def _serpapi_author_pubs(s: requests.Session, gsid: str, api_key: str) -> List[D
                     return json.load(f)
             except Exception:
                 logging.warning(f"Cached author file {cache_path} is corrupted, refetching.")
-                # 坏掉就重新拉
-                pass
+                # fall through to live fetch
 
     # ----- Real SerpAPI Fetch -----
     pubs: List[Dict[str, Any]] = []
@@ -207,9 +203,8 @@ def _serpapi_author_pubs(s: requests.Session, gsid: str, api_key: str) -> List[D
                     start += 100
                     break
                 # finished
-                _dump_json(cache_path, pubs)   # 保存到缓存
+                _dump_json(cache_path, pubs)
                 return pubs
-
             except Exception as e:
                 logging.warning(f"SerpAPI author fetch error (attempt {attempt}): {e}")
                 if attempt >= MAX_RETRY:
@@ -288,7 +283,7 @@ def _extract_links_from_cluster_detail(detail: Dict[str, Any]) -> List[str]:
         elif isinstance(res, str):
             links.append(res)
 
-    # inline_links could have many types
+    # inline_links
     inl = detail.get("inline_links") or {}
     if isinstance(inl, dict):
         # pdf
@@ -299,12 +294,10 @@ def _extract_links_from_cluster_detail(detail: Dict[str, Any]) -> List[str]:
             for x in pdf:
                 if isinstance(x, dict) and x.get("link"):
                     links.append(x["link"])
-
         # versions
         for v in (inl.get("versions") or []):
             if isinstance(v, dict) and v.get("link"):
                 links.append(v["link"])
-
         # related pages
         for v in (inl.get("related_pages") or []):
             if isinstance(v, dict) and v.get("link"):
@@ -320,18 +313,10 @@ def _extract_links_from_cluster_detail(detail: Dict[str, Any]) -> List[str]:
 
 def _normalize_item(it: Dict[str, Any], s: requests.Session, api_key: str) -> Tuple[Optional[str], Dict[str, Any], Dict[str, Any]]:
     """
-    Returns (manubot_id, core_fields, debug_info)
+    Returns (manubot_id, manual_fallback_fields, debug_info)
 
-    core_fields:
-      - title
-      - authors
-      - publisher
-      - date
-      - link  （展示用链接，可能是 publisher/DOI，也可能是 scholar）
-
-    manubot_id:
-      - 只来自非 scholar 链接（doi / arxiv / url）
-      - 不调用 Crossref，不猜 DOI
+    - manubot_id 只来自已有链接（doi.org / arxiv.org / publisher url）
+    - 不调用 Crossref，不猜 DOI
     """
     title = _norm(it.get("title") or it.get("name"))
     year  = _year_from(
@@ -340,10 +325,6 @@ def _normalize_item(it: Dict[str, Any], s: requests.Session, api_key: str) -> Tu
         or (it.get("citation") or {}).get("year")
     )
     authors = _coerce_authors(it.get("authors"))
-    # publisher 优先用 "publication" 字段，其次 publication_info.name
-    pubinfo = it.get("publication_info") or {}
-    publisher = it.get("publication") or pubinfo.get("name") or None
-
     cluster_id = it.get("citation_id") or it.get("result_id") or None
 
     cand_links = _extract_links_from_author_item(it)
@@ -354,22 +335,11 @@ def _normalize_item(it: Dict[str, Any], s: requests.Session, api_key: str) -> Tu
         chosen_detail = _serpapi_cluster_detail(s, cluster_id, api_key)
         cand_links.extend(_extract_links_from_cluster_detail(chosen_detail or {}))
 
-    # 原始链接（只在非 scholar 等时才作为“最佳”）
+    # 从所有候选链接中选一个“原始链接”
     best_url = _prefer_original(cand_links) if cand_links else None
-    # 展示用链接：如果没有“最佳”非 scholar 链接，就退回到第一条候选（可能是 scholar）
-    display_link = best_url or (cand_links[0] if cand_links else None)
 
-    # 构造 Manubot id（只用 best_url）
+    # 构造 Manubot id
     mb_id = _mb_id_from_links([best_url] if best_url else [])
-
-    date_str = f"{year}-01-01" if year else None
-    core_fields: Dict[str, Any] = {
-        "title": title or "",
-        "authors": authors or [],
-        "publisher": publisher or "",
-        "date": date_str or "",
-        "link": display_link or "",
-    }
 
     dbg = {
         "title": title,
@@ -377,17 +347,36 @@ def _normalize_item(it: Dict[str, Any], s: requests.Session, api_key: str) -> Tu
         "cluster_id": cluster_id,
         "author_item_links": cand_links,
         "best_url": best_url,
-        "display_link": display_link,
         "cluster_detail_used": bool(chosen_detail),
+        "authors": authors,
     }
 
-    return mb_id, core_fields, dbg
+    if not mb_id:
+        manual = {
+            "title": title or None,
+            "publisher": None,
+            "date": f"{year}-01-01" if year else None,
+            "link": best_url or None,
+        }
+        manual = {k: v for k, v in manual.items() if v}
+        return None, manual, dbg
+
+    return mb_id, {}, dbg
 
 # ---------------- Plugin entry ----------------
 def main(entry: Dict[str, Any]) -> List[Dict[str, Any]]:
     """
     Required by cite.py: take one entry from _data/google-scholar*.yaml
     and return a list of "sources" dicts.
+
+    输出格式类似你给的例子：
+    - id: doi:...
+      title: ...
+      authors: [...]
+      publisher: ...
+      date: 'YYYY-01-01'
+      link: https://doi.org/...
+      <entry中的其他字段...>
     """
     # optional local .env
     try:
@@ -401,7 +390,9 @@ def main(entry: Dict[str, Any]) -> List[Dict[str, Any]]:
         logging.info("google-scholar entry without 'gsid'; skipping.")
         return []
 
+    # entry 中其他字段全部原样透传（比如 image, plugin, file, tags 等）
     forward_tags = {k: v for k, v in (entry or {}).items() if k != "gsid"}
+
     api_key = _get_env_required("GOOGLE_SCHOLAR_API_KEY")
     s = _session()
 
@@ -413,36 +404,100 @@ def main(entry: Dict[str, Any]) -> List[Dict[str, Any]]:
 
     for it in pubs:
         try:
-            mb_id, fields, dbg = _normalize_item(it, s, api_key)
+            # 先拿基础信息
+            title = _norm(it.get("title") or it.get("name"))
+            year = _year_from(
+                it.get("year")
+                or (it.get("publication_info") or {}).get("year")
+                or (it.get("citation") or {}).get("year")
+            )
+            date_str = f"{year}-01-01" if year else ""
+            authors = _coerce_authors(it.get("authors"))
+            pubinfo = it.get("publication_info") or {}
+            publisher = pubinfo.get("summary") or it.get("publication") or ""
+
+            mb_id, manual, dbg = _normalize_item(it, s, api_key)
             dbg_all.append(dbg)
+
+            # 组合一条统一格式的记录
+            record: Dict[str, Any] = {}
+            record.update(manual)  # 可能包含 title/date/link（如果 mb_id 为空时）
+
+            if title:
+                record["title"] = title
+            if authors:
+                record["authors"] = authors
+            if publisher and not record.get("publisher"):
+                record["publisher"] = publisher
+            if date_str:
+                record["date"] = date_str
+
+            # link：优先 manual.link -> dbg.best_url -> it.link
+            if not record.get("link"):
+                record["link"] = dbg.get("best_url") or it.get("link", "")
+
+            # id：只有在我们确实解析到 mb_id 时才写入
             if mb_id:
-                # 有 Manubot id：id + 标准字段 + entry 标签
-                out.append({"id": mb_id, **fields, **forward_tags})
+                record["id"] = mb_id
             else:
-                # 没有 id：至少保留 title/authors/link 等字段
-                out.append({**fields, **forward_tags})
+                # 没有 id 的情况就保持 manual 的结构（让前端至少能显示）
+                pass
+
+            # 把 entry 的其他 tag 合并进去（image, plugin, file, 等）
+            record.update(forward_tags)
+
+            out.append(record)
+
         except Exception as e:
             t = _norm(it.get("title") or it.get("name"))
             logging.warning(f"Normalize error for '{t}': {e}")
             if t:
-                # 最坏情况也保留 title
-                out.append({"title": t, **forward_tags})
+                fallback = {"title": t}
+                fallback.update(forward_tags)
+                out.append(fallback)
             continue
 
     # 持久化 debug 信息
     _dump_json(CACHE_DIR / f"{gsid}.resolved.json", dbg_all)
 
-    # de-duplicate（保守：优先按 id，其次按 title|date|link）
-    deduped: List[Dict[str, Any]] = []
-    seen = set()
+    # -------- 去重：同 title 保留 date 最新的一条 --------
+    by_title: Dict[str, Dict[str, Any]] = {}
+    others: List[Dict[str, Any]] = []
+    others_seen = set()
+
     for it in out:
-        key = it.get("id")
-        if not key:
-            key = f"{it.get('title','')}|{it.get('date','')}|{it.get('link','')}"
-        if key in seen:
-            continue
-        seen.add(key)
-        deduped.append(it)
+        t_raw = it.get("title", "")
+        t_norm = _norm(t_raw).lower()
+
+        if t_norm:
+            existing = by_title.get(t_norm)
+            if existing is None:
+                by_title[t_norm] = it
+            else:
+                # 比较日期，保留最新
+                d_new = it.get("date", "")
+                d_old = existing.get("date", "")
+                # 简单按字符串比较（YYYY-MM-DD 格式适用）
+                better = False
+                if d_new and not d_old:
+                    better = True
+                elif d_new and d_old and d_new > d_old:
+                    better = True
+                elif (not d_new and not d_old) and (not existing.get("id") and it.get("id")):
+                    # 都没 date，就优先有 id 的
+                    better = True
+
+                if better:
+                    by_title[t_norm] = it
+        else:
+            # 没有标题的条目，按 id/date/link 做简单去重
+            key = it.get("id") or f"{it.get('title','')}|{it.get('date','')}|{it.get('link','')}"
+            if key in others_seen:
+                continue
+            others_seen.add(key)
+            others.append(it)
+
+    deduped: List[Dict[str, Any]] = list(by_title.values()) + others
 
     logging.info(f"Resolved {len(deduped)} item(s) for GSID {gsid}")
     n_doi = sum(1 for x in deduped if (x.get("id") or "").startswith("doi:"))
