@@ -3,7 +3,12 @@
 """
 Google Scholar plugin for Greene Lab LWT (CAIS-PSU customized).
 
-
+简化且更保守的版本：
+- 从 GSID 获取所有 publications（使用 SerpAPI）
+- 仅从现有链接中提取原始 DOI / arXiv / URL，不调用 Crossref、不猜 DOI
+- 保留原本 DOI（来自 doi.org/...）
+- 每条记录输出 title, authors, publisher, date, link，并附加 id（若可得）
+- SerpAPI author 调用结果缓存 24 小时：_data/.cache/google-scholar/{gsid}.author.json
 """
 
 from __future__ import annotations
@@ -94,7 +99,8 @@ def _arxiv_id_from(url: Optional[str]) -> Optional[str]:
 
 def _doi_id_from(url: Optional[str]) -> Optional[str]:
     """
-     URL DOI。
+    从原始 URL 中提取 DOI。
+    不做任何修正或猜测，只是从 doi.org/... 截取后半段并小写。
     """
     if not url:
         return None
@@ -112,7 +118,8 @@ def _prefer_original(links: List[str]) -> Optional[str]:
     seen, ordered = set(), []
     for u in links:
         if u and u not in seen:
-            seen.add(u); ordered.append(u)
+            seen.add(u)
+            ordered.append(u)
 
     # 1) doi.org
     for u in ordered:
@@ -130,9 +137,11 @@ def _prefer_original(links: List[str]) -> Optional[str]:
 
 def _mb_id_from_links(links: List[str]) -> Optional[str]:
     """
-    - DOI
-    - arXiv
-    - scholar 的 URL
+    只根据链接构造 Manubot id：
+    - 先 DOI
+    - 再 arXiv
+    - 再非 scholar 的 URL
+    不调用 Crossref、不猜 DOI。
     """
     # Try DOI
     for u in links:
@@ -154,7 +163,7 @@ def _mb_id_from_links(links: List[str]) -> Optional[str]:
 def _serpapi_author_pubs(s: requests.Session, gsid: str, api_key: str) -> List[Dict[str, Any]]:
     """
     Fetch publications for GSID from SerpAPI.
-    24 h：_data/.cache/google-scholar/{gsid}.author.json
+    加入 24 小时缓存：_data/.cache/google-scholar/{gsid}.author.json
     """
     cache_path = CACHE_DIR / f"{gsid}.author.json"
 
@@ -166,8 +175,8 @@ def _serpapi_author_pubs(s: requests.Session, gsid: str, api_key: str) -> List[D
                 with cache_path.open("r", encoding="utf-8") as f:
                     return json.load(f)
             except Exception:
-                # 如果缓存坏掉了，就继续 live fetch
                 logging.warning(f"Cached author file {cache_path} is corrupted, refetching.")
+                # 坏掉就重新拉
                 pass
 
     # ----- Real SerpAPI Fetch -----
@@ -311,10 +320,18 @@ def _extract_links_from_cluster_detail(detail: Dict[str, Any]) -> List[str]:
 
 def _normalize_item(it: Dict[str, Any], s: requests.Session, api_key: str) -> Tuple[Optional[str], Dict[str, Any], Dict[str, Any]]:
     """
-    Returns (manubot_id, manual_fallback_fields, debug_info)
+    Returns (manubot_id, core_fields, debug_info)
 
-    - manubot_id 只来自已有链接（doi.org / arxiv.org / publisher url）
-    - 不调用 Crossref，不猜 DOI，也不更改 DOI
+    core_fields:
+      - title
+      - authors
+      - publisher
+      - date
+      - link  （展示用链接，可能是 publisher/DOI，也可能是 scholar）
+
+    manubot_id:
+      - 只来自非 scholar 链接（doi / arxiv / url）
+      - 不调用 Crossref，不猜 DOI
     """
     title = _norm(it.get("title") or it.get("name"))
     year  = _year_from(
@@ -323,18 +340,36 @@ def _normalize_item(it: Dict[str, Any], s: requests.Session, api_key: str) -> Tu
         or (it.get("citation") or {}).get("year")
     )
     authors = _coerce_authors(it.get("authors"))
+    # publisher 优先用 "publication" 字段，其次 publication_info.name
+    pubinfo = it.get("publication_info") or {}
+    publisher = it.get("publication") or pubinfo.get("name") or None
+
     cluster_id = it.get("citation_id") or it.get("result_id") or None
 
     cand_links = _extract_links_from_author_item(it)
 
+    # 如果当前链接都是 scholar，尝试通过 cluster 再拿原始链接
     chosen_detail = None
     if (not any(_non_scholar(u) for u in cand_links)) and cluster_id:
         chosen_detail = _serpapi_cluster_detail(s, cluster_id, api_key)
         cand_links.extend(_extract_links_from_cluster_detail(chosen_detail or {}))
 
+    # 原始链接（只在非 scholar 等时才作为“最佳”）
     best_url = _prefer_original(cand_links) if cand_links else None
+    # 展示用链接：如果没有“最佳”非 scholar 链接，就退回到第一条候选（可能是 scholar）
+    display_link = best_url or (cand_links[0] if cand_links else None)
 
+    # 构造 Manubot id（只用 best_url）
     mb_id = _mb_id_from_links([best_url] if best_url else [])
+
+    date_str = f"{year}-01-01" if year else None
+    core_fields: Dict[str, Any] = {
+        "title": title or "",
+        "authors": authors or [],
+        "publisher": publisher or "",
+        "date": date_str or "",
+        "link": display_link or "",
+    }
 
     dbg = {
         "title": title,
@@ -342,20 +377,11 @@ def _normalize_item(it: Dict[str, Any], s: requests.Session, api_key: str) -> Tu
         "cluster_id": cluster_id,
         "author_item_links": cand_links,
         "best_url": best_url,
+        "display_link": display_link,
         "cluster_detail_used": bool(chosen_detail),
     }
 
-    if not mb_id:
-        manual = {
-            "title": title or None,
-            "publisher": None,
-            "date": f"{year}-01-01" if year else None,
-            "link": best_url or None,
-        }
-        manual = {k: v for k, v in manual.items() if v}
-        return None, manual, dbg
-
-    return mb_id, {}, dbg
+    return mb_id, core_fields, dbg
 
 # ---------------- Plugin entry ----------------
 def main(entry: Dict[str, Any]) -> List[Dict[str, Any]]:
@@ -387,24 +413,26 @@ def main(entry: Dict[str, Any]) -> List[Dict[str, Any]]:
 
     for it in pubs:
         try:
-            mb_id, manual, dbg = _normalize_item(it, s, api_key)
+            mb_id, fields, dbg = _normalize_item(it, s, api_key)
             dbg_all.append(dbg)
             if mb_id:
-                out.append({"id": mb_id, **forward_tags})
+                # 有 Manubot id：id + 标准字段 + entry 标签
+                out.append({"id": mb_id, **fields, **forward_tags})
             else:
-
-                out.append({**manual, **forward_tags})
+                # 没有 id：至少保留 title/authors/link 等字段
+                out.append({**fields, **forward_tags})
         except Exception as e:
-
             t = _norm(it.get("title") or it.get("name"))
             logging.warning(f"Normalize error for '{t}': {e}")
             if t:
+                # 最坏情况也保留 title
                 out.append({"title": t, **forward_tags})
             continue
 
+    # 持久化 debug 信息
     _dump_json(CACHE_DIR / f"{gsid}.resolved.json", dbg_all)
 
-
+    # de-duplicate（保守：优先按 id，其次按 title|date|link）
     deduped: List[Dict[str, Any]] = []
     seen = set()
     for it in out:
