@@ -1,7 +1,7 @@
 ---
 title: White Elephant and Christmas Party! 
 author: Yifei
-image: images/news/20241223Christmas2.jpg
+image: images/news/2024/20241223Christmas2.jpg
 tags:
   - Activities
 ---
@@ -10,5 +10,5 @@ The CAIS lab enjoys the White Elephant and Christmas dinner with  [Dr. Fitzsimon
 
 
 <p style="text-align:center;">
-  <img src="{{ '/images/news/20241223Christmas2.jpg' | relative_url }}" alt="Christmas" style="max-width:100%; height:auto;">
+  <img src="{{ '/images/news/2024/20241223Christmas2.jpg' | relative_url }}" alt="Christmas" style="max-width:100%; height:auto;">
 </p>

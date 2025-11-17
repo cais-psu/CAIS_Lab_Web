@@ -7,7 +7,7 @@ nav:
 
 # {% include icon.html icon="fa-solid fa-wrench" %}Projects
 
-Customized additive manufacturing system featuring multi-robotic arms for parts removal
+Improve the flexibility, safety, and efficiency of complex, dynamic, and connected systems
 
 {% include tags.html tags="publication, resource, website" %}
 

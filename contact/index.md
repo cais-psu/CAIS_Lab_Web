@@ -9,14 +9,15 @@ nav:
 
 ## Openings
 
-The CAIS lab is seeking graduate and undergraduate students to join the team. Students interested in joining should be motivated and hard-working individuals who are interested in one or more of the following topics:
+The CAIS Lab is seeking **graduate and undergraduate students** to join the team.  
+Students should be motivated, hard-working, and interested in one or more of the following areas:
 
-Control theory and applications
-Dynamic systems
-Industrial automation
-Applied artificial intelligence
-Smart manufacturing/Industry 4.0
-Robotics
+- Control theory and applications  
+- Dynamic systems  
+- Industrial automation  
+- Applied artificial intelligence  
+- Smart manufacturing / Industry 4.0  
+- Robotics  
 
 
 {%
@@ -36,28 +37,43 @@ Robotics
 
 
 
-{% include section.html %}
+---
 
-{% capture col1 %}
+## Graduate Students
 
-{%
-  include figure.html
-  image="images/photo.jpg"
-  caption="Lorem ipsum"
-%}
+If you are interested in joining the lab as a **graduate student**, you must first be admitted to a graduate program at Penn State.
 
-{% endcapture %}
+If you have not yet been admitted and would like to work in the CAIS Lab, please apply to either the:
 
-{% capture col2 %}
+- Penn State [**Mechanical Engineering (ME)**](https://www.me.psu.edu/students/graduate/prospective.aspx){:target="_blank" rel="noopener noreferrer"} graduate program, or  
+- Penn State [**Industrial & Manufacturing Engineering (IME)**](https://www.ime.psu.edu/students/graduate/index.aspx){:target="_blank" rel="noopener noreferrer"} graduate program.
 
-{%
-  include figure.html
-  image="images/photo.jpg"
-  caption="Lorem ipsum"
-%}
+The department will then review your application and determine your fit with the program.
 
-{% endcapture %}
+Once you have been **admitted to Penn State**, you are encouraged to email **Dr. Kovalenko** to discuss potential research opportunities.
 
+When contacting the lab (after admission), please include the following **in a single email**:
 
+- Status of your application/admission to a graduate engineering program at Penn State  
+- A brief **statement of research interests**  
+- **Unofficial academic transcript**  
+- **Current resume or CV**
 
-{% include cols.html col1=col1 col2=col2 col3=col3 %}
+---
+
+## Undergraduate Students
+
+We are currently looking for **highly motivated undergraduate students** at Penn State who are interested in any of the topics listed above.
+
+Undergraduate students in the lab will be assigned a **supervised research project** that must be taken as one of the following:
+
+- For course credit (e.g., **ME 496** or **IE 496**)  
+- As part of an **undergraduate thesis**  
+- As part of another **research program/experience**
+
+Prospective undergraduate students interested in the lab should send a **single email** to **Dr. Kovalenko** that includes:
+
+- A brief **summary of research interests**  
+- **Unofficial academic transcript**  
+- **Current resume or CV**
+

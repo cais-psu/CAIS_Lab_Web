@@ -1,7 +1,7 @@
 ---
 title: Pittsburgh Robotics Discovery Day! 
 author: Yifei
-image: images/news/202411120DiscoveryDay.png
+image: images/news/2024/202411120DiscoveryDay.png
 tags:
   - Ai
   - Manufacturing
@@ -13,5 +13,5 @@ The CAIS Lab attends [the Pittsburgh Robotics Discovery Day](https://www.robopgh
 
 
 <p style="text-align:center;">
-  <img src="{{ '/images/news/202411120DiscoveryDay.png' | relative_url }}" alt="Discovery Day" style="max-width:100%; height:auto;">
+  <img src="{{ '/images/news/2024/202411120DiscoveryDay.png' | relative_url }}" alt="Discovery Day" style="max-width:100%; height:auto;">
 </p>
