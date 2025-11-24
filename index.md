@@ -82,7 +82,7 @@ We are a multidisciplinary team of faculty, graduate and undergraduate researche
 
 {%
   include feature.html
-  image="images/news/20241015cookout.jpg"
+  image="images/news/2024/20241015cookout.jpg"
   link="team"
   title="Our Team"
   text=text
