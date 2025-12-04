@@ -22,13 +22,6 @@ Students should be motivated, hard-working, and interested in one or more of the
 
 {%
   include button.html
-  type="email"
-  text="iqk5135@psu.edu"
-  link="iqk5135@psu.edu"
-%}
-
-{%
-  include button.html
   type="address"
   text="107 Leonhard Building"
   tooltip="Our location on Google Maps for easy navigation"
