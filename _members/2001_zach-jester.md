@@ -7,10 +7,10 @@ description: M.S. Student, PSU ME
 #aliases:
 #  - 
 links:
-  github:
+  github: https://github.com/zpjester
   email: emailto:zpj1@psu.edu 
 ---
 
 B.S., Robotics Engineering, Worcester Polytechnic Institute
 
-Research interests: Adaptive manufacturing, Design for manufacturability (DFM), and Bench-scale modular factories
+Research interests: Additive Manufacturing, Design for Manufacturing (DfM), modeling and simulation
