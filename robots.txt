@@ -1,1 +1,1 @@
-Sitemap: https://cais-psu.github.io/CAIS/sitemap.xml
+Sitemap: http://www.caislab.com/sitemap.xml
