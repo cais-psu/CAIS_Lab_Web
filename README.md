@@ -5,6 +5,6 @@
 
   # cais-psu's Website
 
-  Visit **[cais-psu.github.io/CAIS](https://cais-psu.github.io/CAIS)** 🚀
+  Visit **[www.caislab.com](http://www.caislab.com)** 🚀
 
   _Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)_
