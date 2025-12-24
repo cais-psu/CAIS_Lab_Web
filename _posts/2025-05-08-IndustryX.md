@@ -8,7 +8,7 @@ tags:
   - Conferences
 ---
 
-Congrats to Hongliang, winner of the poster competition at the 2025 industryXchange!
+Congratulations to Hongliang, winner of the poster competition at the 2025 industryXchange!
 
 
 <p style="text-align:center;">
