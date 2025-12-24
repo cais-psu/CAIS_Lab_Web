@@ -1,3 +1,16 @@
+- id: doi:10.1016/j.conengprac.2019.03.009
+  title: 'The model-based product agent: A control oriented architecture for intelligent
+    products in multi-agent manufacturing systems'
+  authors:
+  - Ilya Kovalenko
+  - Dawn Tilbury
+  - Kira Barton
+  publisher: Control Engineering Practice
+  date: '2019-05-01'
+  link: https://doi.org/g97zqp
+  image: https://ars.els-cdn.com/content/image/1-s2.0-S0967066118305057-gr1.jpg
+  plugin: sources.py
+  file: sources.yaml
 - id: doi:10.1109/lra.2019.2921947
   title: Dynamic Resource Task Negotiation to Enable Product Agent Exploration in
     Multi-Agent Manufacturing Systems
