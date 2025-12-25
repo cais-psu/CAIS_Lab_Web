@@ -19,15 +19,6 @@ nav:
 {%- assign seen_titles = "" -%}
 {%- assign bar = "|" -%}
 
-{%- comment -%}
-Helpers:
-- title_key: case-insensitive + light punctuation normalization
-- category:
-    Journal: is_journal && not is_conf && not is_book && not is_arxiv
-    Conf:    is_conf && not is_book && not is_arxiv
-    Other:   everything else
-{%- endcomment -%}
-
 ### Journal Articles
 {%- for c in sorted -%}
   {%- assign title = c.title | default: c.id | strip -%}
@@ -48,9 +39,7 @@ Helpers:
 
   {%- assign is_arxiv = false -%}
   {%- if c.id and c.id contains "arxiv:" -%}{%- assign is_arxiv = true -%}{%- endif -%}
-  {%- if doi_lc contains "10.48550/arxiv" or link_lc contains "arxiv.org" or venue contains "arxiv" -%}
-    {%- assign is_arxiv = true -%}
-  {%- endif -%}
+  {%- if doi_lc contains "10.48550/arxiv" or link_lc contains "arxiv.org" or venue contains "arxiv" -%}{%- assign is_arxiv = true -%}{%- endif -%}
 
   {%- assign is_book = false -%}
   {%- if t contains "chapter" or t contains "book" -%}{%- assign is_book = true -%}{%- endif -%}
@@ -61,9 +50,7 @@ Helpers:
   {%- endif -%}
 
   {%- assign is_conf = false -%}
-  {%- if t contains "proceedings" or t contains "conference" or t contains "workshop" or t contains "symposium" -%}
-    {%- assign is_conf = true -%}
-  {%- endif -%}
+  {%- if t contains "proceedings" or t contains "conference" or t contains "workshop" or t contains "symposium" -%}{%- assign is_conf = true -%}{%- endif -%}
   {%- if venue contains "conference" or venue contains "proceedings" or venue contains "workshop" or venue contains "symposium"
         or venue contains "case" or venue contains "acc" or venue contains "cdc" or venue contains "ccta"
         or venue contains "msec" or venue contains "etfa" or venue contains "arso" or venue contains "detc" or venue contains "dscc"
@@ -90,11 +77,7 @@ Helpers:
     {%- assign is_journal = true -%}
   {%- endif -%}
 
-  {%- comment -%}Overrides{%- endcomment -%}
-  {%- if venue contains "ifac-papersonline" -%}
-    {%- assign is_journal = false -%}
-    {%- assign is_conf = true -%}
-  {%- endif -%}
+  {%- if venue contains "ifac-papersonline" -%}{%- assign is_journal = false -%}{%- assign is_conf = true -%}{%- endif -%}
 
   {%- if is_journal and is_conf == false and is_book == false and is_arxiv == false -%}
     {%- unless seen_titles contains pad -%}
@@ -104,7 +87,6 @@ Helpers:
     {%- endunless -%}
   {%- endif -%}
 {%- endfor -%}
-
 
 ### Conference Papers
 {%- for c in sorted -%}
@@ -126,9 +108,7 @@ Helpers:
 
   {%- assign is_arxiv = false -%}
   {%- if c.id and c.id contains "arxiv:" -%}{%- assign is_arxiv = true -%}{%- endif -%}
-  {%- if doi_lc contains "10.48550/arxiv" or link_lc contains "arxiv.org" or venue contains "arxiv" -%}
-    {%- assign is_arxiv = true -%}
-  {%- endif -%}
+  {%- if doi_lc contains "10.48550/arxiv" or link_lc contains "arxiv.org" or venue contains "arxiv" -%}{%- assign is_arxiv = true -%}{%- endif -%}
 
   {%- assign is_book = false -%}
   {%- if t contains "chapter" or t contains "book" -%}{%- assign is_book = true -%}{%- endif -%}
@@ -139,9 +119,7 @@ Helpers:
   {%- endif -%}
 
   {%- assign is_conf = false -%}
-  {%- if t contains "proceedings" or t contains "conference" or t contains "workshop" or t contains "symposium" -%}
-    {%- assign is_conf = true -%}
-  {%- endif -%}
+  {%- if t contains "proceedings" or t contains "conference" or t contains "workshop" or t contains "symposium" -%}{%- assign is_conf = true -%}{%- endif -%}
   {%- if venue contains "conference" or venue contains "proceedings" or venue contains "workshop" or venue contains "symposium"
         or venue contains "case" or venue contains "acc" or venue contains "cdc" or venue contains "ccta"
         or venue contains "msec" or venue contains "etfa" or venue contains "arso" or venue contains "detc" or venue contains "dscc"
@@ -165,7 +143,6 @@ Helpers:
   {%- endif -%}
 {%- endfor -%}
 
-
 ### Other Publications
 {%- for c in sorted -%}
   {%- assign title = c.title | default: c.id | strip -%}
@@ -186,9 +163,7 @@ Helpers:
 
   {%- assign is_arxiv = false -%}
   {%- if c.id and c.id contains "arxiv:" -%}{%- assign is_arxiv = true -%}{%- endif -%}
-  {%- if doi_lc contains "10.48550/arxiv" or link_lc contains "arxiv.org" or venue contains "arxiv" -%}
-    {%- assign is_arxiv = true -%}
-  {%- endif -%}
+  {%- if doi_lc contains "10.48550/arxiv" or link_lc contains "arxiv.org" or venue contains "arxiv" -%}{%- assign is_arxiv = true -%}{%- endif -%}
 
   {%- assign is_book = false -%}
   {%- if t contains "chapter" or t contains "book" -%}{%- assign is_book = true -%}{%- endif -%}
@@ -199,9 +174,7 @@ Helpers:
   {%- endif -%}
 
   {%- assign is_conf = false -%}
-  {%- if t contains "proceedings" or t contains "conference" or t contains "workshop" or t contains "symposium" -%}
-    {%- assign is_conf = true -%}
-  {%- endif -%}
+  {%- if t contains "proceedings" or t contains "conference" or t contains "workshop" or t contains "symposium" -%}{%- assign is_conf = true -%}{%- endif -%}
   {%- if venue contains "conference" or venue contains "proceedings" or venue contains "workshop" or venue contains "symposium"
         or venue contains "case" or venue contains "acc" or venue contains "cdc" or venue contains "ccta"
         or venue contains "msec" or venue contains "etfa" or venue contains "arso" or venue contains "detc" or venue contains "dscc"
@@ -228,24 +201,13 @@ Helpers:
     {%- assign is_journal = true -%}
   {%- endif -%}
 
-  {%- if venue contains "ifac-papersonline" -%}
-    {%- assign is_journal = false -%}
-    {%- assign is_conf = true -%}
-  {%- endif -%}
+  {%- if venue contains "ifac-papersonline" -%}{%- assign is_journal = false -%}{%- assign is_conf = true -%}{%- endif -%}
 
-  {%- comment -%}
-  Other = NOT (journal-only) AND NOT (conf-only)
-  i.e., arXiv, books/chapters, tech reports, etc.
-  {%- endcomment -%}
   {%- assign is_journal_only = false -%}
-  {%- if is_journal and is_conf == false and is_book == false and is_arxiv == false -%}
-    {%- assign is_journal_only = true -%}
-  {%- endif -%}
+  {%- if is_journal and is_conf == false and is_book == false and is_arxiv == false -%}{%- assign is_journal_only = true -%}{%- endif -%}
 
   {%- assign is_conf_only = false -%}
-  {%- if is_conf and is_book == false and is_arxiv == false -%}
-    {%- assign is_conf_only = true -%}
-  {%- endif -%}
+  {%- if is_conf and is_book == false and is_arxiv == false -%}{%- assign is_conf_only = true -%}{%- endif -%}
 
   {%- if is_journal_only == false and is_conf_only == false -%}
     {%- unless seen_titles contains pad -%}
