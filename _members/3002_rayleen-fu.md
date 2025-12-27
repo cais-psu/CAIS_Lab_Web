@@ -2,7 +2,7 @@
 name: Rayleen Fu 
 image: images/team/Rayleen.png
 role: undergrad  # pi / phd / ms / visitor / undergrad
-alumni: false  
+alumni: ture 
 description: Undergraduate Student, PSU CS
 #aliases:
 #  - 
